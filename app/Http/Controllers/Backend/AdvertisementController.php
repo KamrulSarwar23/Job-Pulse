@@ -64,7 +64,6 @@ class AdvertisementController extends Controller
         if (!empty($imagePath)) {
             $value['banner_one']['banner_image'] = $imagePath;
         } else {
-
             $value['banner_one']['banner_image'] =  $request->banner_old_image;
         }
 
@@ -113,7 +112,6 @@ class AdvertisementController extends Controller
                 'banner_two_status' => $request->banner_two_status == 'on' ? 1 : 0
             ]
         ];
-
 
         if (!empty($imagePathone)) {
             $value['banner_one']['banner_one_image'] = $imagePathone;

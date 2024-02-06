@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\DataTables\ProductDataTable;
 use App\Models\Category;
 use App\Models\ChildCategory;
-use App\Models\Subcategory;
+use App\Models\SubCategory;
 use App\Models\ProductImageGallery;
 use App\Models\ProductVariant;
 use App\Models\Brand;
@@ -207,7 +207,7 @@ class ProductController extends Controller
 
     public function getSubCategories(Request $request)
     {
-        $subcategories = Subcategory::where('category_id', $request->id)->get();
+        $subcategories = SubCategory::where('category_id', $request->id)->get();
         return $subcategories;
     }
 

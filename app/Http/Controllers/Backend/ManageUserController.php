@@ -48,7 +48,9 @@ class ManageUserController extends Controller
             $vendor->user_id = $user->id;
             $vendor->status = 1;
             $vendor->save();
+
             MailHelper::setMailConfig();
+            
             Mail::to($request->email)->send(new AccountCreatedMail($request->name, $request->email, $request->password));
             toastr('Created Successfully');
             return redirect()->back();

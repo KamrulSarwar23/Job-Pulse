@@ -32,6 +32,8 @@ class SubscriberController extends Controller
         $emails = NewsLettersubscriber::where('is_verified', 1)->pluck('email')->toArray();
         // set mail config
         MailHelper::setMailConfig();
+        
+        setMailConfig()
 
         Mail::to($emails)->send(new NewsLetter($request->subject, $request->message));
 

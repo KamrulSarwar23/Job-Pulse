@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Mail\SubscriptionVerification;
 use App\Models\NewsLettersubscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Str;
-use Mail;
 
 class NewsLetterController extends Controller
 {

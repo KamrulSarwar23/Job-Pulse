@@ -33,8 +33,6 @@ class SubscriberController extends Controller
         // set mail config
         MailHelper::setMailConfig();
         
-        setMailConfig()
-
         Mail::to($emails)->send(new NewsLetter($request->subject, $request->message));
 
         toastr('Message sent successfully');

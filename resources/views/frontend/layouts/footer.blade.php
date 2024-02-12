@@ -1,95 +1,62 @@
-@php
-    $footerinfo = \App\Models\FooterInfo::first();
-    $footersocial = \App\Models\FooterSocial::where('status', 1)->get();
-    $footertitle = \App\Models\FooterTitle::first();
-    $footergridtwo = \App\Models\FooterGridTwo::where('status', 1)->get();
-    $footertitle = \App\Models\FooterTitle::first();
-    $footergridthree = \App\Models\FooterGridThree::where('status', 1)->get();
-@endphp
-
-
-<footer class="footer_2">
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-xl-3 col-sm-7 col-md-6 col-lg-3">
-
-                <div class="wsus__footer_content">
-                    <a class="wsus__footer_2_logo" href="{{route('home.page')}}">
-                        <img src="{{ asset(@$footerinfo->logo) }}" alt="logo">
-                    </a>
-                    <a class="action" href="callto:+8896254857456"><i class="fas fa-phone-alt"></i>
-                        {{ @$footerinfo->phone }}</a>
-                    <a class="action" href="mailto:example@gmail.com"><i class="far fa-envelope"></i>
-                        {{ @$footerinfo->email }}</a>
-                    <p><i class="fal fa-map-marker-alt"></i> {{ @$footerinfo->address }}</p>
-                    <ul class="wsus__footer_social">
-
-                        @foreach ($footersocial as $item)
-                            <li><a class="behance" href="{{ $item->url }}"><i class="{{ $item->icon }}"></i></a>
-                            </li>
-                        @endforeach
-                    </ul>
+     <!-- Footer Start -->
+     <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Company</h5>
+                    <a class="btn btn-link text-white-50" href="javascript:;">About Us</a>
+                    <a class="btn btn-link text-white-50" href="javascript:;">Contact Us</a>
+                    <a class="btn btn-link text-white-50" href="javascript:;">Our Services</a>
+                    <a class="btn btn-link text-white-50" href="javascript:;">Privacy Policy</a>
+                    <a class="btn btn-link text-white-50" href="javascript:;">Terms & Condition</a>
                 </div>
-
-            </div>
-            <div class="col-xl-2 col-sm-5 col-md-4 col-lg-2">
-                <div class="wsus__footer_content">
-                    <h5>{{ $footertitle->footer_grid_two_title }}</h5>
-                    <ul class="wsus__footer_menu">
-
-                        @foreach ($footergridtwo as $item)
-                            <li><a href="{{ $item->url }}"><i class="fas fa-caret-right"></i>{{ $item->name }}</a>
-                            </li>
-                        @endforeach
-
-                    </ul>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <a class="btn btn-link text-white-50" href="javascript:;">About Us</a>
+                    <a class="btn btn-link text-white-50" href="javascript:;">Contact Us</a>
+                    <a class="btn btn-link text-white-50" href="javascript:;">Our Services</a>
+                    <a class="btn btn-link text-white-50" href="javascript:;">Privacy Policy</a>
+                    <a class="btn btn-link text-white-50" href="javascript:;">Terms & Condition</a>
                 </div>
-            </div>
-            <div class="col-xl-2 col-sm-5 col-md-4 col-lg-2">
-                <div class="wsus__footer_content">
-                    <h5>{{ $footertitle->footer_grid_three_title }}</h5>
-                    <ul class="wsus__footer_menu">
-
-                        @foreach ($footergridthree as $item)
-                            <li><a href="{{ $item->url }}"><i
-                                        class="fas fa-caret-right"></i>{{ $item->name }}</a>
-                            </li>
-                        @endforeach
-
-                    </ul>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Contact</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href="javascript:;"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="javascript:;"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="javascript:;"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="javascript:;"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-sm-7 col-md-8 col-lg-5">
-                <div class="wsus__footer_content wsus__footer_content_2">
-                    <h3>Subscribe To Our Newsletter</h3>
-                    <p>Get all the latest information on Events, Sales and Offers.
-                        Get all the latest information on Events.</p>
-
-                    <form action="" method="POST" id="newsletter">
-                        @csrf
-                        <input type="text" placeholder="Search..." name="email" class="newsletter_email">
-                        <button type="submit" class="common_btn subscribe_btn">subscribe</button>
-                    </form>
-
-                    <div class="footer_payment">
-                        <p>We're using safe payment for :</p>
-                        <img src="{{ asset('frontend/images/credit2.png') }}" alt="card" class="img-fluid">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Newsletter</h5>
+                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="wsus__footer_bottom">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="wsus__copyright d-flex justify-content-center">
-                        <p>{{ @$footerinfo->copyright }}</p>
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="" href="javascript:;">Job Pulse</a>, All Right Reserved. 
+                    
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu">
+                            <a href="javascript:;">Home</a>
+                            <a href="javascript:;">Cookies</a>
+                            <a href="javascript:;">Help</a>
+                            <a href="javascript:;">FQAs</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</footer>
-
-
+    <!-- Footer End -->

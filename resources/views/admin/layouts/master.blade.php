@@ -24,10 +24,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap-iconpicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/select2/dist/css/select2.min.css') }}">
-
-    @if(@$setting->layout == 'RTL')
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/rtl.css') }}"> 
-    @endif
    
 
     <!-- Template CSS -->

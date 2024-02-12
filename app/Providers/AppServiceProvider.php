@@ -26,15 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Set Time Zone
 
-        $generalSetting = GeneralSetting::first();
-        $logosetting = LogoSetting::first();
-
-        Config::set('app.timezone', $generalSetting->time_zone);
-
-        View::composer('*', function ($view) use ($generalSetting, $logosetting) {
-            $view->with(['setting'=> $generalSetting, 'logosetting' => $logosetting]);
-            });
-        }
+    }
 }

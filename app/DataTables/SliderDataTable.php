@@ -32,15 +32,20 @@ class SliderDataTable extends DataTable
                 return $img = "<img width='200px' height='120px' src='".asset($query->banner)."'> <img/>";
             })
 
-            ->addColumn('status', function($query){
-                $active = '<i class="badge badge-success">Active <i/>';
-                $inactive = '<i class="badge badge-danger">Inactive <i/>';
-
-                if($query->status ==1){
-                    return $active;
-                }else{
-                    return  $inactive;
+            ->addColumn('status', function ($query) {
+                if ($query->status == 1) {
+                    $button = '<label class="custom-switch">
+                    <input type="checkbox" checked name="custom-switch-checkbox" data-id = "' . $query->id . '"class="custom-switch-input change-status">
+                    <span class="custom-switch-indicator"></span>
+                  </label>';
+                } else {
+                    $button = '<label class="custom-switch">
+                    <input type="checkbox" name="custom-switch-checkbox" data-id = "' . $query->id . '"class="custom-switch-input change-status">
+                    <span class="custom-switch-indicator"></span>
+                  </label>';
                 }
+
+                return $button;
             })
 
             ->rawColumns(['banner', 'action', 'status'])
@@ -88,7 +93,7 @@ class SliderDataTable extends DataTable
             Column::make('id'),
             Column::make('banner')->width(300),
             Column::make('title')->width(200),
-            Column::make('serial'),
+            Column::make('description'),
             Column::make('status'),
             Column  ::computed('action')
                     ->exportable(false)

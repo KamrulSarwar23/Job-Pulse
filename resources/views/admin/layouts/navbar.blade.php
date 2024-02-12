@@ -10,18 +10,15 @@
 
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="{{ asset(Auth::user()->image) }}" class="rounded-circle mr-1">
-                <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->username }}</div>
+                <img alt="image" src="" class="rounded-circle mr-1">
+                <div class="d-sm-none d-lg-inline-block"></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
 
-                <a href="{{ route('admin.profile') }}" class="mt-2 dropdown-item has-icon">
+                <a href="" class="mt-2 dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
 
-                <a href="{{ route('admin.setting.index') }}" class="dropdown-item has-icon">
-                    <i class="fas fa-cog"></i> Settings
-                </a>
                 <div class="dropdown-divider"></div>
 
                 <form method="POST" action="{{ route('logout') }}">

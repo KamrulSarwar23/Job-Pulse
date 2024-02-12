@@ -1,77 +1,86 @@
 @extends('frontend.layouts.master')
 
-@section('title')
-    {{ $setting->site_name }} || Blog Details
-@endsection
 
 @section('content')
-    <!--============================BREADCRUMB START==============================-->
-    <section id="wsus__breadcrumb">
-        <div class="wsus_breadcrumb_overlay">
+     <!-- Header End -->
+     <div class="container-xxl py-5 bg-dark page-header mb-5">
+        <div class="container my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Our Blog</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb text-uppercase">
+                    <li class="breadcrumb-item"><a href="{{ route('home.page') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:;">Blog</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Header End -->
+
+         <!-- Category Start -->
+         <div class="container-xxl py-5">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h4>our latest blogs</h4>
-                        <ul>
-                            <li><a href="{{ route('home.page') }}">home</a></li>
-                            <li><a href="javascript:;">blogs</a></li>
-                        </ul>
+                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore Our Blog</h1>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a class="cat-item rounded p-4" href="">
+                            <i class="fa fa-3x fa-mail-bulk text-primary mb-4"></i>
+                            <h6 class="mb-3">Marketing</h6>
+                            <p class="mb-0">123 Vacancy</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <a class="cat-item rounded p-4" href="">
+                            <i class="fa fa-3x fa-headset text-primary mb-4"></i>
+                            <h6 class="mb-3">Customer Service</h6>
+                            <p class="mb-0">123 Vacancy</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <a class="cat-item rounded p-4" href="">
+                            <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
+                            <h6 class="mb-3">Human Resource</h6>
+                            <p class="mb-0">123 Vacancy</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                        <a class="cat-item rounded p-4" href="">
+                            <i class="fa fa-3x fa-tasks text-primary mb-4"></i>
+                            <h6 class="mb-3">Project Management</h6>
+                            <p class="mb-0">123 Vacancy</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a class="cat-item rounded p-4" href="">
+                            <i class="fa fa-3x fa-chart-line text-primary mb-4"></i>
+                            <h6 class="mb-3">Business Development</h6>
+                            <p class="mb-0">123 Vacancy</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <a class="cat-item rounded p-4" href="">
+                            <i class="fa fa-3x fa-hands-helping text-primary mb-4"></i>
+                            <h6 class="mb-3">Sales & Communication</h6>
+                            <p class="mb-0">123 Vacancy</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <a class="cat-item rounded p-4" href="">
+                            <i class="fa fa-3x fa-book-reader text-primary mb-4"></i>
+                            <h6 class="mb-3">Teaching & Education</h6>
+                            <p class="mb-0">123 Vacancy</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                        <a class="cat-item rounded p-4" href="">
+                            <i class="fa fa-3x fa-drafting-compass text-primary mb-4"></i>
+                            <h6 class="mb-3">Design & Creative</h6>
+                            <p class="mb-0">123 Vacancy</p>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!--============================BREADCRUMB END==============================-->
-
-
-    <!--============================BLOGS PAGE START ==============================-->
-    <section id="wsus__blogs">
-        <div class="container">
-
-            @if (request()->has('search'))
-                <h5>Search: {{ request()->search }}</h5>
-                <hr>
-            @elseif(request()->has('category'))
-                <h5>Search: {{ request()->category }}</h5>
-                <hr>
-            @endif
-
-            <div class="row">
-                @foreach ($blogs as $blog)
-                    <div class="col-xl-4 col-sm-6 col-lg-4 col-xxl-3">
-                        <div class="wsus__single_blog wsus__single_blog_2">
-                            <a class="wsus__blog_img" href="{{ route('blog-details', $blog->slug) }}">
-                                <img src="{{ asset($blog->image) }}" alt="blog" class="img-fluid w-100">
-                            </a>
-                            <div class="wsus__blog_text">
-                                <a class="blog_top red"
-                                    href="{{ route('blog-details', $blog->slug) }}">{{ $blog->category->name }}</a>
-                                <div class="wsus__blog_text_center">
-                                    <a href="blog_details.html">{{ $blog->title }} </a>
-                                    <p class="date">{{ date('d M Y', strtotime($blog->created_at)) }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-            @if (count($blogs) == 0)
-                <div>
-                    <div class="row">
-                        <div class="card p-5 text-center mt-3">
-                            <h3>Sorry no blog found</h3>
-                        </div>
-                    </div>
-                </div>
-            @endif
-
-            <div class="mt-5">
-                @if ($blogs->hasPages())
-                    {{ $blogs->withQueryString()->links() }}
-                @endif
-            </div>
-        </div>
-    </section>
-    <!--============================BLOGS PAGE END==============================-->
+        <!-- Category End -->
 @endsection
+     
+     

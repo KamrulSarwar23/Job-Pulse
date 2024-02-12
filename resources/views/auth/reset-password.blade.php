@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-    {{ $setting->site_name }} || Reset Password
+    || Reset Password
 @endsection
 
 @section('content')

@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
 
             [
-                'name' => 'Admin user',
+                'name' => 'Admin',
                 'username' => 'adminuser',
                 'email' => 'admin@gmail.com',
                 'role' => 'admin',
@@ -26,28 +26,19 @@ class UserSeeder extends Seeder
 
 
             [
-                'name' => 'Vendor user',
-                'username' => 'vendoruser',
-                'email' => 'vendor@gmail.com',
-                'role' => 'vendor',
+                'name' => 'company',
+                'username' => 'companyuser',
+                'email' => 'company@gmail.com',
+                'role' => 'company',
                 'status' => 'active',
                 'password' => bcrypt('password')
             ],
             
             [
-                'name' => 'user',
-                'username' => 'user',
-                'email' => 'user@gmail.com',
-                'role' => 'user',
-                'status' => 'active',
-                'password' => bcrypt('password')
-            ],
-
-            [
-                'name' => 'user2',
-                'username' => 'user2',
-                'email' => 'user2@gmail.com',
-                'role' => 'user',
+                'name' => 'candidate',
+                'username' => 'candidateuser',
+                'email' => 'candidate@gmail.com',
+                'role' => 'candidate',
                 'status' => 'active',
                 'password' => bcrypt('password')
             ]

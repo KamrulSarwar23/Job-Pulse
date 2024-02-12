@@ -2,28 +2,11 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-{{$setting->site_name}} || Login
+ || Login
 @endsection
 
 @section('content')
 
-    <!--============================BREADCRUMB START==============================-->
-    <section id="wsus__breadcrumb">
-        <div class="wsus_breadcrumb_overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h4>login / register</h4>
-                        <ul>
-                            <li><a href="">home</a></li>
-                            <li><a href="javascript:;">login / register</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--============================BREADCRUMB END==============================-->
 
 
     <!--============================LOGIN/REGISTER PAGE START==============================-->
@@ -99,15 +82,8 @@
                                             <i class="fas fa-key"></i>
                                             <input id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm Password">
                                         </div>
-                                        <div class="wsus__login_save">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox"
-                                                    id="flexSwitchCheckDefault03">
-                                                <label class="form-check-label" for="flexSwitchCheckDefault03">I consent
-                                                    to the privacy policy</label>
-                                            </div>
-                                        </div>
-                                        <button class="common_btn" type="submit">signup</button>
+
+                                        <button class="common_btn mt-4" type="submit">signup</button>
                                     </form>
                                 </div>
                             </div>

@@ -13,7 +13,6 @@ class SliderController extends Controller
 {
     use ImageUploadTrait;
 
-
     /**
      * Display a listing of the resource.
      */
@@ -37,12 +36,9 @@ class SliderController extends Controller
     {
         $request->validate([
 
-            'banner' => ['required', 'image', 'max:5000'],
-            'type' => ['string', 'max:200'],
-            'title' => ['required','max:200'],
-            'starting_price' => ['max:200'],
-            'btn_url' => ['url', 'max:500'],
-            'serial' => ['required', 'integer'],
+            'banner' => ['required', 'image'],
+            'title' => ['required','max:100'],
+            'description' => ['required','max:300'],
             'status' => ['required'],
             
         ]);
@@ -53,13 +49,9 @@ class SliderController extends Controller
        $imagePath = $this->uploadImage($request, 'banner', 'uploads');
 
         $slider->banner= $imagePath;
-        $slider->type = $request-> type;
         $slider->title = $request-> title;
-        $slider->starting_price = $request-> starting_price;
-        $slider->btn_url = $request-> btn_url;
-        $slider->serial = $request-> serial;
+        $slider->description = $request-> description;
         $slider->status = $request-> status;
-
         $slider->save();
 
         toastr('Created Succesfully!', 'success');
@@ -97,11 +89,8 @@ class SliderController extends Controller
         $request->validate([
 
             'banner' => ['nullable', 'image', 'max:5000'],
-            'type' => ['string', 'max:200'],
             'title' => ['required','max:200'],
-            'starting_price' => ['max:200'],
-            'btn_url' => ['url', 'max:500'],
-            'serial' => ['required', 'integer'],
+            'description' => ['required','max:300'],
             'status' => ['required'],
             
         ]);    
@@ -111,11 +100,8 @@ class SliderController extends Controller
         $imagePath = $this->updateImage($request, 'banner', 'uploads', $slider->banner);
 
         $slider->banner= empty(!$imagePath) ? $imagePath:  $slider->banner;
-        $slider->type = $request-> type;
         $slider->title = $request-> title;
-        $slider->starting_price = $request-> starting_price;
-        $slider->btn_url = $request-> btn_url;
-        $slider->serial = $request-> serial;
+        $slider->description = $request-> description;
         $slider->status = $request-> status;
 
         $slider->save();
@@ -139,4 +125,14 @@ class SliderController extends Controller
         
         return response(['status' => 'success', 'message' => 'Deleted Successfully']);
     }
+
+    public function changeStatus(Request $request){
+
+        $slider = Slider::findOrFail($request->id);
+        $slider->status = $request->status == 'true' ? 1 : 0;
+        $slider->save();
+
+        return response(['message' => 'Status has been Updated!']);
+    }
+
 }

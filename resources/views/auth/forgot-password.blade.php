@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-    {{ $setting->site_name }} || Forgot Password
+  || Forgot Password
 @endsection
 
 @section('content')

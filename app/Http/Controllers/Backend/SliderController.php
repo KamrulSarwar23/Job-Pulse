@@ -88,7 +88,7 @@ class SliderController extends Controller
 
         $request->validate([
 
-            'banner' => ['nullable', 'image', 'max:5000'],
+            'banner' => ['nullable', 'image'],
             'title' => ['required','max:200'],
             'description' => ['required','max:300'],
             'status' => ['required'],

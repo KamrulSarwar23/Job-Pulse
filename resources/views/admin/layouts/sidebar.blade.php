@@ -46,6 +46,10 @@
                 <a href="{{ route('admin.dashboard') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Dashboard</span></a>
             </li>
 
+            <li class="dropdown {{ setActive(['admin.company.index']) }}">
+                <a href="{{ route('admin.company.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Companis</span></a>
+            </li>
+
             <li class="dropdown {{ setActive(['admin.slider.index']) }}">
                 <a href="{{ route('admin.slider.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Banner</span></a>
             </li>
@@ -54,9 +58,17 @@
                 <a href="{{ route('admin.category.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Category</span></a>
             </li>
 
+            <li class="dropdown {{ setActive(['admin.company.job-request']) }}">
+                <a href="{{ route('admin.company.job-request') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Job Request</span></a>
+            </li>
 
+            <li class="dropdown {{ setActive(['admin.blog.index']) }}">
+                <a href="{{ route('admin.blog.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Blog</span></a>
+            </li>
 
-
+            <li class="dropdown {{ setActive(['admin.blog.index']) }}">
+                <a href="{{ route('admin.blog.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>About Us</span></a>
+            </li>
 
 
             {{-- <li class="dropdown">
@@ -68,7 +80,6 @@
 
                 </ul>
             </li> --}}
-
 
         </ul>
 

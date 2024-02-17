@@ -42,7 +42,7 @@
               <div class="card-header"><h4>Login</h4></div>
 
               <div class="card-body">
-                <form method="POST" action="{{route('login')}}" class="needs-validation" novalidate="">
+                <form method="POST" action="{{route('admin.login')}}" class="needs-validation" novalidate="">
                 @csrf
                 
                   <div class="form-group">
@@ -57,11 +57,7 @@
                   <div class="form-group">
                     <div class="d-block">
                     	<label for="password" class="control-label">Password</label>
-                      <div class="float-right">
-                        <a href="auth-forgot-password.html" class="text-small">
-                          Forgot Password?
-                        </a>
-                      </div>
+            
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
 

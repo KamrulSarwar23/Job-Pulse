@@ -15,37 +15,64 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function candidateCreate(): View
     {
-        return view('auth.login');
+        return view('auth.candidateLogin');
     }
 
+    public function companyCreate(): View
+    {
+        return view('auth.companyLogin');
+    }
+
+    public function selectUser()
+    {
+        return view('auth.selectrole');
+    }
     /**
      * Handle an incoming authentication request.
-     */
-    public function store(LoginRequest $request): RedirectResponse
+     */ 
+    
+    public function candidateStore(LoginRequest $request)
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
-        if ($request->user()->status === 'inactive') {
-            Auth::guard('web')->logout();
-            $request->session()->regenerateToken();
-            toastr('account has been banned from website authority! please contact with the support', 'error', 'account banned');
-            return redirect('/');
+        if ($request->user()->role === 'candidate') {
+            return redirect()->route('candidate.dashboard');
+        } else {
+            toastr()->error('You are not allowed to login from here');
+            return redirect()->route('home.page');
         }
+    }
+
+    public function companyStore(LoginRequest $request)
+    {
+        $request->authenticate();
+        $request->session()->regenerate();
+
+        if ($request->user()->role === 'company') {
+            return redirect()->route('company.dashboard');
+        } else {
+            toastr()->error('You are not allowed to login from here');
+            return redirect()->route('home.page');
+        }
+    }
+
+    public function adminStore(LoginRequest $request)
+    {
+        $request->authenticate();
+        $request->session()->regenerate();
 
         if ($request->user()->role === 'admin') {
-
-            return redirect()->intended('/admin/dashboard');
-        } elseif ($request->user()->role === 'company') {
-
-            return redirect()->intended('/company/dashboard');
+            return redirect()->route('admin.dashboard');
+        } else {
+            toastr()->error('You are not allowed to login from here');
+            return redirect()->route('home.page');
         }
-
-        return redirect()->intended(RouteServiceProvider::HOME);
     }
+
+
 
     /**
      * Destroy an authenticated session.

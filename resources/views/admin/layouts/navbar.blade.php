@@ -10,12 +10,12 @@
 
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="" class="rounded-circle mr-1">
+                <img alt="image" src="{{ asset(auth()->user()->image) }}" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block"></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
 
-                <a href="" class="mt-2 dropdown-item has-icon">
+                <a href="{{ route('admin.profile') }}" class="mt-2 dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
 

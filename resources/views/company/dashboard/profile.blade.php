@@ -15,7 +15,7 @@
                             <div class="wsus__dash_pro_area">
                                 <h4>Basic information</h4>
 
-                                <form action="{{ route('user.profile.update') }}" method="POST"
+                                <form action="{{ route('company.profile.update') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('put')
@@ -42,7 +42,7 @@
                                             <div class="wsus__dash_pro_single">
                                                 <i class="fal fa-envelope-open"></i>
                                                 <input type="email" placeholder="Email" name="email"
-                                                    value="{{ Auth::user()->email }}">
+                                                    value="{{ Auth::user()->email }}" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -58,7 +58,7 @@
 
                                 <div class="wsus__dash_pass_change mt-2">
 
-                                    <form action="{{ route('user.profile.update.password') }}" method="POST">
+                                    <form action="{{ route('company.profile.update.password') }}" method="POST">
                                         @csrf
 
                                         <div class="row">

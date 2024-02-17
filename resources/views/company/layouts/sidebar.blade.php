@@ -12,19 +12,13 @@
     <a href="" class="dash_logo"><img src="" alt="logo"
             class="img-fluid"></a>
     <ul class="dashboard_link">
-        <li class=""><a class="" href=""><i class="fas fa-home"></i>Go To Home
+        <li class=""><a class="" href="{{ route('home.page') }}"><i class="fas fa-home"></i>Go To Home
                 Page</a></li>
-        <li class=""><a class="" href=""><i
+        <li class="{{ setActive(['company.dashboard']) }}"><a class="" href="{{ route('company.dashboard') }}"><i
                     class="fas fa-tachometer"></i>Dashboard</a></li>
-        <li class=""><a class="" href=""><i
-                    class="far fa-clipboard"></i>Orders</a></li>
-        <li class=""><a href=""><i
-                    class="fab fa-product-hunt"></i>Products</a></li>
-        <li class=""><a href=""><i
-                    class="fas fa-star"></i>Reviews</a></li>
-        <li class=""><a href=""><i
-                    class="far fa-user"></i> Seller Profile</a></li>
-        <li class=""><a href=""><i
+        <li class="{{ setActive(['company.jobs.index']) }}"><a class="" href="{{ route('company.jobs.index') }}"><i
+                    class="far fa-clipboard"></i>Jobs</a></li>
+        <li class="{{ setActive(['company.profile']) }}"><a href="{{ route('company.profile') }}"><i
                     class="far fa-user"></i> My Profile</a></li>
         <li>
 

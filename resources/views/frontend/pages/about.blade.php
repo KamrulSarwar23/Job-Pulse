@@ -23,6 +23,7 @@
                     <div class="row g-5 align-items-center">
                         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                             <div class="row g-0 about-bg rounded overflow-hidden">
+
                                 <div class="col-6 text-start">
                                     <img class="img-fluid w-100" src="{{ asset('frontend/img/about-1.jpg') }}">
                                 </div>
@@ -35,6 +36,7 @@
                                 <div class="col-6 text-end">
                                     <img class="img-fluid w-100" src="{{ asset('frontend/img/about-4.jpg') }}">
                                 </div>
+                                
                             </div>
                         </div>
                         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">

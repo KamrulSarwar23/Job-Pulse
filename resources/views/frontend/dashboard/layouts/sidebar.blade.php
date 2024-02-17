@@ -14,20 +14,19 @@
     <ul class="dashboard_link">
         <li class=""><a class="" href="{{ route('home.page') }}"><i class="fas fa-home"></i>Go To Home
                 Page</a></li>
-        <li class=""><a class="" href=""><i
+        <li class="{{ setActive(['candidate.dashboard']) }}"><a class="" href="{{ route('candidate.dashboard') }}"><i
                     class="fas fa-tachometer"></i>Dashboard</a></li>
-        <li class=""><a class="" href=""><i
-                    class="far fa-clipboard"></i>Orders</a></li>
-        <li class=""><a href=""><i
-                    class="fab fa-product-hunt"></i>Products</a></li>
-        <li class=""><a href=""><i
-                    class="fas fa-star"></i>Reviews</a></li>
-        <li class=""><a href=""><i
-                    class="far fa-user"></i> Seller Profile</a></li>
-        <li class=""><a href=""><i
+  
+        <li class="{{ setActive(['candidate.job.cv']) }}"><a href="{{ route('candidate.job.cv') }}"><i
+                        class="far fa-user"></i>Create CV</a></li>
+            <li>
+
+        <li class="{{ setActive(['candidate.profile']) }}"><a href="{{ route('candidate.profile') }}"><i
                     class="far fa-user"></i> My Profile</a></li>
         <li>
 
+
+            
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <a href="{{ route('logout') }}"

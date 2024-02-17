@@ -5,6 +5,8 @@
 
 @include('frontend.layouts.section.carosel')
 
+@include('frontend.layouts.section.company')
+
 @include('frontend.layouts.section.category')
 
 @include('frontend.layouts.section.search')

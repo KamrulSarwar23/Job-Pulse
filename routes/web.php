@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\CandidateCvController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
 
 require __DIR__ . '/auth.php';
@@ -13,13 +15,23 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'candidate', 'as
 
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 
+    Route::get('/profile', [UserController::class, 'index'])->name('profile');
+    Route::put('profile', [UserController::class, 'updateProfile'])->name('profile.update');
+    Route::post('profile', [UserController::class, 'updatePassword'])->name('profile.update.password');
+
+    Route::get('/candidate_cv', [CandidateCvController::class, 'candidateCV'])->name('job.cv');
+    Route::put('/candidate_cv/store', [CandidateCvController::class, 'store'])->name('job.cv-store');
+
+    Route::get('cv-preview', [CandidateCvController::class, 'cvPreview'])->name('cv.preview');
+
 });
+
 
 // Home Page Route
 Route::get('/', [HomeController::class, 'index'])->name('home.page');
 
 // Admin Login Route
-Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
+Route::get('/admin/login', [AdminController::class, 'login'])->name('login');
 
 // About Page Route
 Route::get('/about/page', [HomeController::class, 'aboutPage'])->name('about.page');
@@ -31,8 +43,21 @@ Route::get('/job/page', [HomeController::class, 'jobPage'])->name('job.page');
 Route::get('/blog/page', [HomeController::class, 'blogPage'])->name('blog.page');
 
 // Contact Page Route
-Route::get('/contact/page', [HomeController::class, 'contactPage'])->name('contact.page');
+Route::get('/contact/page', [ContactController::class, 'contactPage'])->name('contact.page');
+Route::post('/send-message', [ContactController::class, 'sendMessage'])->name('send.message');
+
+// Google login
+Route::get('/login/google', [HomeController::class, 'googleRedirect'])->name('login.google');
+Route::get('/login/google/callback', [HomeController::class, 'googleCallback']);
+
+Route::get('company/login/google', [HomeController::class, 'companyGoogleRedirect'])->name('company-login.google');
+Route::get('/login/google/callback', [HomeController::class, 'companyGoogleCallback']);
 
 
+Route::get('job-by-category/{id}', [HomeController::class, 'jobByCategory'])->name('job.category');
 
+Route::get('job-by-company/{id}', [HomeController::class, 'jobByCompany'])->name('job.company');
 
+Route::get('all-company', [HomeController::class, 'allCompany'])->name('all.company');
+
+Route::post('search-jobs', [HomeController::class, 'searchJob'])->name('search.job');

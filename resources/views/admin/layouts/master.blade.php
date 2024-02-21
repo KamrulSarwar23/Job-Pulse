@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap-iconpicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/select2/dist/css/select2.min.css') }}">
-   
+
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
@@ -42,7 +42,7 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
-    
+
     <!-- /END GA -->
 </head>
 
@@ -112,7 +112,7 @@
             @endforeach
         @endif
     </script>
-    
+
 
     <script>
         $(document).ready(function() {
@@ -123,58 +123,58 @@
                 }
             });
 
+
             $('body').on('click', '.delete-item', function(event) {
 
-                event.preventDefault();
+                    event.preventDefault();
 
-                let deleteUrl = $(this).attr('href');
+                    let deleteUrl = $(this).attr('href');
 
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
 
-                        $.ajax({
-                            type: 'DELETE',
-                            url: deleteUrl,
+                            $.ajax({
+                                type: 'DELETE',
+                                url: deleteUrl,
 
-                            success: function(data) {
-                                if (data.status == 'success') {
-                                    Swal.fire(
-                                        'Deleted!',
-                                        data.message,
-                                        'success'
-                                    )
+                                success: function(data) {
+                                    if (data.status == 'success') {
+                                        Swal.fire(
+                                            'Deleted!',
+                                            data.message,
+                                            'success'
+                                        )
 
-                                    window.location.reload();
+                                        window.location.reload();
 
-                                } else if (data.status == 'error') {
-                                    Swal.fire(
-                                        'Cant Delete',
-                                        data.message,
-                                        'error'
-                                    )
+                                    } else if (data.status == 'error') {
+                                        Swal.fire(
+                                            'Cant Delete',
+                                            data.message,
+                                            'error'
+                                        )
+                                    }
+
+                                },
+
+                                error: function(xhr, status, error) {
+                                    console.log(error);
                                 }
-
-                            },
-
-                            error: function(xhr, status, error) {
-                                console.log(error);
-                            }
-                        })
+                            })
 
 
-                    }
+                        }
 
+                    })
                 })
-            })
-
         })
     </script>
 

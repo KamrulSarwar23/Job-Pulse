@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Slider;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Models\About;
+use App\Models\AboutImage;
 use App\Models\Blog;
 use App\Models\Job;
 use Illuminate\Http\Request;
@@ -28,7 +30,11 @@ class HomeController extends Controller
     public function searchJob(Request $request)
     {
         $keyword = $request->input('keyword'); // Accessing the 'keyword' input from the form
-        $jobs = Job::where('name', 'like', '%' . $keyword . '%')->get();
+        $jobs = Job::where('status', 'active')
+        ->where('name', 'like', '%' . $keyword . '%')
+        ->orwhere('address', 'like', '%' . $keyword . '%')
+        ->orwhere('office_from', 'like', '%' . $keyword . '%')
+        ->orderBy('created_at', 'DESC')->get();
         return view('frontend.pages.job-via-search', compact('jobs'));
     }
 
@@ -41,31 +47,33 @@ class HomeController extends Controller
 
     public function jobByCategory(string $id)
     {
-        $jobs = Job::where('category_id', $id)->get();
+        $jobs = Job::where('status', 'active')->where('category_id', $id)->orderBy('created_at', 'DESC')->get();
         return view('frontend.pages.job-via-category', compact('jobs'));
     }
 
     public function jobByCompany(string $id)
     {
-        $jobs = Job::where('user_id', $id)->get();
+        $jobs = Job::where('status', 'active')->where('user_id', $id)->orderBy('created_at', 'DESC')->get();
         return view('frontend.pages.job-via-company', compact('jobs'));
     }
 
 
     public function aboutPage()
     {
-        return view('frontend.pages.about');
+        $aboutText = About::first();
+        $aboutImage = AboutImage::take(4)->get();
+        return view('frontend.pages.about', compact('aboutText', 'aboutImage'));
     }
 
     public function jobPage()
     {
-        $jobs = Job::where('status', 'active')->orderBy('created_at', 'DESC')->get();
+        $jobs = Job::where('status', 'active')->orderBy('created_at', 'DESC')->paginate(5);
         return view('frontend.pages.job-list', compact('jobs'));
     }
 
     public function blogPage()
     {
-        $blog = Blog::where('status', 1)->get();
+        $blog = Blog::where('status', 1)->paginate(8);
         return view('frontend.pages.blog', compact('blog'));
     }
 

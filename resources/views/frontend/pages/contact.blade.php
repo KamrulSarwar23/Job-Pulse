@@ -57,6 +57,7 @@
                                 frameborder="0" style="min-height: 400px; border:0;" allowfullscreen="" aria-hidden="false"
                                 tabindex="0"></iframe>
                         </div>
+
                         <div class="col-md-6">
                             <div class="wow fadeInUp" data-wow-delay="0.5s">
 
@@ -98,4 +99,27 @@
                 </div>
             </div>
             <!-- Contact End -->
+
+    <!-- Category Start -->
+    <div class="container-xxl pt-5">
+        <div class="container">
+            <h2 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Companis Belive In Us</h2>
+            <div class="row g-4">
+
+                @foreach ($company as $item)
+                <div class="col-lg-3 col-sm-6 wow fadeInUp text-center" data-wow-delay="0.1s">
+                    <a class="cat-item rounded p-4" href="{{ route('job.company',$item->id) }}">
+                        <i class="fas fa-building mb-3"></i>
+                        <p class="mb-3">{{ limitText($item->name, 20) }}</p>
+                    </a>
+                </div>
+                @endforeach
+    
+                
+            </div>
+
+        </div>
+    </div>
+    <!-- Category End -->
+            
 @endsection

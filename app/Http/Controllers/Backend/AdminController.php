@@ -14,4 +14,9 @@ class AdminController extends Controller
     public function login(){
         return view('admin.auth.login');
     }
+
+    
+    public function plugin(){
+        return view('company.plugin.index');
+    }
 }

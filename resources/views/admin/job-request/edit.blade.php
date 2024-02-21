@@ -17,35 +17,52 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
+                            <form action="{{ route('admin.company.job-request-update', $jobs->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
 
-                                <div class="form-group">
-                                    <label>Icon</label>
-                                    <div>
-                                        <button class="btn btn-primary" data-icon="{{ $category->icon }}"
-                                            data-selected-class="btn-danger" data-unselected-class="btn-info"
-                                            role="iconpicker" name="icon"></button>
-                                    </div>
+                                <div class="form-group wsus_input">
+                                    <label>Post Name</label>
+                                    <input type="text" class="form-control"name="name" value="{{ $jobs->name }}">
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" name="name" value="{{ $category->name }}">
+                                <div class="form-group wsus_input">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" name="address"
+                                        value="{{ $jobs->address }}">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="inputState">Status</label>
-                                    <select id="inputState" class="form-control" name="status">
-                                        <option {{ $category->status == 1 ? 'selected' : '' }} value="1">Active
-                                        </option>
-                                        <option {{ $category->status == 0 ? 'selected' : '' }} value="0">Inactive
-                                        </option>
+
+                                <div class="form-group wsus_input">
+                                    <label>Salary</label>
+                                    <input type="text" class="form-control" name="salary"
+                                        value="{{ $jobs->salary }}">
+                                </div>
+
+                                <div class="form-group wsus_input">
+                                    <label for="inputState">Office Time</label>
+                                    <select id="inputState" class="form-control" name="office_time">
+                                        <option {{ $jobs->office_time == 'fulltime' ? 'selected' : ''}} value="fulltime">Full Time</option>
+                                        <option {{ $jobs->office_time == 'partime' ? 'selected' : ''}} value="partime">Part Time</option>
                                     </select>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <div class="form-group wsus_input">
+                                    <label for="inputState">Office From</label>
+                                    <select id="inputState" class="form-control" name="office_from">
+                                        <option {{ $jobs->office_from == 'office' ? 'selected' : ''}} value="office">Office</option>
+                                        <option {{ $jobs->office_from == 'remote' ? 'selected' : ''}} value="remote">Remote</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group wsus_input">
+                                    <label for="inputState">Office From</label>
+                                    <select id="inputState" class="form-control" name="status">
+                                        <option {{ $jobs->status == 'active' ? 'selected' : ''}} value="active">Active</option>
+                                        <option {{ $jobs->status == 'inactive' ? 'selected' : ''}} value="inactive">Inactive</option>
+                                    </select>
+                                </div>
+
+                                <button class="btn btn-primary">Update Job</button>
                             </form>
                         </div>
                     </div>

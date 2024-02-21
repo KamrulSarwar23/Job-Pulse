@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CandidateCvController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\JobApplyController;
 
 require __DIR__ . '/auth.php';
 
@@ -23,6 +24,8 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'candidate', 'as
     Route::put('/candidate_cv/store', [CandidateCvController::class, 'store'])->name('job.cv-store');
 
     Route::get('cv-preview', [CandidateCvController::class, 'cvPreview'])->name('cv.preview');
+
+    Route::post('job-apply', [JobApplyController::class, 'jobApply'])->name('job.apply');
 
 });
 
@@ -61,3 +64,5 @@ Route::get('job-by-company/{id}', [HomeController::class, 'jobByCompany'])->name
 Route::get('all-company', [HomeController::class, 'allCompany'])->name('all.company');
 
 Route::post('search-jobs', [HomeController::class, 'searchJob'])->name('search.job');
+
+

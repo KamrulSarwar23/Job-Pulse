@@ -24,10 +24,9 @@ class AllCompanyDataTable extends DataTable
         return (new EloquentDataTable($query))
         
         ->addColumn('action', function ($query) {
-            $editBtn = "<a href='" . route('admin.category.edit', $query->id) . "' class= 'btn btn-primary'> <i class='fas fa-edit'></i> </a>";
             $deleteBtn = "<a href='" . route('admin.category.destroy', $query->id) . "' class= 'btn btn-danger ml-3 delete-item'><i class='fas fa-trash'></i> </a>";
 
-            return $editBtn . $deleteBtn;
+            return $deleteBtn;
         })
 
         ->addColumn('status', function ($query) {
@@ -46,7 +45,13 @@ class AllCompanyDataTable extends DataTable
             return $button;
         })
 
-            ->rawColumns(['action', 'status'])
+
+        ->addColumn('banner', function($query){
+            return $img = "<img width='100px' height='100px' src='".asset($query->image)."'> <img/>";
+        })
+
+
+            ->rawColumns(['action', 'status', 'banner'])
             ->setRowId('id');
     }
 
@@ -88,7 +93,8 @@ class AllCompanyDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('name'),
+            Column::make('name') ->width(200),
+            Column::make('banner'),
             Column::make('status'),
             Column::computed('action')
             ->exportable(false)

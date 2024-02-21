@@ -9,8 +9,8 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto p-4 p-lg-0">
               <a href="{{ route('home.page') }}" class="{{ setActive(['home.page']) }} nav-item nav-link">Home</a>
-              <a href="{{ route('about.page') }}" class="{{ setActive(['about.page']) }} nav-item nav-link">About</a>
               <a href="{{ route('job.page') }}" class="{{ setActive(['job.page']) }} nav-item nav-link">Jobs</a>
+              <a href="{{ route('about.page') }}" class="{{ setActive(['about.page']) }} nav-item nav-link">About</a>
               <a href="{{ route('blog.page') }}" class="{{ setActive(['blog.page']) }} nav-item nav-link">Blog</a>
               <a href="{{ route('contact.page') }}"
                   class="{{ setActive(['contact.page']) }} nav-item nav-link">Contact</a>

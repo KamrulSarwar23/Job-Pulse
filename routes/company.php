@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CompanyController;
 use App\Http\Controllers\Backend\JobsController;
 use Illuminate\Support\Facades\Route;
@@ -15,3 +16,6 @@ Route::post('profile', [CompanyController::class, 'updatePassword'])->name('prof
 // All Company
 Route::put('job-change-status', [JobsController::class, 'changeStatus'])->name('job.change-status');
 Route::resource('jobs', JobsController::class);
+
+// Plugin
+Route::get('plugin', [AdminController::class, 'plugin'])->name('plugin.index');

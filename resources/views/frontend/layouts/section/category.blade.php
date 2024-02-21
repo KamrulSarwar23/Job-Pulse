@@ -1,6 +1,6 @@
        <style>
         .cat-item i{
-            font-size: 40px;
+            font-size: 30px;
         }
         .cat-item p{
             font-size: 15px;
@@ -16,8 +16,8 @@
                     @foreach ($category as $item)
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                         <a class="cat-item rounded p-4" href="{{ route('job.category', $item->id) }}">
-                            <i class="{{ $item->icon }} text-primary mb-4"></i>
-                            <h5 class="mb-3">{{ limitText($item->name,30) }}</h5>
+                            <i class="{{ $item->icon }} text-primary"></i>
+                            <h5 class="mb-3">{{ limitText($item->name,20) }}</h5>
                             <p class="mb-0 text-primary">{{ $item->jobs->count() }} Vacancy</p>
                         </a>
                     </div>

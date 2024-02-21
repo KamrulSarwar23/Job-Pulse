@@ -22,8 +22,18 @@
                                     </div>
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                         <div class="d-flex mb-3">
+                                           <form action="{{ route('candidate.job.apply') }}" method="POST" id="apply-form">
+                                            @csrf
+                                            <input type="hidden" name="job_id" value="{{ $item->id }}">
+
+                                           @auth
+                                           <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                           @endauth
+
+                                            <button onclick="confirm('Are You Sure To Apply For This Job?')" class="btn btn-primary">Apply Now</button>
                                            
-                                            <a class="btn btn-primary" href="">Apply Now</a>
+                                           </form>
+                                           
                                         </div>
                                        
                                     </div>
@@ -41,3 +51,5 @@
             </div>
         </div>
         <!-- Jobs End -->
+
+        

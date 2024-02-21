@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Frontend;
 use App\Mail\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
     public function contactPage()
     {
-        return view('frontend.pages.contact');
+        $company = User::where('role', 'company')->where('status', 'active')->take(4)->get();
+        return view('frontend.pages.contact', compact('company'));
     }
 
     public function sendMessage(Request $request)

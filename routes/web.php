@@ -27,6 +27,8 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'candidate', 'as
 
     Route::post('job-apply', [JobApplyController::class, 'jobApply'])->name('job.apply');
 
+    Route::get('show-job-apply', [JobApplyController::class, 'showJobApply'])->name('show-job.apply');
+
 });
 
 

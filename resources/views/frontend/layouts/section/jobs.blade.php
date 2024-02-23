@@ -26,6 +26,7 @@
                                             @csrf
                                             <input type="hidden" name="job_id" value="{{ $item->id }}">
 
+                                            <input type="hidden" name="company_id" value="{{ $item->user->id }}">
                                            @auth
                                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                            @endauth

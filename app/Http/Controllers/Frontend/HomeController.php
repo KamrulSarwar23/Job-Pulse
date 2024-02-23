@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\DataTables\CandidateJobApplyDataTable;
 use Exception;
 use App\Models\User;
 use App\Models\Slider;
@@ -151,4 +152,6 @@ class HomeController extends Controller
         $company = User::where('status', 'active')->where('role', 'company')->orderBy('created_at', 'DESC')->get();
         return view('frontend.pages.company', compact('company'));
     }
+
+
 }

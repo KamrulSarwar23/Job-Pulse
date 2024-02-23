@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('job_id');
+            $table->integer('company_id');
+            $table->enum('status', ['applied','approved','rejected'])->default('applied');
             $table->timestamps();
         });
     }
@@ -22,6 +24,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
+
     public function down(): void
     {
         Schema::dropIfExists('job_applies');

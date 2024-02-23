@@ -21,11 +21,14 @@
                         class="far fa-user"></i>Create CV</a></li>
             <li>
 
-        <li class="{{ setActive(['candidate.profile']) }}"><a href="{{ route('candidate.profile') }}"><i
-                    class="far fa-user"></i> My Profile</a></li>
+                <li class="{{ setActive(['candidate.show-job.apply']) }}"><a href="{{ route('candidate.show-job.apply') }}"><i
+                    class="far fa-user"></i>Show Job Apply</a></li>
         <li>
 
 
+        <li class="{{ setActive(['candidate.profile']) }}"><a href="{{ route('candidate.profile') }}"><i
+                    class="far fa-user"></i> My Profile</a></li>
+        <li>
             
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

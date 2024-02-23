@@ -55,6 +55,11 @@
                                         </select>
                                     </div>
 
+                                    <div class="form-group wsus_input">
+                                        <label>Requirement</label>
+                                        <textarea name="requirement" id="" cols="30" rows="5" placeholder="Write Your Requirement exp: PHP, Laravel, Mysql Database">{{ $jobs->requirement}}</textarea>
+                                    </div>
+
                                     <button class="btn btn-primary">Update Job</button>
                                 </form>
 

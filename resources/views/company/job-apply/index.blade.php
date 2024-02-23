@@ -1,7 +1,7 @@
 @extends('company.layouts.master')
 
 @section('title')
-   || Orders
+    || Orders
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@
 
                     <div class="dashboard_content mt-2 mt-md-0">
                         <h3><i class="far fa-user"></i>All Orders</h3>
-    
+
                         <div class="wsus__dashboard_profile">
                             <div class="wsus__dash_pro_area">
                                 {{ $dataTable->table() }}
@@ -57,5 +57,18 @@
                 });
             });
         });
+
+
+        function confirmApprove(id) {
+            if (confirm('Are you sure you want to approve this job application?')) {
+                document.getElementById('approveForm' + id).submit();
+            }
+        }
+
+        function confirmReject(id) {
+            if (confirm('Are you sure you want to reject this job application?')) {
+                document.getElementById('rejectForm' + id).submit();
+            }
+        }
     </script>
 @endpush

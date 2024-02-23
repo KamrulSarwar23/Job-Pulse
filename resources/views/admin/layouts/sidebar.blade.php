@@ -61,7 +61,10 @@
             <li class="dropdown {{ setActive(['admin.company.job-request']) }}">
                 <a href="{{ route('admin.company.job-request') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Job Request</span></a>
             </li>
-
+            <li class="dropdown {{ setActive(['admin.job-apply']) }}">
+                <a href="{{ route('admin.job-apply') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Job Apply</span></a>
+            </li>
+            
             <li class="dropdown {{ setActive(['admin.blog.index']) }}">
                 <a href="{{ route('admin.blog.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Blog</span></a>
             </li>
@@ -70,9 +73,7 @@
                 <a href="{{ route('admin.about-us.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>About Us</span></a>
             </li>
 
-            <li class="dropdown {{ setActive(['admin.job-apply']) }}">
-                <a href="{{ route('admin.job-apply') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Job Apply</span></a>
-            </li>
+       
 
 
 

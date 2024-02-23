@@ -17,10 +17,10 @@
                     class="fas fa-tachometer"></i>Dashboard</a></li>
 
         <li class="{{ setActive(['company.jobs.index']) }}"><a class=""
-                href="{{ route('company.jobs.index') }}"><i class="far fa-clipboard"></i>Jobs</a></li>
+                href="{{ route('company.jobs.index') }}"><i class="far fa-clipboard"></i>Job Post</a></li>
 
         <li class="{{ setActive(['company.job-apply-company']) }}"><a class=""
-                href="{{ route('company.job-apply-company') }}"><i class="far fa-clipboard"></i>All Applied Job</a></li>
+                href="{{ route('company.job-apply-company') }}"><i class="far fa-clipboard"></i>All Application</a></li>
 
 
         <li class="{{ setActive(['company.profile']) }}"><a href="{{ route('company.profile') }}"><i

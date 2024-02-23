@@ -18,11 +18,13 @@
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{ $item->office_from }}</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{ $item->office_time }}</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>{{ $item->salary }}</span>
+                                            <p class="mt-2">Experience: {{ $item->requirement }}</p>
                                         </div>
                                     </div>
+                                  
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                         <div class="d-flex mb-3">
-                                           <form action="{{ route('candidate.job.apply') }}" method="POST" id="apply-form">
+                                           <form action="{{ route('candidate.job.apply') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="job_id" value="{{ $item->id }}">
 

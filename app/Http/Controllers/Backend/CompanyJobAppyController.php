@@ -44,7 +44,7 @@ class CompanyJobAppyController extends Controller
         $jobapplyapprove = JobApply::findOrFail($id);
         $jobapplyapprove->status = 'rejected';
         $jobapplyapprove->save();
-        toastr()->error('Reject This CV Successfully');
+        toastr('Reject This CV Successfully');
         return redirect()->back();
     }
 }

@@ -106,6 +106,7 @@ class JobRequestDataTable extends DataTable
             Column::make('address'),
             Column::make('salary'),
             Column::make('category'),
+            Column::make('requirement'),
             Column::make('office_from'),
             Column::make('office_time'),
             Column::make('status'),

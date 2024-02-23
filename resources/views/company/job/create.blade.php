@@ -21,21 +21,21 @@
                                     @csrf
 
                                     <div class="form-group wsus_input">
-                                        <label>Post Name</label>
-                                        <input type="text" class="form-control"name="name" value="{{ old('name') }}">
+                                        <label>Designation Name</label>
+                                        <input type="text" class="form-control"name="name" value="{{ old('name') }}" placeholder="Laravel Developer">
                                     </div>
 
                                     <div class="form-group wsus_input">
-                                        <label>Address</label>
+                                        <label>Office Address</label>
                                         <input type="text" class="form-control" name="address"
-                                            value="{{ old('address') }}">
+                                            value="{{ old('address') }}" placeholder="Muradpur, Chittagong">
                                     </div>
 
 
                                     <div class="form-group wsus_input">
                                         <label>Salary</label>
                                         <input type="text" class="form-control" name="salary"
-                                            value="{{ old('salary') }}">
+                                            value="{{ old('salary') }}" placeholder="exp: 30,000-50,000">
                                     </div>
 
                                     <div class="form-group wsus_input">
@@ -49,7 +49,7 @@
                                     </div>
 
                                     <div class="form-group wsus_input">
-                                        <label for="inputState">Office Time</label>
+                                        <label for="inputState">Full Time/ Part Time</label>
                                         <select id="inputState" class="form-control" name="office_time">
                                             <option value="fulltime">Full Time</option>
                                             <option value="partime">Part Time</option>
@@ -57,12 +57,19 @@
                                     </div>
 
                                     <div class="form-group wsus_input">
-                                        <label for="inputState">Office From</label>
+                                        <label for="inputState">Office/Remote</label>
                                         <select id="inputState" class="form-control" name="office_from">
                                             <option value="office">Office</option>
                                             <option value="remote">Remote</option>
                                         </select>
                                     </div>
+
+                                    
+                                    <div class="form-group wsus_input">
+                                        <label>Requirement</label>
+                                        <textarea name="requirement" id="" cols="30" rows="5" placeholder="Write Your Requirement exp: PHP, Laravel, Mysql Database"></textarea>
+                                    </div>
+
 
                                     <button class="btn btn-primary">Create Job</button>
                                 </form>

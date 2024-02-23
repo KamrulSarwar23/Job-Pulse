@@ -65,6 +65,6 @@ Route::get('job-by-company/{id}', [HomeController::class, 'jobByCompany'])->name
 
 Route::get('all-company', [HomeController::class, 'allCompany'])->name('all.company');
 
-Route::post('search-jobs', [HomeController::class, 'searchJob'])->name('search.job');
+Route::get('search-jobs', [HomeController::class, 'searchJob'])->name('search.job');
 
 

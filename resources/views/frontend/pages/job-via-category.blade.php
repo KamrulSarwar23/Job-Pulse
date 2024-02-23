@@ -15,39 +15,39 @@
         </div>
     </div>
     <!-- Header End -->
-                    <!-- Search Start -->
-                    <div class="container-fluid bg-primary wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
-                        <div class="container">
-                            <div class="row g-2">
-                                <div class="col-md-10">
-                                    <div class="row g-2">
-                                        <form action="{{ route('search.job') }}" method="POST">
-                                            @csrf
-            
-                                            <div class="col-md-12">
-                                                <input type="text" name="keyword" class="form-control border-0 p-3"
-                                                    placeholder="Search Via Address, Category, Remote Or Office" />
-                                            </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    {{-- <a type="submit" class="btn btn-dark border-0 w-100 p-3" href="">Search</a> --}}
-                                    <button type="submit" class="btn btn-dark border-0 w-100 p-3">Search</button>
-                                </div>
-                                </form>
-            
+    <!-- Search Start -->
+    <div class="container-fluid bg-primary wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+        <div class="container">
+            <div class="row g-2">
+                <div class="col-md-10">
+                         <form action="{{ route('search.job') }}" method="GET">
+                            @csrf
+                    <div class="row g-2">
+                   
+                            <div class="col-md-12">
+                                <input type="text" name="keyword" class="form-control border-0 p-3"
+                                    placeholder="Search Via Address, Category, Remote Or Office" />
                             </div>
-                        </div>
                     </div>
-                    <!-- Search End -->
-                    
+                </div>
+                <div class="col-md-2">
+
+                    <button type="submit" class="btn btn-dark border-0 w-100 p-3">Search</button>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- Search End -->
+
 
     <!-- Jobs Start -->
     <div class="container-xxl py-5">
         <div class="container">
 
             @if (count($jobs) > 0)
-            <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1>
+                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1>
             @endif
 
             <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
@@ -65,7 +65,10 @@
                                                 src=" {{ asset($item->user->image) }}" alt=""
                                                 style="width: 80px; height: 80px;">
                                             <div class="text-start ps-4">
-                                                <h5 class="mb-3">{{ $item->name }} <span class="text-truncate me-3 text-primary"><i class="text-primary me-2"></i>{{ $item->user->name }}</span></h5>
+                                                <h5 class="mb-3">{{ $item->name }} <span
+                                                        class="text-truncate me-3 text-primary"><i
+                                                            class="text-primary me-2"></i>{{ $item->user->name }}</span>
+                                                </h5>
                                                 <span class="text-truncate me-3"><i
                                                         class="fa fa-map-marker-alt text-primary me-2"></i>{{ $item->address }}</span>
                                                 <span class="text-truncate me-3"><i
@@ -84,13 +87,14 @@
                                                     @csrf
                                                     <input type="hidden" name="job_id" value="{{ $item->id }}">
                                                     <input type="hidden" name="company_id" value="{{ $item->user->id }}">
-                                                   @auth
-                                                   <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                                   @endauth
-        
-                                                    <button onclick="confirm('Are You Sure To Apply For This Job?')" class="btn btn-primary">Apply Now</button>
-                                                   
-                                                   </form>
+                                                    @auth
+                                                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                                    @endauth
+
+                                                    <button onclick="confirm('Are You Sure To Apply For This Job?')"
+                                                        class="btn btn-primary">Apply Now</button>
+
+                                                </form>
                                             </div>
 
                                         </div>

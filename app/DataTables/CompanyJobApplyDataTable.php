@@ -23,22 +23,22 @@ class CompanyJobApplyDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-
         ->addColumn('action', function ($query) {
             $viewBtn = "<a href='" . route('company.candidate.cv', $query->user_id) . "' class='btn btn-primary'>View</a>";
         
-            $approveBtn = "<form method='POST' action='" . route('company.job-apply-approve', $query->id) . "' style='display: inline;'>
+            $approveBtn = "<form id='approveForm{$query->id}' method='POST' action='" . route('company.job-apply-approve', $query->id) . "' style='display: inline;'>
                 " . csrf_field() . "
-                <button type='submit' class='btn btn-info ml-3'>Approve</button>
+                <button type='button' onclick='confirmApprove({$query->id})' class='btn btn-info ml-3'>Approve</button>
               </form>";
         
-            $rejecBtn = "<form method='POST' action='" . route('company.job-apply-reject', $query->id) . "' style='display: inline;'>
+            $rejecBtn = "<form id='rejectForm{$query->id}' method='POST' action='" . route('company.job-apply-reject', $query->id) . "' style='display: inline;'>
               " . csrf_field() . "
-              <button type='submit' class='btn btn-danger ml-3'>Reject</button>
+              <button type='button' onclick='confirmReject({$query->id})' class='btn btn-danger ml-3'>Reject</button>
             </form>";
         
             return $viewBtn . $approveBtn . $rejecBtn;
         })
+        
         
         ->addColumn('status', function ($query) {
             if ($query->status == 'approved') {

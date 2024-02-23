@@ -43,6 +43,20 @@ public function dataTable(QueryBuilder $query): EloquentDataTable
 
           })
 
+          ->addColumn('status', function ($query) {
+            if ($query->status == 'approved') {
+
+                return '<i class="badge bg-success">Approved<i/>';
+            } elseif ($query->status == 'rejected') {
+
+                return '<i class="badge bg-danger">Rejected<i/>';
+            } else {
+                return '<i class="badge bg-info">Applied<i/>';
+            }
+        })
+
+        ->rawColumns(['status'])
+
         ->setRowId('id');
 }
 
@@ -87,7 +101,7 @@ public function dataTable(QueryBuilder $query): EloquentDataTable
             Column::make('candidate'),
             Column::make('company'),
             Column::make('post'),
-
+            Column::make('status'),
         ];
     }
 

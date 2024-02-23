@@ -515,8 +515,8 @@ h3 {
   display: block;
 }
 </style>
-
 <div class="resume">
+ 
     <div class="base">
       <div class="profile">
         <div class="photo">

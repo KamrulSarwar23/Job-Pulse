@@ -39,6 +39,7 @@ class JobsController extends Controller
             'salary' => ['required'],
             'office_time' => ['required'],
             'office_from' => ['required'],
+            'requirement' => ['required', 'max:100'],
         ]);
 
         $jobscreate = Job::create([
@@ -47,6 +48,7 @@ class JobsController extends Controller
             'category_id' => $request->category,
             'address' => $request->address,
             'salary' => $request->salary,
+            'requirement' => $request->requirement,
             'office_time' => $request->office_time,
             'office_from' => $request->office_from,
             'status' => 'inactive',
@@ -84,6 +86,7 @@ class JobsController extends Controller
             'salary' => ['required'],
             'office_time' => ['required'],
             'office_from' => ['required'],
+            'requirement' => ['required', 'max:100'],
         ]);
 
         $jobscreate = Job::findOrFail($id)->update([
@@ -91,6 +94,7 @@ class JobsController extends Controller
             'user_id' => Auth::user()->id,
             'address' => $request->address,
             'salary' => $request->salary,
+            'requirement' => $request->requirement,
             'office_time' => $request->office_time,
             'office_from' => $request->office_from,
             'status' => 'inactive',

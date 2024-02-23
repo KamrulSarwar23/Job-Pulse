@@ -31,13 +31,11 @@ Route::middleware('guest')->group(function () {
                 ->name('company.login');              
 
 
-
     Route::post('candidate-login', [AuthenticatedSessionController::class, 'candidateStore'])->name('candidate.login');
 
     Route::post('company-login', [AuthenticatedSessionController::class, 'companyStore'])->name('company.login');
 
     Route::post('admin-login', [AuthenticatedSessionController::class, 'adminStore'])->name('admin.login');
-
 
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])

@@ -40,6 +40,12 @@
                                     </div>
 
                                     <div class="form-group wsus_input">
+                                        <label>Application Last Date</label>
+                                        <input type="date" class="form-control" name="end_date"
+                                            value="{{ old('end_date') }}">
+                                    </div>
+
+                                    <div class="form-group wsus_input">
                                         <label for="inputState">Office Time</label>
                                         <select id="inputState" class="form-control" name="office_time">
                                             <option {{ $jobs->office_time == 'fulltime' ? 'selected' : ''}} value="fulltime">Full Time</option>

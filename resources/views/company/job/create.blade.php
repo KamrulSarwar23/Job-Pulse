@@ -39,6 +39,12 @@
                                     </div>
 
                                     <div class="form-group wsus_input">
+                                        <label>Application Last Date</label>
+                                        <input type="date" class="form-control" name="end_date"
+                                            value="{{ old('end_date') }}">
+                                    </div>
+
+                                    <div class="form-group wsus_input">
                                         <label for="inputState">Category</label>
                                         <select id="inputState" class="form-control" name="category">
                                             @foreach ($category as $item)

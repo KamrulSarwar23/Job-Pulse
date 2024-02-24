@@ -18,7 +18,8 @@ class Job extends Model
         'office_from',
         'status',
         'category_id',
-        'requirement'
+        'requirement',
+        'end_date'
     ];
 
     public function user(){

@@ -18,7 +18,8 @@ return new class extends Migration
             $table->integer('category_id');
             $table->string('address');
             $table->string('salary');
-            $table->string('requirement');
+            $table->date('end_date');
+            $table->text('requirement');
             $table->enum('office_time', ['fulltime', 'partime'])->default('fulltime');
             $table->enum('office_from', ['remote', 'office'])->default('office');
             $table->enum('status', ['active', 'inactive'])->default('inactive');

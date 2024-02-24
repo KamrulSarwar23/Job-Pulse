@@ -92,6 +92,7 @@ class JobDataTable extends DataTable
             Column::make('address'),
             Column::make('salary'),
             Column::make('category'),
+            Column::make('end_date'),
             Column::make('requirement'),
             Column::make('office_from'),
             Column::make('office_time'),

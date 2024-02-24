@@ -13,7 +13,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>All Job Apply</h4>
+                            <h4>All Job Apply By Candidate</h4>
 
                         </div>
                         <div class="card-body">

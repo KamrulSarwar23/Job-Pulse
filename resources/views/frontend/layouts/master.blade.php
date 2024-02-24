@@ -23,6 +23,7 @@
     <!-- Libraries Stylesheet -->
     <link href=" {{ asset('frontend/lib/animate/animate.min.css') }}" rel="stylesheet">
     <link href=" {{ asset('frontend/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
    
 
@@ -64,9 +65,81 @@
     <script src="{{ asset('frontend/lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('frontend/lib/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('frontend/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- Template Javascript -->
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+
+    <script>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}")
+            @endforeach
+        @endif
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+    
+            $('body').on('click', '.applied', function(event) {
+                event.preventDefault();
+                let deleteUrl = $(this).attr('href');
+    
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Do You want to apply for this job?",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Apply Now'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // If user confirms, submit the form
+                        $(this).closest('form').submit();
+                        
+                            $.ajax({
+                                type: 'DELETE',
+                                url: deleteUrl,
+
+                                success: function(data) {
+                                    if (data.status == 'success') {
+                                        Swal.fire(
+                                            'Applied',
+                                            data.message,
+                                            'success'
+                                        )
+
+                                        window.location.reload();
+
+                                    } else if (data.status == 'error') {
+                                        Swal.fire(
+                                            'Cant Delete',
+                                            data.message,
+                                            'error'
+                                        )
+                                    }
+
+                                },
+
+                                error: function(xhr, status, error) {
+                                    console.log(error);
+                                }
+                            })
+
+                    }
+                });
+            });
+        });
+    </script>
+    
+    
+    
 </body>
 
 </html>

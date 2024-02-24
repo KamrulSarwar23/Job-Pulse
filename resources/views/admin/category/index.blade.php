@@ -13,7 +13,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Create Category</h4>
+                            <h4>All Category</h4>
                             <div class="card-header-action">
                                 <a href="{{ route('admin.category.create') }}" class="btn btn-primary">Create New</a>
                             </div>

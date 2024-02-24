@@ -17,23 +17,29 @@
                         <div class="wsus__dashboard">
                             <div class="row">
 
-                                <div class="col-xl-6 col-6 col-md-4">
-                                    <a class="wsus__dashboard_item blue" href="">
-                                        <i class="fas fa-cart-plus"></i>
-                                        <p>Jobs Applied</p>
-                                        <h5 class="text-light"></h5>
-                                    </a>
-                                </div>
-
-                                <div class="col-xl-6 col-6 col-md-4">
+                                <div class="col-xl-4 col-6 col-md-4">
                                     <a class="wsus__dashboard_item blue" href="">
                                         <i class="fab fa-product-hunt"></i>
-                                        <p>Jobs Saved</p>
-                                        <h5 class="text-light"></h5>
+                                        <p>Total Jobs Applied</p>
+                                        <h5 class="text-light">{{ $jobapplied }}</h5>
                                     </a>
                                 </div>
 
-                  
+                                <div class="col-xl-4 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item blue" href="">
+                                        <i class="fab fa-product-hunt"></i>
+                                        <p>Total Jobs Approved</p>
+                                        <h5 class="text-light">{{ $totaljobapproved }}</h5>
+                                    </a>
+                                </div>
+
+                                <div class="col-xl-4 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item blue" href="">
+                                        <i class="fab fa-product-hunt"></i>
+                                        <p>Total Jobs Rejected</p>
+                                        <h5 class="text-light">{{ $totaljobrejected }}</h5>
+                                    </a>
+                                </div>
 
                             </div>
 

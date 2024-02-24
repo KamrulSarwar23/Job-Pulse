@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\JobApply;
 use Illuminate\Support\Facades\Auth;
 use File;
 class UserController extends Controller
 {
     public function dashboard(){
-        return view('frontend.dashboard.dashboard');
+        $jobapplied = JobApply::where('user_id', auth()->user()->id)->count();
+        $totaljobapproved = JobApply::where('user_id', auth()->user()->id)->where('status', 'approved')->count();
+        $totaljobrejected = JobApply::where('user_id', auth()->user()->id)->where('status', 'rejected')->count();
+        return view('frontend.dashboard.dashboard', compact('jobapplied', 'totaljobapproved', 'totaljobrejected'));
     }
 
     public function index()

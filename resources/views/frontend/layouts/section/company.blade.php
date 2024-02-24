@@ -40,7 +40,7 @@
         
                     
                 </div>
-               <div class="text-center mt-3">
+               <div class="text-center mt-4">
                 <a class="btn btn-primary py-3 px-5" href="{{ route('all.company') }}">Browse More Cpmpany</a>
                </div>
             </div>

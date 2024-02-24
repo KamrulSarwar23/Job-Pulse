@@ -56,4 +56,29 @@
         </div>
     </div>
     <!-- About End -->
+
+
+    <div class="container-xxl pt-5">
+        <div class="container">
+            <h2 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Top Companis</h2>
+            <div class="row g-4">
+                @foreach ($company as $item)
+                <div class="col-lg-3 col-sm-6 wow fadeInUp text-center" data-wow-delay="0.1s">
+                    <a class="cat-item rounded p-4" href="{{ route('job.company',$item->id) }}">
+                        @if ($item->image)
+                        <img width="100px" height="80px" src="{{ asset($item->image) }}" alt="">
+                        @else
+                        <i class="fas fa-building mb-3"></i>
+                        @endif
+                       
+                        <p class="mb-3">{{ limitText($item->name, 20) }}</p>
+                    </a>
+                </div>
+                @endforeach
+    
+                
+            </div>
+        
+        </div>
+    </div>
 @endsection

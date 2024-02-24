@@ -22,31 +22,52 @@
     </div>
     <!-- Header End -->
 
-         <!-- Category Start -->
-         <div class="container">
-            <div class="container">
-                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore Our Blog</h1>
-                {{ $blog->links() }}
+<!-- Category Start -->
+<div class="container">
+    <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore Our Blog</h1>
+    {{ $blog->links() }}
 
-                <div class="row g-4 mt-3">
-                    @foreach ($blog as $item)
-                    <div class="card m-3" style="width: 18rem;">
-                        <img class="card-img-top" src="{{ asset($item->image) }}" alt="Card image cap">
-                        <div class="card-body">
-                            <details>
-                                <summary> <h5 class="card-title">{{ $item->title }}</h5></summary>
-                                <p class="card-text">{!! $item->description !!}.</p>
-                            </details>
-                         
-                                               
-                        </div>
-                      </div>
-
-                    @endforeach
+    <div class="row">
+        @foreach ($blog as $item)
+        <div class="col-lg-3 col-md-6 mb-5">
+            <div class="card mb-3 h-100">
+                <img class="card-img-top" src="{{ asset($item->image) }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $item->title }}</h5>
+                    <p class="card-text">{!! $item->description !!}</p>
                 </div>
             </div>
         </div>
-        <!-- Category End -->
+        @endforeach
+    </div>
+</div>
+<!-- Category End -->
+
+
+<div class="container-xxl pt-5">
+    <div class="container">
+        <h2 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Top Companis</h2>
+        <div class="row g-4">
+            @foreach ($company as $item)
+            <div class="col-lg-3 col-sm-6 wow fadeInUp text-center" data-wow-delay="0.1s">
+                <a class="cat-item rounded p-4" href="{{ route('job.company',$item->id) }}">
+                    @if ($item->image)
+                    <img width="100px" height="80px" src="{{ asset($item->image) }}" alt="">
+                    @else
+                    <i class="fas fa-building mb-3"></i>
+                    @endif
+                   
+                    <p class="mb-3">{{ limitText($item->name, 20) }}</p>
+                </a>
+            </div>
+            @endforeach
+
+            
+        </div>
+    
+    </div>
+</div>
+
 @endsection
      
      

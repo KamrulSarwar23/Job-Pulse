@@ -4,12 +4,18 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Job;
+use App\Models\JobApply;
 use Illuminate\Support\Facades\Auth;
 use File;
 class CompanyController extends Controller
 {
     public function dashboard(){
-        return view('company.dashboard.dashboard');
+        $totaljobpost = Job::where('user_id', auth()->user()->id)->count();
+        $totalactivepost = Job::where('user_id', auth()->user()->id)->where('status', 'active')->count();
+        $totalapplication = JobApply::where('company_id', auth()->user()->id)->count();
+        $totalapproveapply = JobApply::where('company_id', auth()->user()->id)->where('status', 'approved')->count();
+        return view('company.dashboard.dashboard', compact('totaljobpost', 'totalactivepost', 'totalapplication', 'totalapproveapply'));
     }
 
     public function index()

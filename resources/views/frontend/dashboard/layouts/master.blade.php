@@ -99,7 +99,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{{ asset('backend/assets/modules/summernote/summernote-bs4.js') }}"></script>
     <!--main/custom js-->
-    <script src="{{ asset('frontend/js/main.js') }}"></script>
+    <script src="{{ asset('frontend/dashboard/js/main.js') }}"></script>
     <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <script src="{{ asset('backend/assets/modules/bootstrap-daterangepicker/daterangepicker.js') }} "></script>

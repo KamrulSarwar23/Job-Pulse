@@ -70,6 +70,8 @@
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{ $item->office_from }}</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{ $item->office_time }}</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>{{ $item->salary }}</span>
+                                            <p class="mt-2"><span class="text-primary">Requirement: </span>{{ $item->requirement }}</p>
+                                            <span class="text-truncate me-3 mb-2"><i class="far fa-clock text-primary me-2"></i>Publish: {{ $item->created_at->diffForHumans() }}</span>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
@@ -85,7 +87,7 @@
                                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                                @endauth
     
-                                                <button onclick="confirm('Are You Sure To Apply For This Job?')" class="btn btn-primary">Apply Now</button>
+                                               <button class="applied btn btn-primary">Apply Now</button>
                                                
                                                </form>
                                         </div>

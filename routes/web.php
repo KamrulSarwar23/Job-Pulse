@@ -31,7 +31,6 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'candidate', 'as
 
 });
 
-
 // Home Page Route
 Route::get('/', [HomeController::class, 'index'])->name('home.page');
 
@@ -51,12 +50,9 @@ Route::get('/blog/page', [HomeController::class, 'blogPage'])->name('blog.page')
 Route::get('/contact/page', [ContactController::class, 'contactPage'])->name('contact.page');
 Route::post('/send-message', [ContactController::class, 'sendMessage'])->name('send.message');
 
-// Google login
+// Candidate google login
 Route::get('/login/google', [HomeController::class, 'googleRedirect'])->name('login.google');
 Route::get('/login/google/callback', [HomeController::class, 'googleCallback']);
-
-Route::get('company/login/google', [HomeController::class, 'companyGoogleRedirect'])->name('company-login.google');
-Route::get('/login/google/callback', [HomeController::class, 'companyGoogleCallback']);
 
 
 Route::get('job-by-category/{id}', [HomeController::class, 'jobByCategory'])->name('job.category');
@@ -64,6 +60,8 @@ Route::get('job-by-category/{id}', [HomeController::class, 'jobByCategory'])->na
 Route::get('job-by-company/{id}', [HomeController::class, 'jobByCompany'])->name('job.company');
 
 Route::get('all-company', [HomeController::class, 'allCompany'])->name('all.company');
+
+Route::get('all-category', [HomeController::class, 'allCategory'])->name('all.category');
 
 Route::get('search-jobs', [HomeController::class, 'searchJob'])->name('search.job');
 

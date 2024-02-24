@@ -28,6 +28,7 @@ class HomeController extends Controller
         return view('frontend.layouts.home', compact('banner', 'company', 'category', 'jobs'));
     }
 
+
     public function searchJob(Request $request)
     {
         $keyword = $request->input('keyword'); // Accessing the 'keyword' input from the form
@@ -61,9 +62,10 @@ class HomeController extends Controller
 
     public function aboutPage()
     {
+        $company = User::where('role', 'company')->where('status', 'active')->take(4)->get();
         $aboutText = About::first();
         $aboutImage = AboutImage::take(4)->get();
-        return view('frontend.pages.about', compact('aboutText', 'aboutImage'));
+        return view('frontend.pages.about', compact('aboutText', 'aboutImage', 'company'));
     }
 
     public function jobPage()
@@ -74,8 +76,9 @@ class HomeController extends Controller
 
     public function blogPage()
     {
+        $company = User::where('role', 'company')->where('status', 'active')->take(4)->get();
         $blog = Blog::where('status', 1)->paginate(8);
-        return view('frontend.pages.blog', compact('blog'));
+        return view('frontend.pages.blog', compact('blog', 'company'));
     }
 
     public function googleRedirect()
@@ -151,6 +154,12 @@ class HomeController extends Controller
     {
         $company = User::where('status', 'active')->where('role', 'company')->orderBy('created_at', 'DESC')->get();
         return view('frontend.pages.company', compact('company'));
+    }
+
+    public function allCategory()
+    {
+        $category = Category::where('status', 1)->get();
+        return view('frontend.pages.category', compact('category'));
     }
 
 

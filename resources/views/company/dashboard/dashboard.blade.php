@@ -19,34 +19,33 @@
 
                                 <div class="col-xl-3 col-6 col-md-4">
                                     <a class="wsus__dashboard_item blue" href="">
-                                        <i class="fas fa-cart-plus"></i>
-                                        <p>Todays Order</p>
-                                        <h5 class="text-light"></h5>
-                                    </a>
-                                </div>
-
-                                <div class="col-xl-3 col-6 col-md-4">
-                                    <a class="wsus__dashboard_item blue" href="">
-                                        <i class="fab fa-product-hunt"></i>
-                                        <p>Todays Pending Order</p>
-                                        <h5 class="text-light"></h5>
-                                    </a>
-                                </div>
-
-                                <div class="col-xl-3 col-6 col-md-4">
-                                    <a class="wsus__dashboard_item blue" href="">
-                                        <i class="fas fa-star"></i>
-                                        <p>Total Order</p>
-                                        <h5 class="text-light"></h5>
+                                        <i class="fas fa-user-shield"></i>
+                                        <p>Total Job Post</p>
+                                        <h5 class="text-light">{{ $totaljobpost }}</h5>
                                     </a>
                                 </div>
 
                                 <div class="col-xl-3 col-6 col-md-4">
                                     <a class="wsus__dashboard_item blue" href="">
                                         <i class="fas fa-user-shield"></i>
-                                        <p>Total Pending Order</p>
+                                        <p>Total Active Post</p>
+                                        <h5 class="text-light">{{ $totalactivepost }}</h5>
+                                    </a>
+                                </div>
 
-                                        <h5 class="text-light"></h5>
+                                <div class="col-xl-3 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item blue" href="">
+                                        <i class="fas fa-star"></i>
+                                        <p>Total Application</p>
+                                        <h5 class="text-light">{{ $totalapplication }}</h5>
+                                    </a>
+                                </div>
+
+                                <div class="col-xl-3 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item blue" href="">
+                                        <i class="fas fa-user-shield"></i>
+                                        <p>Total Approved Application</p>
+                                        <h5 class="text-light">{{ $totalapproveapply }}</h5>
 
                                     </a>
                                 </div>

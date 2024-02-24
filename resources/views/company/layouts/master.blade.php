@@ -99,7 +99,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{{ asset('backend/assets/modules/summernote/summernote-bs4.js') }}"></script>
     <!--main/custom js-->
-    <script src="{{ asset('frontend/js/main.js') }}"></script>
+    <script src="{{ asset('frontend/dashboard/js/main.js') }}"></script>
     <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <script src="{{ asset('backend/assets/modules/bootstrap-daterangepicker/daterangepicker.js') }} "></script>
@@ -129,18 +129,17 @@
         @endif
     </script>
 
+<script>
+    $(document).ready(function() {
+        $('.select2').select2();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
-    <script>
-        $(document).ready(function() {
 
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $('body').on('click', '.delete-item', function(event) {
+        $('body').on('click', '.delete-item', function(event) {
 
                 event.preventDefault();
 
@@ -191,10 +190,124 @@
 
                 })
             })
+    })
+</script>
 
-        })
-    </script>
 
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('body').on('click', '.approve', function(event) {
+            event.preventDefault();
+            let deleteUrl = $(this).attr('href');
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do You want Approve This Application",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Approved'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If user confirms, submit the form
+                    $(this).closest('form').submit();
+                    
+                        $.ajax({
+                            type: 'DELETE',
+                            url: deleteUrl,
+
+                            success: function(data) {
+                                if (data.status == 'success') {
+                                    Swal.fire(
+                                        'Applied',
+                                        data.message,
+                                        'success'
+                                    )
+
+                                    window.location.reload();
+
+                                } else if (data.status == 'error') {
+                                    Swal.fire(
+                                        'Cant Delete',
+                                        data.message,
+                                        'error'
+                                    )
+                                }
+                            },
+
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                            }
+                        })
+
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('body').on('click', '.reject', function(event) {
+            event.preventDefault();
+            let deleteUrl = $(this).attr('href');
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do You want to Reject This Application",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Reject'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If user confirms, submit the form
+                    $(this).closest('form').submit();
+                    
+                        $.ajax({
+                            type: 'DELETE',
+                            url: deleteUrl,
+
+                            success: function(data) {
+                                if (data.status == 'success') {
+                                    Swal.fire(
+                                        'Applied',
+                                        data.message,
+                                        'success'
+                                    )
+
+                                    window.location.reload();
+
+                                } else if (data.status == 'error') {
+                                    Swal.fire(
+                                        'Cant Delete',
+                                        data.message,
+                                        'error'
+                                    )
+                                }
+                            },
+
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                            }
+                        })
+
+                }
+            });
+        });
+    });
+</script>
 
     @stack('scripts');
 

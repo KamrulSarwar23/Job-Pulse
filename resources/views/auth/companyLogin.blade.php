@@ -59,7 +59,7 @@
                                         <button class="common_btn" type="submit">login</button>
                                   
                                     </form>
-                                    <a class="btn btn-primary mt-3" href="{{ route('company-login.google') }}"><i class="fab fa-google"></i> Login With Google</a>
+
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-profiles" role="tabpanel"

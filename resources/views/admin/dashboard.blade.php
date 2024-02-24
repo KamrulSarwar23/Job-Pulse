@@ -20,10 +20,11 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Active Companis</h4>
+                                <h4 class="text-info">Active Companis</h4>
+                               
                             </div>
                             <div class="card-body">
-                                
+                                <p class="text-info">{{ $companis }}</p>
                             </div>
                         </div>
                     </div>
@@ -39,10 +40,11 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Pending Companis</h4>
+                                <h4 class="text-info">Total Jobs</h4>
+                               
                             </div>
                             <div class="card-body">
-                               
+                                <p class="text-info">{{ $totaljobs }}</p>
                             </div>
                         </div>
                     </div>
@@ -57,10 +59,11 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Jobs Posted</h4>
+                                <h4 class="text-info">Job Applied</h4>
+                               
                             </div>
                             <div class="card-body">
-                               
+                                <p class="text-info">{{ $totalapply }}</p>
                             </div>
                         </div>
                     </div>

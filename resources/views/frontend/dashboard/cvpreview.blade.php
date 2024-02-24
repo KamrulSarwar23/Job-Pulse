@@ -21,7 +21,9 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
 }
-
+.experience{
+  margin-bottom: 80px;
+}
 a {
   text-decoration: none;
   color: #ffffff;
@@ -37,7 +39,6 @@ ul {
 h3 {
   color: #ffb300;
   margin: 10px 0;
-  text-transform: lowercase;
   font-size: 1.25em;
 }
 
@@ -121,7 +122,6 @@ h3 {
   margin-top: 10px;
   margin-bottom: 0;
   font-size: 1.75em;
-  text-transform: lowercase;
   color: #1a237e;
 }
 
@@ -129,7 +129,6 @@ h3 {
   margin-top: 10px;
   margin-bottom: 0;
   font-size: 1.5em;
-  text-transform: lowercase;
   color: #283593;
 }
 
@@ -524,19 +523,19 @@ h3 {
           <i class="fas fa-rocket"></i>
         </div>
         <div class="info">
-            <h1 class="name">{{ $candidateBasicInformation->name }}</h1>
+            <h1 class="name">{{ @$candidateBasicInformation->name }}</h1>
         </div>
       </div>
       <div class="about">
-        <h3>About Me</h3>{{ $candidateBasicInformation->skill }}
+        <h3>About Me</h3>{{ @$candidateBasicInformation->skill }}
       </div>
       <div class="contact">
         <h3>Contact Me</h3>
-        <div class="call"><a href="tel:123-456-7890"><i class="fas fa-phone"></i><span>{{ $candidateBasicInformation->phone }}</span></a></div>
-        <div class="address"><a href="https://goo.gl/maps/fiTBGT6Vnhy"><i class="fas fa-map-marker"></i><span>{{ $candidateBasicInformation->github_link }}</span></a>
+        <div class="call"><a href="tel:123-456-7890"><i class="fas fa-phone"></i><span>{{ @$candidateBasicInformation->phone }}</span></a></div>
+        <div class="address"><a href="https://goo.gl/maps/fiTBGT6Vnhy"><i class="fas fa-map-marker"></i><span>{{ @$candidateBasicInformation->github_link }}</span></a>
         </div>
-        <div class="email"><a href="mailto:astronaomical@gmail.com"><i class="fas fa-envelope"></i><span>{{ $candidateBasicInformation->email }}</span></a></div>
-        <div class="website"><a href="http://astronaomical.com/" target="_blank"> <i class="fas fa-home"></i><span>{{ $candidateBasicInformation->portfolio_website }}</span></a></div>
+        <div class="email"><a href="mailto:astronaomical@gmail.com"><i class="fas fa-envelope"></i><span>{{ @$candidateBasicInformation->email }}</span></a></div>
+        <div class="website"><a href="http://astronaomical.com/" target="_blank"> <i class="fas fa-home"></i><span>{{ @$candidateBasicInformation->portfolio_website }}</span></a></div>
       </div>
 
     </div>
@@ -547,9 +546,9 @@ h3 {
       <div class="work">
         <h3><i class="fa fa-briefcase"></i>Experience</h3>
         <ul>
-            @foreach ($candidateJobExperience as $item)
-            @if ($item->designation)
-            <li><span>{{ $item->designation }}<br>{{ $item->company_name }}</span><small>{{ $item->joining_date }} to {{ $item->depareture_date }}</small></li>
+            @foreach (@$candidateJobExperience as $item)
+            @if (@$item->designation)
+            <li><span>{{ @$item->designation }}<br>{{ @$item->company_name }}</span><small>{{ @$item->joining_date }} to {{ @$item->depareture_date }}</small></li>
             @endif
             @endforeach
           
@@ -562,9 +561,9 @@ h3 {
         <h3><i class="fa fa-graduation-cap"></i>Education</h3>
         <ul>
       
-            @foreach ($candidateDegree as $item)
-            @if ($item->degree_type)
-            <li><span>{{ $item->degree_type }}<br>{{ $item->university_name }}</span><small>{{ $item->department }}</small><small>{{ $item->passing_year }}</small></li>
+            @foreach (@$candidateDegree as $item)
+            @if (@$item->degree_type)
+            <li><span>{{ @$item->degree_type }}<br>{{ @$item->university_name }}</span><small>{{ @$item->department }}</small><small>{{ @$item->passing_year }}</small></li>
             @endif
             @endforeach
             
@@ -573,13 +572,13 @@ h3 {
              </ul>
       </div>
 
-      <div class="edu">
+      <div class="edu experience">
         <h3><i class="fa fa-graduation-cap"></i>Training</h3>
         <ul>
       
-            @foreach ($candidateTraining as $item)
-            @if ($item->training_name)
-            <li><span>{{ $item->training_name }}<br>{{ $item->institution_name }}</span><small>{{ $item->completion_year }}</small></li>
+            @foreach (@$candidateTraining as $item)
+            @if (@$item->training_name)
+            <li><span>{{ @$item->training_name }}<br>{{ @$item->institution_name }}</span><small>{{ @$item->completion_year }}</small></li>
             @endif
             @endforeach
                     

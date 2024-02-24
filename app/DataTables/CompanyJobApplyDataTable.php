@@ -28,12 +28,12 @@ class CompanyJobApplyDataTable extends DataTable
         
             $approveBtn = "<form id='approveForm{$query->id}' method='POST' action='" . route('company.job-apply-approve', $query->id) . "' style='display: inline;'>
                 " . csrf_field() . "
-                <button type='button' onclick='confirmApprove({$query->id})' class='btn btn-info ml-3'>Approve</button>
+                <button type='button'' class='approve btn btn-info ml-3'>Approve</button>
               </form>";
         
             $rejecBtn = "<form id='rejectForm{$query->id}' method='POST' action='" . route('company.job-apply-reject', $query->id) . "' style='display: inline;'>
               " . csrf_field() . "
-              <button type='button' onclick='confirmReject({$query->id})' class='btn btn-danger ml-3'>Reject</button>
+              <button type='button'' class='reject btn btn-danger ml-3'>Reject</button>
             </form>";
         
             return $viewBtn . $approveBtn . $rejecBtn;

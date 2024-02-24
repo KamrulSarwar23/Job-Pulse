@@ -42,7 +42,8 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('candidate.dashboard');
         } else {
             toastr()->error('You are not allowed to login from here');
-            return redirect()->route('home.page');
+            Auth::guard('web')->logout();
+            return redirect('/');
         }
     }
 
@@ -55,7 +56,8 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('company.dashboard');
         } else {
             toastr()->error('You are not allowed to login from here');
-            return redirect()->route('home.page');
+            Auth::guard('web')->logout();
+            return redirect('/');
         }
     }
 
@@ -68,7 +70,8 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('admin.dashboard');
         } else {
             toastr()->error('You are not allowed to login from here');
-            return redirect()->route('home.page');
+            Auth::guard('web')->logout();
+            return redirect('/');
         }
     }
 

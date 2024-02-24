@@ -73,6 +73,8 @@
                                                         class="far fa-clock text-primary me-2"></i>{{ $item->office_time }}</span>
                                                 <span class="text-truncate me-0"><i
                                                         class="far fa-money-bill-alt text-primary me-2"></i>{{ $item->salary }}</span>
+                                                        <p class="mt-2"><span class="text-primary">Requirement: </span>{{ $item->requirement }}</p>
+                                                        <span class="text-truncate me-3 mb-2"><i class="far fa-clock text-primary me-2"></i>Publish: {{ $item->created_at->diffForHumans() }}</span>
                                             </div>
                                         </div>
                                         <div
@@ -87,7 +89,7 @@
                                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                                    @endauth
         
-                                                    <button onclick="confirm('Are You Sure To Apply For This Job?')" class="btn btn-primary">Apply Now</button>
+                                                   <button class="applied btn btn-primary">Apply Now</button>
                                                    
                                                    </form>
                                             </div>
@@ -97,7 +99,9 @@
                                 @endforeach
                             </div>
                         @else
-                        <h2 class="text-primary">No Data Found</h2>
+                        <div class="card py-5">
+                            <h3 class="text-primary">No data were found matching your selection</h3>
+                        </div>
                     </div>
                 </div>
                 @endif

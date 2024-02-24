@@ -39,7 +39,7 @@ class JobsController extends Controller
             'salary' => ['required'],
             'office_time' => ['required'],
             'office_from' => ['required'],
-            'requirement' => ['required', 'max:100'],
+            'requirement' => ['required', 'max:500'],
         ]);
 
         $jobscreate = Job::create([
@@ -86,7 +86,7 @@ class JobsController extends Controller
             'salary' => ['required'],
             'office_time' => ['required'],
             'office_from' => ['required'],
-            'requirement' => ['required', 'max:100'],
+            'requirement' => ['required', 'max:500'],
         ]);
 
         $jobscreate = Job::findOrFail($id)->update([

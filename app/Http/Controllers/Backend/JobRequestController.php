@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Job;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -24,8 +25,9 @@ class JobRequestController extends Controller
 
     public function edit(string $id)
     {
+        $category = Category::get();
         $jobs = Job::findOrFail($id);
-        return view('admin.job-request.edit', compact('jobs'));
+        return view('admin.job-request.edit', compact('jobs', 'category'));
     }
 
 
@@ -40,12 +42,15 @@ class JobRequestController extends Controller
         ]);
 
         $jobscreate = Job::findOrFail($id)->update([
+
             'name' => $request->name,
-            'user_id' => Auth::user()->id,
+            'category_id' => $request->category,
             'address' => $request->address,
             'salary' => $request->salary,
+            'requirement' => $request->requirement,
             'office_time' => $request->office_time,
             'office_from' => $request->office_from,
+            'end_date' => $request->end_date,
             'status' => $request->status,
         ]);
 

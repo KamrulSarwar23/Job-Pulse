@@ -37,6 +37,7 @@ Route::get('company-job-request', [JobRequestController::class, 'index'])->name(
 Route::get('company-job-request-edit/{id}', [JobRequestController::class, 'edit'])->name('company.job-request-edit');
 Route::post('company-job-request-update/{id}', [JobRequestController::class, 'update'])->name('company.job-request-update');
 Route::delete('company-job-request-delete/{id}', [JobRequestController::class, 'delete'])->name('company.job-request-delete');
+
 // Blog Routes
 Route::put('blog-change-status', [BlogController::class, 'changeStatus'])->name('blog.change-status');
 Route::resource('blog', BlogController::class);

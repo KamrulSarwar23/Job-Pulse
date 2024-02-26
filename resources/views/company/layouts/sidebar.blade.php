@@ -16,7 +16,7 @@
         <li class="{{ setActive(['company.dashboard']) }}"><a class="" href="{{ route('company.dashboard') }}"><i
                     class="fas fa-tachometer"></i>Dashboard</a></li>
 
-        <li class="{{ setActive(['company.jobs.index']) }}"><a class=""
+        <li class="{{ setActive(['company.jobs.index', 'company.jobs.edit']) }}"><a class=""
                 href="{{ route('company.jobs.index') }}"><i class="far fa-clipboard"></i>Job Post</a></li>
 
         <li class="{{ setActive(['company.job-apply-company']) }}"><a class=""

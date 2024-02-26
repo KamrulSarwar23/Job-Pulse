@@ -108,7 +108,7 @@
 
                 @foreach ($company as $item)
                     <div class="col-lg-3 col-sm-6 wow fadeInUp text-center" data-wow-delay="0.1s">
-                        <a class="cat-item rounded p-4" href="{{ route('job.company',$item->id) }}">
+                        <a class="cat-item rounded p-4" href="javascript:;">
                             @if ($item->image)
                             <img width="100px" height="80px" src="{{ asset($item->image) }}" alt="">
                             @else

@@ -50,33 +50,30 @@
                 <a href="{{ route('admin.company.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Companis</span></a>
             </li>
 
-            <li class="dropdown {{ setActive(['admin.slider.index']) }}">
+            <li class="dropdown {{ setActive(['admin.slider.index', 'admin.slider.edit']) }}">
                 <a href="{{ route('admin.slider.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Banner</span></a>
             </li>
   
-            <li class="dropdown {{ setActive(['admin.category.index']) }}">
+            <li class="dropdown {{ setActive(['admin.category.index', 'admin.category.edit']) }}">
                 <a href="{{ route('admin.category.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Category</span></a>
             </li>
 
-            <li class="dropdown {{ setActive(['admin.company.job-request']) }}">
+            <li class="dropdown {{ setActive(['admin.company.job-request', 'company.job-request-edit']) }}">
                 <a href="{{ route('admin.company.job-request') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Job Post Request</span></a>
             </li>
             <li class="dropdown {{ setActive(['admin.job-apply']) }}">
                 <a href="{{ route('admin.job-apply') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Job Apply By Candidate</span></a>
             </li>
             
-            <li class="dropdown {{ setActive(['admin.blog.index']) }}">
+            <li class="dropdown {{ setActive(['admin.blog.index', 'admin.blog.edit']) }}">
                 <a href="{{ route('admin.blog.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Blog</span></a>
             </li>
 
             <li class="dropdown {{ setActive(['admin.about-us.index']) }}">
                 <a href="{{ route('admin.about-us.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>About Us</span></a>
             </li>
-
+            
        
-
-
-
             {{-- <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-bolt"></i>
                     <span>Manage Category</span></a>
@@ -86,6 +83,7 @@
 
                 </ul>
             </li> --}}
+
 
         </ul>
 

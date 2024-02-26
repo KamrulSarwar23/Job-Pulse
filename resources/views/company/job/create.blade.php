@@ -22,13 +22,13 @@
 
                                     <div class="form-group wsus_input">
                                         <label>Designation Name</label>
-                                        <input type="text" class="form-control"name="name" value="{{ old('name') }}" placeholder="Laravel Developer">
+                                        <input type="text" class="form-control"name="name" value="{{ old('name') }}" placeholder="exp: Laravel Developer">
                                     </div>
 
                                     <div class="form-group wsus_input">
                                         <label>Office Address</label>
                                         <input type="text" class="form-control" name="address"
-                                            value="{{ old('address') }}" placeholder="Muradpur, Chittagong">
+                                            value="{{ old('address') }}" placeholder="exp: Muradpur, Chittagong">
                                     </div>
 
 

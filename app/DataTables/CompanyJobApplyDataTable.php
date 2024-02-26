@@ -24,7 +24,7 @@ class CompanyJobApplyDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
         ->addColumn('action', function ($query) {
-            $viewBtn = "<a href='" . route('company.candidate.cv', $query->user_id) . "' class='btn btn-primary'>View</a>";
+            $viewBtn = "<a href='" . route('company.candidate.cv', $query->user_id) . "' class='btn btn-primary' target='_blank'>View</a>";
         
             $approveBtn = "<form id='approveForm{$query->id}' method='POST' action='" . route('company.job-apply-approve', $query->id) . "' style='display: inline;'>
                 " . csrf_field() . "

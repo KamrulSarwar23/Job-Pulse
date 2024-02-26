@@ -22,6 +22,7 @@
                                     <div class="col-md-12">
 
                                         <div class="col-md-2">
+                                            <label for="">Add Your Company Logo Here</label>
                                             <div class="wsus__dash_pro_img">
                                                 <img src="{{ Auth::user()->image ? asset(Auth::user()->image) : asset('frontend/images/ts-2.jpg') }}"
                                                     alt="img" class="img-fluid w-100">

@@ -73,8 +73,9 @@ class JobsController extends Controller
      */
     public function edit(string $id)
     {
+        $category = Category::get();
         $jobs = Job::findOrFail($id);
-        return view('company.job.edit', compact('jobs'));
+        return view('company.job.edit', compact('jobs', 'category'));
     }
 
     /**
@@ -95,6 +96,7 @@ class JobsController extends Controller
         $jobscreate = Job::findOrFail($id)->update([
             'name' => $request->name,
             'user_id' => Auth::user()->id,
+            'category_id' => $request->category,
             'address' => $request->address,
             'salary' => $request->salary,
             'requirement' => $request->requirement,

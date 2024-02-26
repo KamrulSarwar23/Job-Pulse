@@ -11,15 +11,16 @@ use App\Http\Controllers\Backend\AllCompanyController;
 use App\Http\Controllers\Backend\JobApplyController;
 use App\Http\Controllers\Backend\JobRequestController;
 
-// Admin profile Routes
 
+// Admin  dashboard
 Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
+// admin profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
 Route::post('/profile/update/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 
-// Silder Routes
+// Banner Routes
 Route::put('slider-change-status', [SliderController::class, 'changeStatus'])->name('slider.change-status');
 Route::resource('slider', SliderController::class);
 
@@ -31,7 +32,7 @@ Route::resource('category', CategoryController::class);
 Route::put('company-change-status', [AllCompanyController::class, 'changeStatus'])->name('company.change-status');
 Route::resource('company', AllCompanyController::class);
 
-// Job Request
+// Job Request from company
 Route::put('job-request-change-status', [JobRequestController::class, 'changeStatus'])->name('job-request.change-status');
 Route::get('company-job-request', [JobRequestController::class, 'index'])->name('company.job-request');
 Route::get('company-job-request-edit/{id}', [JobRequestController::class, 'edit'])->name('company.job-request-edit');
@@ -44,10 +45,11 @@ Route::resource('blog', BlogController::class);
 
 // About Routes
 Route::get('about-us', [AboutController::class, 'index'])->name('about-us.index');
-
 Route::put('about-us', [AboutController::class, 'store'])->name('about-us.store');
 
+// about us image
 Route::post('about-us-image', [AboutController::class, 'imageUpload'])->name('about.image');
 Route::delete('about-us-image-delete/{id}', [AboutController::class, 'imageDelete'])->name('about.image-delete');
 
+// candidate job apply list
 Route::get('job-apply', [JobApplyController::class, 'jobApply'])->name('job-apply');

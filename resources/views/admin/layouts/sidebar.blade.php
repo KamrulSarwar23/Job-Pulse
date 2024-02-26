@@ -50,11 +50,11 @@
                 <a href="{{ route('admin.company.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Companis</span></a>
             </li>
 
-            <li class="dropdown {{ setActive(['admin.slider.index', 'admin.slider.edit']) }}">
+            <li class="dropdown {{ setActive(['admin.slider.index', 'admin.slider.edit', 'admin.slider.create']) }}">
                 <a href="{{ route('admin.slider.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Banner</span></a>
             </li>
   
-            <li class="dropdown {{ setActive(['admin.category.index', 'admin.category.edit']) }}">
+            <li class="dropdown {{ setActive(['admin.category.index', 'admin.category.edit', 'admin.category.create']) }}">
                 <a href="{{ route('admin.category.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Category</span></a>
             </li>
 
@@ -65,7 +65,7 @@
                 <a href="{{ route('admin.job-apply') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Job Apply By Candidate</span></a>
             </li>
             
-            <li class="dropdown {{ setActive(['admin.blog.index', 'admin.blog.edit']) }}">
+            <li class="dropdown {{ setActive(['admin.blog.index', 'admin.blog.edit', 'admin.blog.create']) }}">
                 <a href="{{ route('admin.blog.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Blog</span></a>
             </li>
 

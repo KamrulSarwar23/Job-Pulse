@@ -41,7 +41,7 @@ class CandidateJobApplyDataTable extends DataTable
             ->addColumn('status', function ($query) {
                 if ($query->status == 'approved') {
 
-                    return '<i class="badge bg-success">Approved<i/> <br> <span class="m-2 badge bg-info">We Will Contact You Very Soon</span>';
+                    return '<i class="badge bg-success">Approved<i/> <br> <span style="font-size:13px" class="m-2 badge bg-info">We Will Contact You Very Soon</span>';
 
                 } elseif ($query->status == 'rejected') {
 

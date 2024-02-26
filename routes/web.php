@@ -55,14 +55,19 @@ Route::get('/login/google', [HomeController::class, 'googleRedirect'])->name('lo
 Route::get('/login/google/callback', [HomeController::class, 'googleCallback']);
 
 
+// job list by category
 Route::get('job-by-category/{id}', [HomeController::class, 'jobByCategory'])->name('job.category');
 
+// job list by company
 Route::get('job-by-company/{id}', [HomeController::class, 'jobByCompany'])->name('job.company');
 
+// company list
 Route::get('all-company', [HomeController::class, 'allCompany'])->name('all.company');
 
+// category list
 Route::get('all-category', [HomeController::class, 'allCategory'])->name('all.category');
 
+// job search by 
 Route::get('search-jobs', [HomeController::class, 'searchJob'])->name('search.job');
 
 

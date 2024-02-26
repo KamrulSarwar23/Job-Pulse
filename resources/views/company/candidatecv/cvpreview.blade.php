@@ -531,10 +531,10 @@ h3 {
       </div>
       <div class="contact">
         <h3>Contact Me</h3>
-        <div class="call"><a href="tel:123-456-7890"><i class="fas fa-phone"></i><span>{{ @$candidateBasicInformation->phone }}</span></a></div>
-        <div class="address"><a href="https://goo.gl/maps/fiTBGT6Vnhy"><i class="fas fa-map-marker"></i><span>{{ @$candidateBasicInformation->github_link }}</span></a>
+        <div class="call"><a href="tel:123-456-7890"><i class="fas fa-phone"></i><span>Phone: {{ @$candidateBasicInformation->phone }}</span></a></div>
+        <div class="address"><a href="https://goo.gl/maps/fiTBGT6Vnhy"><i class="fas fa-map-marker"></i><span>{{ @$candidateBasicInformation->email }}</span></a>
         </div>
-        <div class="email"><a href="mailto:astronaomical@gmail.com"><i class="fas fa-envelope"></i><span>{{ @$candidateBasicInformation->email }}</span></a></div>
+        <div class="email"><a href="mailto:astronaomical@gmail.com"><i class="fas fa-envelope"></i><span>{{ @$candidateBasicInformation->github_link }}</span></a></div>
         <div class="website"><a href="http://astronaomical.com/" target="_blank"> <i class="fas fa-home"></i><span>{{ @$candidateBasicInformation->portfolio_website }}</span></a></div>
       </div>
 

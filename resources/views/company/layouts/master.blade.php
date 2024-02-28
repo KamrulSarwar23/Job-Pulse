@@ -208,11 +208,11 @@
 
             Swal.fire({
                 title: 'Are you sure?',
-                text: "Do You want Approve This Application",
+                text: "Do You want Activate This Plugin",
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Approved'
+                confirmButtonText: 'Yes, Activate'
             }).then((result) => {
                 if (result.isConfirmed) {
                     // If user confirms, submit the form

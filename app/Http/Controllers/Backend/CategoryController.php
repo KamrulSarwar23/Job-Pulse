@@ -110,7 +110,9 @@ class CategoryController extends Controller
     {
 
         $category = Category::findOrFail($id);
-
+        if (count($category->jobs) > 0) {
+            return response(['status' => 'error', 'message' => 'This Category Have Job Post! First Delete Job Post Then Delete Category']);
+        }
         $category->delete();
         
         return response(['status' => 'success', 'message' => 'Deleted Successfully']);

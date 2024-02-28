@@ -22,4 +22,16 @@ class AllCompanyController extends Controller
 
         return response(['message' => 'Status has been Updated!']);
     }
+
+    public function destroy(string $id){
+
+        $user = User::findOrFail($id);
+
+        if (count($user->jobs) > 0) {
+            return response(['status' => 'error', 'message' => 'This Company Have Job Post! First Delete Job Post Then Delete Company']);
+        }
+        $user->delete();
+
+        return response(['status' => 'success', 'message' => 'Status has been Updated!']);
+    }
 }

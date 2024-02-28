@@ -24,7 +24,7 @@ class AllCompanyDataTable extends DataTable
         return (new EloquentDataTable($query))
         
         ->addColumn('action', function ($query) {
-            $deleteBtn = "<a href='" . route('admin.category.destroy', $query->id) . "' class= 'btn btn-danger ml-3 delete-item'><i class='fas fa-trash'></i> </a>";
+            $deleteBtn = "<a href='" . route('admin.company.destroy', $query->id) . "' class= 'btn btn-danger ml-3 delete-item'><i class='fas fa-trash'></i> </a>";
 
             return $deleteBtn;
         })

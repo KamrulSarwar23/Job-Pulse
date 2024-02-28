@@ -513,12 +513,23 @@ h3 {
 .resume .func .interests-items div span {
   display: block;
 }
+.printinvoice{
+  padding: 8px 15px;
+  background-color: #1fc75f;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 </style>
 <div class="resume">
- 
+
+
     <div class="base">
       <div class="profile">
         <div class="photo">
+          <button class="printinvoice"><i
+            class="fas fa-print"></i>
+        Print</button>
           <!--<img src="" /> -->
           <i class="fas fa-rocket"></i>
         </div>
@@ -695,6 +706,16 @@ $(function() {
     });
   });
 });
+
+$('.printinvoice').on('click', function() {
+                let printBody = $('.invoice-print');
+                let originalContents = $('body').html();
+
+                $('body').html(printBody.html());
+                window.print();
+
+                $('body').html(originalContents);
+            })
 
 
   </script>

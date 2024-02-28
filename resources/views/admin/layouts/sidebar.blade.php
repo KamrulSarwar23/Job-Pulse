@@ -58,7 +58,7 @@
                 <a href="{{ route('admin.category.index') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Category</span></a>
             </li>
 
-            <li class="dropdown {{ setActive(['admin.company.job-request', 'company.job-request-edit']) }}">
+            <li class="dropdown {{ setActive(['admin.company.job-request', 'admin.company.job-request-edit']) }}">
                 <a href="{{ route('admin.company.job-request') }}" class="nav-link"><i class="fa-solid fa-bolt"></i><span>Job Post Request</span></a>
             </li>
             <li class="dropdown {{ setActive(['admin.job-apply']) }}">

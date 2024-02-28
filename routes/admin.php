@@ -11,7 +11,6 @@ use App\Http\Controllers\Backend\AllCompanyController;
 use App\Http\Controllers\Backend\JobApplyController;
 use App\Http\Controllers\Backend\JobRequestController;
 
-
 // Admin  dashboard
 Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 

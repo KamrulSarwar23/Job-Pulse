@@ -12,6 +12,7 @@
     <link href=" {{ asset('frontend/img/favicon.ico') }}" rel="icon">
 
     <!-- Google Web Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
@@ -23,7 +24,7 @@
     <!-- Libraries Stylesheet -->
     <link href=" {{ asset('frontend/lib/animate/animate.min.css') }}" rel="stylesheet">
     <link href=" {{ asset('frontend/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 
    
 
@@ -34,6 +35,8 @@
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 
     <link href="{{ asset('frontend/style.css') }}" rel="stylesheet">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body>
@@ -67,6 +70,7 @@
     <script src="{{ asset('frontend/lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <!-- Template Javascript -->
     <script src="{{ asset('frontend/js/main.js') }}"></script>
 
@@ -138,7 +142,7 @@
         });
     </script>
     
-    
+    @stack('scripts')
     
 </body>
 

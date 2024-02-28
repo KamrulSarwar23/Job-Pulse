@@ -11,14 +11,20 @@
                 <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
                     <div class="dashboard_content mt-2 mt-md-0">
                         <h3><i class="far fa-user"></i>CV</h3>
+
                        <div class="text-end m-3">
                         <a class="btn btn-primary" href="{{ route('candidate.cv.preview') }}" target="_blank">Preview</a>
                        </div>
+                       
                         <div class="wsus__dashboard_profile">
                             <div class="wsus__dash_pro_area">
                                 <h4 class="text-info">Basic information</h4>
 
                                 <form action="{{ route('candidate.job.cv-store') }}" method="POST" enctype="multipart/form-data">
+                                    <div class="col-xl-12 mb-3">
+                                        <button class="common_btn" type="submit">Update</button>
+                                    </div>
+
                                     @csrf
                                     @method('put')
 

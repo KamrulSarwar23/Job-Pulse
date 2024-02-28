@@ -96,7 +96,7 @@ class CandidateJobApplyDataTable extends DataTable
             Column::make('candidate'),
             Column::make('company'),
             Column::make('post'),
-            Column::make('status'),
+            Column::make('status')->width(150),
         ];
     }
 

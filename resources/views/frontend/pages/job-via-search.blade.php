@@ -57,6 +57,7 @@
                             <div class="job-item p-4 mb-4">
 
                                 @foreach ($jobs as $item)
+                                @if ($item->end_date > \Carbon\Carbon::now())
                                     <div class="row g-4 mb-3">
                                         <div class="col-sm-12 col-md-8 d-flex align-items-center">
                                             <div class="text-start ps-4">
@@ -84,6 +85,7 @@
                                         </div>
                                     </div>
                                     <hr>
+                                    @endif
                                 @endforeach
                             </div>
                         @else

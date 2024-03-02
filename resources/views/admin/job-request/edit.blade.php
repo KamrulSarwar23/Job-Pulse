@@ -72,13 +72,37 @@
                                         <option {{ $jobs->office_from == 'remote' ? 'selected' : ''}} value="remote">Remote</option>
                                     </select>
                                 </div>
-
-
                                 <div class="form-group wsus_input">
-                                    <label>Requirement</label>
-                                    <textarea class="form-control" name="requirement" id="" cols="30" rows="10"
-                                        placeholder="Write Your Requirement exp: PHP, Laravel, Mysql Database">{{ $jobs->requirement }}</textarea>
+                                    <label>Vacancy</label>
+                                    <input type="number" class="form-control" name="vacancy"
+                                        value="{{ $jobs->vacancy }}">
                                 </div>
+
+
+                               <div class="form-group wsus_input">
+                                        <label>Requirement</label>
+                                        <textarea class="form-control summernote" name="description" id="" cols="30" rows="10" placeholder="Write Details About Job">{{ $jobs->description }}</textarea>
+                                    </div>
+
+                                    <div class="form-group wsus_input">
+                                        <label>Responsibility</label>
+                                        <textarea class="form-control summernote" name="responsibility" id="" cols="30" rows="10" placeholder="Employee Responsibility">{{ $jobs->responsibility }}</textarea>
+                                    </div>
+
+                                    <div class="form-group wsus_input">
+                                        <label>Qualifications</label>
+                                        <textarea class="form-control summernote" name="qualifications" id="" cols="30" rows="10" placeholder="Employee Qualifications">{{ $jobs->qualifications }}</textarea>
+                                    </div>
+
+                                    <div class="form-group wsus_input">
+                                        <label>Benifits</label>
+                                        <textarea class="form-control summernote" name="benefits" id="" cols="30" rows="10" placeholder="Write What Kind Of Benifits Will get a Employee">{{ $jobs->benefits }}</textarea>
+                                    </div>
+
+                                    <div class="form-group wsus_input">
+                                        <label>Business</label>
+                                        <textarea class="form-control summernote" name="business" id="" cols="30" rows="10" placeholder="Write About Your Business">{{ $jobs->business }}</textarea>
+                                    </div>
 
                                 <div class="form-group wsus_input">
                                     <label for="inputState">Office From</label>

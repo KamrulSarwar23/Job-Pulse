@@ -33,7 +33,7 @@
 
 
                                     <div class="form-group wsus_input">
-                                        <label>Salary</label>
+                                        <label>Salary Range</label>
                                         <input type="text" class="form-control" name="salary"
                                             value="{{ old('salary') }}" placeholder="exp: 30,000-50,000">
                                     </div>
@@ -42,6 +42,12 @@
                                         <label>Application Last Date</label>
                                         <input type="date" class="form-control" name="end_date"
                                             value="{{ old('end_date') }}">
+                                    </div>
+
+                                    <div class="form-group wsus_input">
+                                        <label>Vacancy</label>
+                                        <input type="number" class="form-control" name="vacancy"
+                                            value="{{ old('vacancy') }}">
                                     </div>
 
                                     <div class="form-group wsus_input">
@@ -73,9 +79,28 @@
                                     
                                     <div class="form-group wsus_input">
                                         <label>Requirement</label>
-                                        <textarea name="requirement" id="" cols="30" rows="5" placeholder="Write Your Requirement exp: PHP, Laravel, Mysql Database"></textarea>
+                                        <textarea class="summernote" name="description" id="" cols="30" rows="5" placeholder="Write Details About Job"></textarea>
                                     </div>
 
+                                    <div class="form-group wsus_input">
+                                        <label>Responsibility</label>
+                                        <textarea class="summernote" name="responsibility" id="" cols="30" rows="5" placeholder="Employee Responsibility"></textarea>
+                                    </div>
+
+                                    <div class="form-group wsus_input">
+                                        <label>Qualifications</label>
+                                        <textarea class="summernote" name="qualifications" id="" cols="30" rows="5" placeholder="Employee Qualifications"></textarea>
+                                    </div>
+
+                                    <div class="form-group wsus_input">
+                                        <label>Benifits</label>
+                                        <textarea class="summernote" name="benefits" id="" cols="30" rows="5" placeholder="Write What Kind Of Benifits Will get a Employee"></textarea>
+                                    </div>
+
+                                    <div class="form-group wsus_input">
+                                        <label>Business</label>
+                                        <textarea class="summernote" name="business" id="" cols="30" rows="5" placeholder="Write About Your Business"></textarea>
+                                    </div>
 
                                     <button class="btn btn-primary">Create Job</button>
                                 </form>

@@ -33,7 +33,6 @@
                             @endif
                            
                             <p class="mb-3">{{ limitText($item->name, 20) }}</p>
-                            <p class="mb-0 text-primary">{{ $item->jobs->count() }} Vacancy</p>
                         </a>
                     </div>
                     @endforeach

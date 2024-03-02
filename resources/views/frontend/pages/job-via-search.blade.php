@@ -59,9 +59,6 @@
                                 @foreach ($jobs as $item)
                                     <div class="row g-4 mb-3">
                                         <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src=" {{ asset($item->user->image) }}" alt=""
-                                                style="width: 80px; height: 80px;">
                                             <div class="text-start ps-4">
                                                 <h5 class="mb-3">{{ $item->name }} <span class="text-truncate me-3 text-primary"><i class="text-primary me-2"></i>{{ $item->user->name }}</span></h5>
                                                 <span class="text-truncate me-3"><i
@@ -72,7 +69,7 @@
                                                         class="far fa-clock text-primary me-2"></i>{{ $item->office_time }}</span>
                                                 <span class="text-truncate me-0"><i
                                                         class="far fa-money-bill-alt text-primary me-2"></i>{{ $item->salary }}</span>
-                                                        <p class="mt-2"><span class="text-primary">Requirement: </span>{{ $item->requirement }}</p>
+                                    <br>
                                                         <span class="text-truncate me-3 mb-2"><i class="far fa-clock text-primary me-2"></i><span class="text-info">Publish: {{ $item->created_at->diffForHumans() }}</span></span>
                                                         <span class="text-truncate me-3 mb-2"><i class="far fa-clock text-primary me-2"></i><span class="text-info">Last Date: {{ \Carbon\Carbon::parse($item->end_date)->format('d F Y') }}</span></span>
                                             </div>
@@ -80,21 +77,13 @@
                                         <div
                                             class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                             <div class="d-flex mb-3">
-                                                <form action="{{ route('candidate.job.apply') }}" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="job_id" value="{{ $item->id }}">
-                                                    <input type="hidden" name="company_id" value="{{ $item->user->id }}">
-                                                   @auth
-                                                   <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                                   @endauth
-        
-                                                   <button class="applied btn btn-primary">Apply Now</button>
-                                                   
-                                                   </form>
+                                                <a class="btn btn-primary" href="{{ route('job.details', $item->id) }}">See
+                                                    More</a>
                                             </div>
 
                                         </div>
                                     </div>
+                                    <hr>
                                 @endforeach
                             </div>
                         @else

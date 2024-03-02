@@ -47,6 +47,12 @@
                                     </div>
 
                                     <div class="form-group wsus_input">
+                                        <label>Vacancy</label>
+                                        <input type="number" class="form-control" name="vacancy"
+                                            value="{{ $jobs->vacancy }}">
+                                    </div>
+
+                                    <div class="form-group wsus_input">
                                         <label for="inputState">Category</label>
                                         <select id="inputState" class="form-control" name="category">
 
@@ -80,8 +86,27 @@
 
                                     <div class="form-group wsus_input">
                                         <label>Requirement</label>
-                                        <textarea name="requirement" id="" cols="30" rows="5"
-                                            placeholder="Write Your Requirement exp: PHP, Laravel, Mysql Database">{{ $jobs->requirement }}</textarea>
+                                        <textarea name="description" id="" cols="30" rows="5" placeholder="Write Details About Job">{{ $jobs->description }}</textarea>
+                                    </div>
+
+                                    <div class="form-group wsus_input">
+                                        <label>Responsibility</label>
+                                        <textarea name="responsibility" id="" cols="30" rows="5" placeholder="Employee Responsibility">{{ $jobs->responsibility }}</textarea>
+                                    </div>
+
+                                    <div class="form-group wsus_input">
+                                        <label>Qualifications</label>
+                                        <textarea name="qualifications" id="" cols="30" rows="5" placeholder="Employee Qualifications">{{ $jobs->qualifications }}</textarea>
+                                    </div>
+
+                                    <div class="form-group wsus_input">
+                                        <label>Benifits</label>
+                                        <textarea name="benefits" id="" cols="30" rows="5" placeholder="Write What Kind Of Benifits Will get a Employee">{{ $jobs->benefits }}</textarea>
+                                    </div>
+
+                                    <div class="form-group wsus_input">
+                                        <label>Business</label>
+                                        <textarea name="business" id="" cols="30" rows="5" placeholder="Write About Your Business">{{ $jobs->business }}</textarea>
                                     </div>
 
                                     <button class="btn btn-primary">Update Job</button>

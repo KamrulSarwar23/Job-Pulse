@@ -27,6 +27,8 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'candidate', 'as
 
     Route::post('job-apply', [JobApplyController::class, 'jobApply'])->name('job.apply');
 
+    Route::delete('job-apply-cancel/{id}', [JobApplyController::class, 'jobApplyCancel'])->name('job.apply-cancel');
+
     Route::get('show-job-apply', [JobApplyController::class, 'showJobApply'])->name('show-job.apply');
 
 });
@@ -42,9 +44,11 @@ Route::get('/about/page', [HomeController::class, 'aboutPage'])->name('about.pag
 
 // Jobs Page Route
 Route::get('/job/page', [HomeController::class, 'jobPage'])->name('job.page');
+Route::get('/job-details/{id}', [HomeController::class, 'jobDetails'])->name('job.details');
 
 // Blog Page Route
 Route::get('/blog/page', [HomeController::class, 'blogPage'])->name('blog.page');
+Route::get('/blog-details/{id}', [HomeController::class, 'blogdetails'])->name('blog-details');
 
 // Contact Page Route
 Route::get('/contact/page', [ContactController::class, 'contactPage'])->name('contact.page');
@@ -69,5 +73,7 @@ Route::get('all-category', [HomeController::class, 'allCategory'])->name('all.ca
 
 // job search by 
 Route::get('search-jobs', [HomeController::class, 'searchJob'])->name('search.job');
+
+
 
 

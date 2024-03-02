@@ -36,9 +36,16 @@ class JobRequestController extends Controller
         $request->validate([
             'name' => ['required'],
             'address' => ['required'],
-            'salary' => ['required'],
+            'salary' => ['nullable'],
             'office_time' => ['required'],
             'office_from' => ['required'],
+            'description' => ['required'],
+            'responsibility' => ['required'],
+            'qualifications' => ['required'],
+            'benefits' => ['required'],
+            'vacancy' => ['required'],
+            'business' => ['required'],
+            'end_date' => ['required'],
         ]);
 
         $jobscreate = Job::findOrFail($id)->update([
@@ -47,7 +54,12 @@ class JobRequestController extends Controller
             'category_id' => $request->category,
             'address' => $request->address,
             'salary' => $request->salary,
-            'requirement' => $request->requirement,
+            'description' => $request->description,
+            'responsibility' => $request->responsibility,
+            'qualifications' => $request->qualifications,
+            'benefits' => $request->benefits,
+            'business' => $request->business,
+            'vacancy' => $request->vacancy,
             'office_time' => $request->office_time,
             'office_from' => $request->office_from,
             'end_date' => $request->end_date,

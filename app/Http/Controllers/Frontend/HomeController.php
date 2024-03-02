@@ -47,6 +47,13 @@ class HomeController extends Controller
         return view('frontend.pages.job-list', compact('jobs'));
     }
 
+    public function jobDetails(string $id)
+    {
+        $jobs = Job::findOrFail($id);
+        return view('frontend.pages.job-detail', compact('jobs'));
+    }
+
+
     public function jobByCategory(string $id)
     {
         $jobs = Job::where('status', 'active')->where('category_id', $id)->orderBy('created_at', 'DESC')->get();
@@ -79,6 +86,13 @@ class HomeController extends Controller
         $company = User::where('role', 'company')->where('status', 'active')->take(4)->get();
         $blog = Blog::where('status', 1)->paginate(8);
         return view('frontend.pages.blog', compact('blog', 'company'));
+    }
+
+    public function blogdetails(string $id)
+    {
+        $company = User::where('role', 'company')->where('status', 'active')->take(4)->get();
+        $blog = Blog::findOrFail($id);
+        return view('frontend.pages.blog-details', compact('blog', 'company'));
     }
 
     public function googleRedirect()

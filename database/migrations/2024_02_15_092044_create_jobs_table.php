@@ -19,7 +19,12 @@ return new class extends Migration
             $table->string('address');
             $table->string('salary');
             $table->date('end_date');
-            $table->text('requirement');
+            $table->integer('vacancy');
+            $table->text('description');
+            $table->text('responsibility');
+            $table->text('qualifications');
+            $table->string('benefits');
+            $table->text('business');
             $table->enum('office_time', ['fulltime', 'partime'])->default('fulltime');
             $table->enum('office_from', ['remote', 'office'])->default('office');
             $table->enum('status', ['active', 'inactive'])->default('inactive');

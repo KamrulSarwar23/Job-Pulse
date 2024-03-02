@@ -19,7 +19,13 @@ class Job extends Model
         'status',
         'category_id',
         'requirement',
-        'end_date'
+        'end_date',
+        'vacancy',
+        'description',
+        'responsibility',
+        'qualifications',
+        'benefits',
+        'business'
     ];
 
     public function user(){

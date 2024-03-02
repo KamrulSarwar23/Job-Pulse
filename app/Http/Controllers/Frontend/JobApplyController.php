@@ -43,5 +43,12 @@ class JobApplyController extends Controller
             return redirect()->back();
         }
     }
+
+    public function jobApplyCancel(string $id)
+    {
+        $jobapply = JobApply::findOrFail($id);
+        $jobapply->delete();
+        return response(['status' => 'success', 'message' => 'Deleted Successfully']);
+    }
     
 }

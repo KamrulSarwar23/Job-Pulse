@@ -23,6 +23,13 @@ class CandidateJobApplyDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
 
+        ->addColumn('action', function ($query) {
+               
+            $deleteBtn = "<a href='" . route('candidate.job.apply-cancel', $query->id) . "' class= 'btn btn-danger ml-3 remove'>Apply Cancel</a>";
+        
+            return $deleteBtn;
+        })
+
             ->addColumn('candidate', function ($query) {
 
                 return $query->user->name;
@@ -34,9 +41,9 @@ class CandidateJobApplyDataTable extends DataTable
             })
 
             ->addColumn('post', function ($query) {
-
-                return $query->job->name;
+                return "<a href='" . route('job.page') . "'>" . $query->job->name . "</a>";
             })
+            
 
             ->addColumn('status', function ($query) {
                 if ($query->status == 'approved') {
@@ -51,7 +58,7 @@ class CandidateJobApplyDataTable extends DataTable
                 }
             })
 
-            ->rawColumns(['status'])
+            ->rawColumns(['status', 'action', 'post'])
 
             ->setRowId('id');
     }
@@ -97,6 +104,7 @@ class CandidateJobApplyDataTable extends DataTable
             Column::make('company'),
             Column::make('post'),
             Column::make('status')->width(150),
+            Column::make('action')->width(150),
         ];
     }
 

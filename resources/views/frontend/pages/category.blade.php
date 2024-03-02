@@ -46,7 +46,7 @@
                                     <i class="{{ $item->icon }} text-primary"></i>
                                     <div>
                                         <h5 class="mb-3 mt-3">{{ limitText($item->name, 20) }}</h5>
-                                        <p class="mb-0 text-primary">{{ $item->jobs->count() }} Vacancy</p>
+                                        <p class="mb-0 text-primary"><span class="text-primary">({{ $item->jobs->count() }})</span></p>
                                     </div>
                                 </a>
                             </div>

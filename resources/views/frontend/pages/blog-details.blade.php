@@ -24,24 +24,19 @@
 
 <!-- Category Start -->
 <div class="container">
-    <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore Our Blog</h1>
-    {{ $blog->links() }}
+    <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">{{ $blog->title }}</h1>
 
     <div class="row">
-        @foreach ($blog as $item)
-            
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <div class="card mb-3 h-100">
-                        <a href="{{ route('blog-details', $item->id) }}">
-                        <img class="card-img-top" src="{{ asset($item->image) }}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $item->title }}</h5>
-                        </div>
-                    </a>
-                    </div>
+    
+        <div class="col-lg-12 col-md-6 mb-5">
+            <div class="card mb-3 h-100">
+                {{-- <img class="card-img-top" src="{{ asset($blog->image) }}" alt="Card image cap"> --}}
+                <div class="card-body">
+        
+                    <p class="card-text">{!! $blog->description !!}</p>
                 </div>
-           
-        @endforeach
+            </div>
+        </div>
     </div>
 </div>
 <!-- Category End -->

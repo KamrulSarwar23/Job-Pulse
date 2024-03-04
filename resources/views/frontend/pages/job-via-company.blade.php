@@ -16,20 +16,20 @@
     </div>
     <!-- Header End -->
 
-                       <!-- Search Start -->
+    <!-- Search Start -->
     <div class="container-fluid bg-primary wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
         <div class="container">
             <div class="row g-2">
                 <div class="col-md-10">
-                         <form action="{{ route('search.job') }}" method="GET">
-                            @csrf
-                    <div class="row g-2">
-                   
+                    <form action="{{ route('search.job') }}" method="GET">
+                        @csrf
+                        <div class="row g-2">
+
                             <div class="col-md-12">
                                 <input type="text" name="keyword" class="form-control border-0 p-3"
                                     placeholder="Search Via Address, Category, Remote Or Office" />
                             </div>
-                    </div>
+                        </div>
                 </div>
                 <div class="col-md-2">
 
@@ -41,13 +41,13 @@
         </div>
     </div>
     <!-- Search End -->
-                        
+
 
     <!-- Jobs Start -->
     <div class="container-xxl py-5">
         <div class="container">
             @if (count($jobs) > 0)
-            <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1>
+                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1>
             @endif
             <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
 
@@ -58,43 +58,53 @@
                             <div class="job-item p-4 mb-4">
 
                                 @foreach ($jobs as $item)
-                                @if ($item->end_date > \Carbon\Carbon::now())
-                                    <div class="row g-4 mb-3">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                          
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">{{ $item->name }} <span class="text-truncate me-3 text-primary"><i class="text-primary me-2"></i>{{ $item->user->name }}</span></h5>
-                                                <span class="text-truncate me-3"><i
-                                                        class="fa fa-map-marker-alt text-primary me-2"></i>{{ $item->address }}</span>
-                                                <span class="text-truncate me-3"><i
-                                                        class="far fa-clock text-primary me-2"></i>{{ $item->office_from }}</span>
-                                                <span class="text-truncate me-3"><i
-                                                        class="far fa-clock text-primary me-2"></i>{{ $item->office_time }}</span>
-                                                <span class="text-truncate me-0"><i
-                                                        class="far fa-money-bill-alt text-primary me-2"></i>{{ $item->salary }}</span>
-                                                  <br>
-                                                        <span class="text-truncate me-3 mb-2"><i class="far fa-clock text-primary me-2"></i><span class="text-info">Publish: {{ $item->created_at->diffForHumans() }}</span></span>
-                                                        <span class="text-truncate me-3 mb-2"><i class="far fa-clock text-primary me-2"></i><span class="text-info">Last Date: {{ \Carbon\Carbon::parse($item->end_date)->format('d F Y') }}</span></span>
+                                    @if ($item->end_date > \Carbon\Carbon::now())
+                                        <div class="row g-4 mb-3">
+                                            <div class="col-sm-12 col-md-8 d-flex align-items-center">
+
+                                                <div class="text-start ps-4">
+                                                    <h5 class="mb-3">{{ $item->name }} <span
+                                                            class="text-truncate me-3 text-primary"><i
+                                                                class="text-primary me-2"></i>{{ $item->user->name }}</span>
+                                                    </h5>
+                                                    <span class="text-truncate me-3"><i
+                                                            class="fa fa-map-marker-alt text-primary me-2"></i>{{ $item->address }}</span>
+                                                    <span class="text-truncate me-3"><i
+                                                            class="far fa-clock text-primary me-2"></i>{{ $item->office_from }}</span>
+                                                    <span class="text-truncate me-3"><i
+                                                            class="far fa-clock text-primary me-2"></i>{{ $item->office_time }}</span>
+                                                    <span class="text-truncate me-0"><i
+                                                            class="far fa-money-bill-alt text-primary me-2"></i>{{ $item->salary }}</span>
+                                                    <br>
+                                                    <span class="text-truncate me-3 mb-2"><i
+                                                            class="far fa-clock text-primary me-2"></i><span
+                                                            class="text-info">Publish:
+                                                            {{ $item->created_at->diffForHumans() }}</span></span>
+                                                    <span class="text-truncate me-3 mb-2"><i
+                                                            class="far fa-clock text-primary me-2"></i><span
+                                                            class="text-info">Last Date:
+                                                            {{ \Carbon\Carbon::parse($item->end_date)->format('d F Y') }}</span></span>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                                <div class="d-flex mb-3">
+
+                                                    <a class="btn btn-primary"
+                                                        href="{{ route('job.details', $item->id) }}">See
+                                                        More</a>
+                                                </div>
+
                                             </div>
                                         </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-
-                                                <a class="btn btn-primary" href="{{ route('job.details', $item->id) }}">See
-                                                    More</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <hr>
+                                        <hr>
                                     @endif
                                 @endforeach
                             </div>
                         @else
-                        <div class="card py-5">
-                            <h3 class="text-primary">No data were found matching your selection</h3>
-                        </div>
+                            <div class="card py-5">
+                                <h3 class="text-primary">No data were found matching your selection</h3>
+                            </div>
                     </div>
                 </div>
                 @endif

@@ -211,11 +211,69 @@
 
             Swal.fire({
                 title: 'Are you sure?',
-                text: "Do You want Activate This Plugin",
+                text: "Do You want to Approve This Application",
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, Activate'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If user confirms, submit the form
+                    $(this).closest('form').submit();
+                    
+                        $.ajax({
+                            type: 'DELETE',
+                            url: deleteUrl,
+
+                            success: function(data) {
+                                if (data.status == 'success') {
+                                    Swal.fire(
+                                        'Applied',
+                                        data.message,
+                                        'success'
+                                    )
+
+                                    window.location.reload();
+
+                                } else if (data.status == 'error') {
+                                    Swal.fire(
+                                        'Cant Delete',
+                                        data.message,
+                                        'error'
+                                    )
+                                }
+                            },
+
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                            }
+                        })
+
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('body').on('click', '.reject', function(event) {
+            event.preventDefault();
+            let deleteUrl = $(this).attr('href');
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do You want to Reject This Application",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Reject'
             }).then((result) => {
                 if (result.isConfirmed) {
                     // If user confirms, submit the form
@@ -262,17 +320,17 @@
             }
         });
 
-        $('body').on('click', '.reject', function(event) {
+        $('body').on('click', '.activate', function(event) {
             event.preventDefault();
             let deleteUrl = $(this).attr('href');
 
             Swal.fire({
                 title: 'Are you sure?',
-                text: "Do You want to Reject This Application",
+                text: "Do You Want to Activate This Plugin",
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Reject'
+                confirmButtonText: 'Yes, Activate'
             }).then((result) => {
                 if (result.isConfirmed) {
                     // If user confirms, submit the form
@@ -285,7 +343,7 @@
                             success: function(data) {
                                 if (data.status == 'success') {
                                     Swal.fire(
-                                        'Applied',
+                                        'Activate',
                                         data.message,
                                         'success'
                                     )

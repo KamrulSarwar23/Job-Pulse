@@ -20,7 +20,7 @@
                                     <div class="col-md-4 text-center">
                                         <div class="card py-3">
                                             <h4 class="text-info">Blogs</h4>
-                                            <a class="approve btn btn-primary" href="">Activate</a>
+                                            <a class="activate btn btn-primary" href="">Activate</a>
                                            </div>
                                            
                                       </div>
@@ -28,7 +28,7 @@
                                       <div class="col-md-4 text-center">
                                         <div class="card py-3">
                                             <h4 class="text-info">Empolyee</h4>
-                                            <a class="approve btn btn-primary" href="">Activate</a>
+                                            <a class="activate btn btn-primary" href="">Activate</a>
                                            </div>
                                            
                                       </div>
@@ -36,7 +36,7 @@
                                       <div class="col-md-4 text-center">
                                         <div class="card py-3">
                                             <h4 class="text-info">Pages</h4>
-                                            <a class="approve btn btn-primary" href="">Activate</a>
+                                            <a class="activate btn btn-primary" href="">Activate</a>
                                            </div>
                                            
                                       </div>

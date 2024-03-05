@@ -62,7 +62,75 @@
                 </div>
 
 
+                <div class="col-md-12 m-auto">
 
+
+                    <div class="card">
+
+
+                        <form method="POST" action="{{ route('admin.contact.update') }}" class="needs-validation"
+                            novalidate="" enctype="multipart/form-data">
+                            @csrf
+                            <div class="card-header">
+                                <h4>Contact Information</h4>
+                            </div>
+                            <div class="card-body">
+
+                                <div class="row">
+
+                                    <div class="form-group col-12">
+                                        <label>Address</label>
+                                        <input type="text" name="address" class="form-control" value="{{ @$contactInformation->address }}">
+
+                                    </div>
+
+                                    <div class="form-group col-12">
+                                        <label>Email</label>
+                                        <input type="text" name="email" class="form-control" value="{{ @$contactInformation->email }}">
+
+                                    </div>
+
+                                    <div class="form-group col-12">
+                                        <label>Phone</label>
+                                        <input type="number" name="phone" class="form-control" value="{{ @$contactInformation->phone }}">
+
+                                    </div>
+
+                                    <div class="form-group col-12">
+                                        <label>Map Link</label>
+                                        <input type="text" name="map" class="form-control" value="{{ @$contactInformation->map }}">
+
+                                    </div>
+
+
+                                    <div class="form-group col-12">
+                                        <label>Facebook</label>
+                                        <input type="text" name="facebook" class="form-control" value="{{ @$contactInformation->facebook }}">
+
+                                    </div>
+
+                                    <div class="form-group col-12">
+                                        <label>Instagram</label>
+                                        <input type="text" name="instagram" class="form-control" value="{{ @$contactInformation->instagram }}">
+
+                                    </div>
+
+                                    <div class="form-group col-12">
+                                        <label>Twitter</label>
+                                        <input type="text" name="twitter" class="form-control" value="{{ @$contactInformation->twitter }}">
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="card-footer text-right">
+                                <button class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
                 <div class="col-md-12 m-auto">
 

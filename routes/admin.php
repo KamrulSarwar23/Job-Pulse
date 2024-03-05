@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\AllCompanyController;
+use App\Http\Controllers\Backend\ContactInformationController;
 use App\Http\Controllers\Backend\JobApplyController;
 use App\Http\Controllers\Backend\JobRequestController;
 use App\Http\Controllers\Backend\PluginController;
@@ -57,3 +58,6 @@ Route::get('job-apply', [JobApplyController::class, 'jobApply'])->name('job-appl
 // Plugin  Routes
 Route::put('plugin-change-status', [PluginController::class, 'changeStatus'])->name('plugin.change-status');
 Route::resource('plugin', PluginController::class);
+
+// candidate job apply list
+Route::post('/contact/update', [ContactInformationController::class, 'updateContact'])->name('contact.update');

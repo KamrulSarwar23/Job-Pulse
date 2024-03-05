@@ -89,7 +89,7 @@
 
             <li class="dropdown {{ setActive(['admin.profile']) }}">
                 <a href="{{ route('admin.profile') }}" class="nav-link"><i
-                        class="fa-solid fa-bolt"></i><span>Profile</span></a>
+                        class="fa-solid fa-bolt"></i><span>Contact & Profile</span></a>
             </li>
 
             <li class="mt-3">

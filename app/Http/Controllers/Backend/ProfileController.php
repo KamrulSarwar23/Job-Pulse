@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use File;
@@ -12,7 +13,8 @@ class ProfileController extends Controller
     public function index()
     {
 
-        return view('admin.profile.index');
+        $contactInformation = ContactInformation::first();
+        return view('admin.profile.index', compact('contactInformation'));
     }
 
     public function updateProfile(Request $request)

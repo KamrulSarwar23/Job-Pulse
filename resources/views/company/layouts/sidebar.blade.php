@@ -22,7 +22,7 @@
         <li class=""><a class="" href="{{ route('home.page') }}"><i class="fas fa-home"></i>Go To Home
                 Page</a></li>
         <li class="{{ setActive(['company.dashboard']) }}"><a class="" href="{{ route('company.dashboard') }}"><i
-                    class="fas fa-tachometer"></i>Dashboard</a></li>
+                    class="far fa-clipboard"></i>Dashboard</a></li>
 
         <li class="{{ setActive(['company.jobs.index', 'company.jobs.edit', 'company.jobs.create']) }}"><a
                 class="" href="{{ route('company.jobs.index') }}"><i class="far fa-clipboard"></i>Job Post</a>
@@ -38,21 +38,21 @@
             @foreach ($plugins as $plugin)
                 @if ($plugin->slug == 'blog')
         <li class="{{ setActive(['company.blog.index', 'company.blog.create', 'company.blog.edit']) }}"><a
-                href="{{ route('company.blog.index') }}"><i class="far fa-user"></i>{{ $plugin->name }}</a></li>
+                href="{{ route('company.blog.index') }}"><i class="far fa-clipboard"></i>{{ $plugin->name }}</a></li>
     @elseif ($plugin->slug == 'employee')
         <li class="{{ setActive(['company.employee']) }}"><a href="{{ route('company.employee') }}"><i
-                    class="far fa-user"></i>{{ $plugin->name }}</a></li>
+                    class="far fa-clipboard"></i>{{ $plugin->name }}</a></li>
     @elseif ($plugin->slug == 'page')
         <li class="{{ setActive(['company.page']) }}"><a href="{{ route('company.page') }}"><i
-                    class="far fa-user"></i>{{ $plugin->name }}</a></li>
+                    class="far fa-clipboard"></i>{{ $plugin->name }}</a></li>
         @endif
         @endforeach
 
         <li class="{{ setActive(['company.plugin.index']) }}"><a href="{{ route('company.plugin.index') }}"><i
-                    class="far fa-user"></i>Plugin</a></li>
+                    class="far fa-clipboard"></i>Plugin</a></li>
 
         <li class="{{ setActive(['company.profile']) }}"><a href="{{ route('company.profile') }}"><i
-                    class="far fa-user"></i> My Profile</a></li>
+                    class="far fa-clipboard"></i> My Profile</a></li>
         <li>
 
             <form method="POST" action="{{ route('logout') }}">

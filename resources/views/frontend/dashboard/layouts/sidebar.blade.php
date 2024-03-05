@@ -15,19 +15,19 @@
         <li class=""><a class="" href="{{ route('home.page') }}"><i class="fas fa-home"></i>Go To Home
                 Page</a></li>
         <li class="{{ setActive(['candidate.dashboard']) }}"><a class="" href="{{ route('candidate.dashboard') }}"><i
-                    class="fas fa-tachometer"></i>Dashboard</a></li>
+                    class="far fa-clipboard"></i>Dashboard</a></li>
   
         <li class="{{ setActive(['candidate.job.cv']) }}"><a href="{{ route('candidate.job.cv') }}"><i
-                        class="far fa-user"></i>Create CV</a></li>
+                        class="far fa-clipboard"></i>Create CV</a></li>
             <li>
 
                 <li class="{{ setActive(['candidate.show-job.apply']) }}"><a href="{{ route('candidate.show-job.apply') }}"><i
-                    class="far fa-user"></i>Show Job Apply</a></li>
+                    class="far fa-clipboard"></i>Show Job Apply</a></li>
         <li>
 
 
         <li class="{{ setActive(['candidate.profile']) }}"><a href="{{ route('candidate.profile') }}"><i
-                    class="far fa-user"></i> My Profile</a></li>
+                    class="far fa-clipboard"></i> My Profile</a></li>
         <li>
             
             <form method="POST" action="{{ route('logout') }}">

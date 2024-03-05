@@ -27,7 +27,7 @@
     <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore Our Blog</h1>
     {{ $blog->links() }}
 
-    <div class="row">
+    <div class="row mt-3">
         @foreach ($blog as $item)
             
                 <div class="col-lg-3 col-md-6 mb-5">
@@ -36,9 +36,12 @@
                         <img class="card-img-top" src="{{ asset($item->image) }}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{ $item->title }}</h5>
+                            <p class="card-title text-primary">"Post By: {{ $item->user->name }} || {{ $item->created_at->format('d M Y')}}"</p>
                         </div>
                     </a>
+                    
                     </div>
+                   
                 </div>
            
         @endforeach

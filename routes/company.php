@@ -1,10 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\JobsController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CompanyController;
+use App\Http\Controllers\Backend\CompanyBlogController;
+use App\Http\Controllers\Backend\CompanyPluginController;
 use App\Http\Controllers\Backend\CompanyJobAppyController;
-use App\Http\Controllers\Backend\JobsController;
-use Illuminate\Support\Facades\Route;
 
 // company dashboard
 Route::get('/dashboard', [CompanyController::class, 'dashboard'])->name('dashboard');
@@ -19,7 +21,10 @@ Route::put('job-change-status', [JobsController::class, 'changeStatus'])->name('
 Route::resource('jobs', JobsController::class);
 
 // Plugin
-Route::get('plugin', [AdminController::class, 'plugin'])->name('plugin.index');
+Route::get('plugin', [CompanyPluginController::class, 'plugin'])->name('plugin.index');
+Route::post('plugin-activate', [CompanyPluginController::class, 'pluginActivate'])->name('plugin.active');
+Route::get('plugin-deactivate/{id}', [CompanyPluginController::class, 'pluginDeactivate'])->name('plugin.deactivate');
+
 
 // Candidate Job Apply
 Route::get('job-apply-company', [CompanyJobAppyController::class, 'jobApplyCompany'])->name('job-apply-company');
@@ -30,3 +35,11 @@ Route::post('job-apply-approve/{id}', [CompanyJobAppyController::class, 'jobAppl
 
 // application reject
 Route::post('job-apply-reject/{id}', [CompanyJobAppyController::class, 'jobApplyReject'])->name('job-apply-reject');
+
+
+// Blog Routes
+Route::put('blog-change-status', [CompanyBlogController::class, 'changeStatus'])->name('blog.change-status');
+Route::resource('blog', CompanyBlogController::class);
+
+Route::get('employee', [CompanyBlogController::class, 'employee'])->name('employee');
+Route::get('page', [CompanyBlogController::class, 'page'])->name('page');

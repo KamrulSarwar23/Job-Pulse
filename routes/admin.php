@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\AllCompanyController;
 use App\Http\Controllers\Backend\JobApplyController;
 use App\Http\Controllers\Backend\JobRequestController;
+use App\Http\Controllers\Backend\PluginController;
 
 // Admin  dashboard
 Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
@@ -52,3 +53,7 @@ Route::delete('about-us-image-delete/{id}', [AboutController::class, 'imageDelet
 
 // candidate job apply list
 Route::get('job-apply', [JobApplyController::class, 'jobApply'])->name('job-apply');
+
+// Plugin  Routes
+Route::put('plugin-change-status', [PluginController::class, 'changeStatus'])->name('plugin.change-status');
+Route::resource('plugin', PluginController::class);

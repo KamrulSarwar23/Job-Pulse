@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\DataTables\BlogCommentDataTable;
-use App\DataTables\BlogDataTable;
-use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Traits\ImageUploadTrait;
-use Str;
-class BlogController extends Controller
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\DataTables\CompanyBlogDataTable;
+
+class CompanyBlogController extends Controller
 {
     use ImageUploadTrait;
     /**
      * Display a listing of the resource.
      */
-    public function index(BlogDataTable $datatable)
+    public function index(CompanyBlogDataTable $datatable)
     {
-        return $datatable->render('admin.blog.index');
+        return $datatable->render('company.blog.index');
     }
 
     /**
@@ -26,7 +25,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('admin.blog.create');
+        return view('company.blog.create');
     }
 
     /**
@@ -51,7 +50,7 @@ class BlogController extends Controller
         $blog->save();
 
         toastr('Created Successfully', 'success', 'success');
-        return redirect()->route('admin.blog.index');
+        return redirect()->route('company.blog.index');
     }
 
     /**
@@ -68,7 +67,7 @@ class BlogController extends Controller
     public function edit(string $id)
     {
         $blog = Blog::findOrFail($id);
-        return view('admin.blog.edit', compact('blog'));
+        return view('company.blog.edit', compact('blog'));
     }
 
     /**
@@ -94,7 +93,7 @@ class BlogController extends Controller
         $blog->save();
 
         toastr('Updated Successfully', 'success', 'success');
-        return redirect()->route('admin.blog.index');
+        return redirect()->route('company.blog.index');
     }
 
     /**
@@ -118,4 +117,11 @@ class BlogController extends Controller
         return response(['message' => 'Status has been Updated!']);
     }
 
+    public function employee(){
+        return view('company.employee.index');
+    }
+
+    public function page(){
+        return view('company.page.index');
+    }
 }

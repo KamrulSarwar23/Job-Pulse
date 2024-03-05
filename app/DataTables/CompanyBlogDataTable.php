@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class BlogDataTable extends DataTable
+class CompanyBlogDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -24,8 +24,8 @@ class BlogDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
 
-                $editBtn = "<a href='" . route('admin.blog.edit', $query->id) . "' class= 'btn btn-primary'> <i class='fas fa-edit'></i> </a>";
-                $deleteBtn = "<a href='" . route('admin.blog.destroy', $query->id) . "' class= 'btn btn-danger ml-3 delete-item'><i class='fas fa-trash'></i> </a>";
+                $editBtn = "<a href='" . route('company.blog.edit', $query->id) . "' class= 'btn btn-primary'> <i class='fas fa-edit'></i> </a>";
+                $deleteBtn = "<a href='" . route('company.blog.destroy', $query->id) . "' class= 'btn btn-danger ml-3 delete-item'><i class='fas fa-trash'></i> </a>";
 
                 return $editBtn . $deleteBtn;
             })

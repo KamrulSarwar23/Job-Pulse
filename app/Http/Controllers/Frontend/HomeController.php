@@ -84,7 +84,7 @@ class HomeController extends Controller
     public function blogPage()
     {
         $company = User::where('role', 'company')->where('status', 'active')->take(4)->get();
-        $blog = Blog::where('status', 1)->paginate(8);
+        $blog = Blog::where('status', 1)->orderBy('created_at', 'DESC')->paginate(8);
         return view('frontend.pages.blog', compact('blog', 'company'));
     }
 

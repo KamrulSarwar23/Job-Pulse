@@ -196,6 +196,69 @@
     })
 </script>
 
+<script>
+    $(document).ready(function() {
+        $('.select2').select2();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $('body').on('click', '.deactivate', function(event) {
+
+                event.preventDefault();
+
+                let deleteUrl = $(this).attr('href');
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Do You Want Deactivate This Plugin",
+                    // icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Deactivate!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            type: 'DELETE',
+                            url: deleteUrl,
+
+                            success: function(data) {
+                                if (data.status == 'success') {
+                                    Swal.fire(
+                                        'Deactivate!',
+                                        data.message,
+                                        'success'
+                                    )
+
+                                    window.location.reload();
+
+                                } else if (data.status == 'error') {
+                                    Swal.fire(
+                                        'Cant Delete',
+                                        data.message,
+                                        'error'
+                                    )
+                                }
+
+                            },
+
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                            }
+                        })
+
+
+                    }
+
+                })
+            })
+    })
+</script>
 
 <script>
     $(document).ready(function() {

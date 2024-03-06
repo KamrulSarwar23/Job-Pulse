@@ -39,7 +39,7 @@
 
             <li class="menu-header">Ecommerce</li>
             <li><a class="nav-link" href="{{ route('home.page') }}"><i class="fa-solid fa-house"></i>
-                    <span>Go To Home Page</span>
+                    <span class="">Go To Home Page</span>
                 </a></li>
 
             <li class="dropdown {{ setActive(['admin.dashboard']) }}">
@@ -98,7 +98,7 @@
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                 this.closest('form').submit()"
-                        class="has-icon text-light btn btn-primary">
+                        class="has-icon text-light bg-primary">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </form>

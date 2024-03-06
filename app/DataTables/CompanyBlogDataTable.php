@@ -32,15 +32,15 @@ class CompanyBlogDataTable extends DataTable
 
             ->addColumn('status', function ($query) {
                 if ($query->status == 1) {
-                    $button = '<label class="custom-switch">
-                    <input type="checkbox" checked name="custom-switch-checkbox" data-id = "' . $query->id . '"class="custom-switch-input change-status">
-                    <span class="custom-switch-indicator"></span>
-                  </label>';
+
+                    $button = '<div class="form-check form-switch">
+              <input checked class="form-check-input change-status" type="checkbox" data-id = "' . $query->id . '" id="flexSwitchCheckDefault">
+    
+            </div>';
                 } else {
-                    $button = '<label class="custom-switch">
-                    <input type="checkbox" name="custom-switch-checkbox" data-id = "' . $query->id . '"class="custom-switch-input change-status">
-                    <span class="custom-switch-indicator"></span>
-                  </label>';
+                    $button = '<div class="form-check form-switch">
+              <input class="form-check-input change-status" type="checkbox" data-id = "' . $query->id . '" id="flexSwitchCheckDefault">
+            </div>';
                 }
 
                 return $button;

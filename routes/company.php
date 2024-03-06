@@ -36,7 +36,6 @@ Route::post('job-apply-approve/{id}', [CompanyJobAppyController::class, 'jobAppl
 // application reject
 Route::post('job-apply-reject/{id}', [CompanyJobAppyController::class, 'jobApplyReject'])->name('job-apply-reject');
 
-
 // Blog Routes
 Route::put('blog-change-status', [CompanyBlogController::class, 'changeStatus'])->name('blog.change-status');
 Route::resource('blog', CompanyBlogController::class);

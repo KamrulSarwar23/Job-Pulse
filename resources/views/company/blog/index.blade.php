@@ -1,7 +1,7 @@
 @extends('company.layouts.master')
 
 @section('title')
-   || Blog Post
+    || Blog Post
 @endsection
 
 @section('content')
@@ -17,17 +17,17 @@
                     <div class="dashboard_content mt-2 mt-md-0">
                         <h3><i class="far fa-user"></i>All Blog</h3>
                         <div class="create-button">
-                            <a href="{{ route('company.blog.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Create Blog</a>
+                            <a href="{{ route('company.blog.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i>
+                                Create Blog</a>
                         </div>
                         <div class="wsus__dashboard_profile">
                             <form action="{{ route('company.blog-delete') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="ml-4 btn btn-danger mb-2">Delete Selected Item</button>
-    
                                 <div class="wsus__dash_pro_area">
-    
+
                                     {{ $dataTable->table() }}
-    
+
                                 </div>
                             </form>
                         </div>

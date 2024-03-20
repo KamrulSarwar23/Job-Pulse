@@ -50,7 +50,14 @@ class CategoryDataTable extends DataTable
                 return $button;
             })
 
-            ->rawColumns(['icon', 'action', 'status'])
+            ->addColumn('select', function ($query) {
+                $checkbox = '<div class="form-check">
+                <input class="form-check-input" name="ids[' . $query->id . ']" type="checkbox" value="' . $query->id . '" id="flexCheckDefault">
+              </div>';
+                return $checkbox;
+            })
+
+            ->rawColumns(['icon', 'action', 'status', 'select'])
             ->setRowId('id');
     }
 
@@ -90,6 +97,7 @@ class CategoryDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('select')->width(50),
             Column::make('id'),
             Column::make('icon'),
             Column::make('name'),

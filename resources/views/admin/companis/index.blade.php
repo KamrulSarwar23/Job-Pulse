@@ -15,11 +15,16 @@
                         <div class="card-header">
                             <h4>All Companis</h4>
                         </div>
-                        <div class="card-body">
+                        <form action="{{ route('admin.Company-Delete') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="ml-4 btn btn-danger">Delete Selected Item</button>
 
-                            {{ $dataTable->table() }}
+                            <div class="card-body">
 
-                        </div>
+                                {{ $dataTable->table() }}
+
+                            </div>
+                        </form>
                     </div>
 
                 </div>

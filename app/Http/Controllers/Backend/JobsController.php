@@ -146,4 +146,17 @@ class JobsController extends Controller
         $jobs->save();
         return response(['status' => 'success', 'message'=> 'Status Changed Successfully']);
     }
+
+    public function JobDelete(Request $request)
+    {
+        $request->validate([
+            'ids' => 'required'
+        ], [
+            'ids.required' => 'Need To Select First.'
+        ]);
+
+        $jobs = Job::whereIn('id', $request->ids)->delete();
+        toastr('Deleted Successfully');
+        return redirect()->back();
+    }
 }

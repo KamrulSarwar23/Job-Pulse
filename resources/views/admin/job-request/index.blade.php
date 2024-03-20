@@ -14,15 +14,20 @@
                     <div class="card">
                         <div class="card-header">
                             <h4>All Job Post Request</h4>
-
                         </div>
-                        <div class="card-body">
 
-                            {{ $dataTable->table() }}
+                        <form action="{{ route('admin.job-delete') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="ml-4 btn btn-danger">Delete Selected Item</button>
 
-                        </div>
+                            <div class="card-body">
+
+                                {{ $dataTable->table() }}
+
+                            </div>
+                        </form>
+
                     </div>
-
                 </div>
             </div>
         </div>
@@ -35,6 +40,12 @@
     <script>
         $(document).ready(function() {
             $('body').on('click', '.change-status', function() {
+
+                var table = $('#jobs_table').DataTable({
+                    "createdRow": function(row, data, dataIndex) {
+                        $(row).attr('id', 'employee_ids' + data.id);
+                    }
+                });
 
                 let isChecked = $(this).is(':checked');
                 let id = $(this).data('id');

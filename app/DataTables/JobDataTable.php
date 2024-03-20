@@ -46,8 +46,14 @@ class JobDataTable extends DataTable
                     return '<i class="badge bg-warning">Pending<i/>';
                 }
             })
+            ->addColumn('select', function ($query) {
+                $checkbox = '<div class="form-check">
+                <input class="form-check-input" name="ids[' . $query->id . ']" type="checkbox" value="' . $query->id . '" id="flexCheckDefault">
+              </div>';
+                return $checkbox;
+   })
 
-            ->rawColumns(['action', 'status'])
+            ->rawColumns(['action', 'status', 'select'])
             ->setRowId('id');
     }
 
@@ -87,6 +93,7 @@ class JobDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('select')->width(40),
             Column::make('id'),
             Column::make('name'),
             Column::make('address'),

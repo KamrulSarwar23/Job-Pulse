@@ -135,4 +135,16 @@ class SliderController extends Controller
         return response(['message' => 'Status has been Updated!']);
     }
 
+    public function BannerDelete(Request $request)
+    {
+        $request->validate([
+            'ids' => 'required'
+        ], [
+            'ids.required' => 'Need To Select First.'
+        ]);
+
+        $jobs = Slider::whereIn('id', $request->ids)->delete();
+        toastr('Deleted Successfully');
+        return redirect()->back();
+    }
 }

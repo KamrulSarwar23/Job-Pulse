@@ -45,7 +45,8 @@ class CandidateCvController extends Controller
         ));
     }
 
-    public function cvPreview(){
+    public function cvPreview()
+    {
         $candidateDegree = CandidateDegreeInformation::where('user_id', Auth::user()->id)->get();
         $candidateBasicInformation = CandidateBasicInformation::where('user_id', Auth::user()->id)->first();
         $candidateJobExperience = CandidateJobExperience::where('user_id', Auth::user()->id)->get();
@@ -55,15 +56,12 @@ class CandidateCvController extends Controller
             'candidateDegree',
             'candidateJobExperience',
             'candidateTraining'
-    ));
+        ));
     }
 
 
     public function store(Request $request)
     {
-
-
-
         $request->validate([
             'name' => 'nullable',
             'email' => 'nullable',
@@ -87,11 +85,11 @@ class CandidateCvController extends Controller
             'institution_name' => 'nullable',
             'completion_year' => 'nullable',
 
-            'designation'=> 'nullable',
-            'company_name'=> 'nullable',
-            'joining_date'=> 'nullable',
-            'depareture_date'=> 'nullable',
-            'experience_number'=> 'nullable'
+            'designation' => 'nullable',
+            'company_name' => 'nullable',
+            'joining_date' => 'nullable',
+            'depareture_date' => 'nullable',
+            'experience_number' => 'nullable'
 
         ]);
 
@@ -198,7 +196,7 @@ class CandidateCvController extends Controller
             ]
         );
 
-        
+
         CandidateJobExperience::updateOrCreate(
             ['user_id' => $userId, 'experience_number' => 'one'],
 

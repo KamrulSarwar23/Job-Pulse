@@ -47,4 +47,18 @@ class CompanyJobAppyController extends Controller
         toastr('Reject This CV Successfully');
         return redirect()->back();
     }
+
+
+    public function JobApplyDelete(Request $request)
+    {
+        $request->validate([
+            'ids' => 'required'
+        ], [
+            'ids.required' => 'Need To Select First.'
+        ]);
+
+        $jobs = JobApply::whereIn('id', $request->ids)->delete();
+        toastr('Deleted Successfully');
+        return redirect()->back();
+    }
 }

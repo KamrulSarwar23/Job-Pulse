@@ -3,7 +3,6 @@
 namespace App\DataTables;
 
 use App\Models\Job;
-use App\Models\JobRequest;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -23,44 +22,48 @@ class JobRequestDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-        ->addColumn('action', function ($query) {
+            ->addColumn('action', function ($query) {
 
-            $editBtn = "<a href='" . route('admin.company.job-request-edit', $query->id) . "' class= 'btn btn-primary'> <i class='fas fa-edit'></i> </a>";
-            $deleteBtn = "<a href='" . route('admin.company.job-request-delete', $query->id) . "' class= 'btn btn-danger ml-3 delete-item'><i class='fas fa-trash'></i> </a>";
+                $editBtn = "<a href='" . route('admin.company.job-request-edit', $query->id) . "' class= 'btn btn-primary'> <i class='fas fa-edit'></i> </a>";
+                $deleteBtn = "<a href='" . route('admin.company.job-request-delete', $query->id) . "' class= 'btn btn-danger ml-3 delete-item'><i class='fas fa-trash'></i> </a>";
 
-            return $editBtn . $deleteBtn;
-        })
+                return $editBtn . $deleteBtn;
+            })
 
-        ->addColumn('category', function ($query) {
+            ->addColumn('category', function ($query) {
 
-          return $query->category->name;
+                return $query->category->name;
+            })
 
-        })
+            ->addColumn('company', function ($query) {
 
-        ->addColumn('company', function ($query) {
+                return $query->user->name;
+            })
 
-            return $query->user->name;
-  
-          })
+            ->addColumn('select', function ($query) {
+                $checkbox = '<div class="form-check">
+                <input class="form-check-input" name="ids[' . $query->id . ']" type="checkbox" value="' . $query->id . '" id="flexCheckDefault">
+              </div>';
+                return $checkbox;
+            })
 
-
-        ->addColumn('status', function ($query) {
-            if ($query->status == 'active') {
-                $button = '<label class="custom-switch">
+            ->addColumn('status', function ($query) {
+                if ($query->status == 'active') {
+                    $button = '<label class="custom-switch">
             <input type="checkbox" checked name="custom-switch-checkbox" data-id = "' . $query->id . '"class="custom-switch-input change-status">
             <span class="custom-switch-indicator"></span>
           </label>';
-            } else {
-                $button = '<label class="custom-switch">
+                } else {
+                    $button = '<label class="custom-switch">
             <input type="checkbox" name="custom-switch-checkbox" data-id = "' . $query->id . '"class="custom-switch-input change-status">
             <span class="custom-switch-indicator"></span>
           </label>';
-            }
-            
-            return $button;
-        })
+                }
 
-        ->rawColumns(['action', 'status'])
+                return $button;
+            })
+            
+            ->rawColumns(['action', 'status', 'select'])
             ->setRowId('id');
     }
 
@@ -78,20 +81,20 @@ class JobRequestDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('jobrequest-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(0)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('jobrequest-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(0)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -100,6 +103,7 @@ class JobRequestDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('select'),
             Column::make('id'),
             Column::make('name'),
             Column::make('company'),

@@ -34,4 +34,18 @@ class AllCompanyController extends Controller
 
         return response(['status' => 'success', 'message' => 'Status has been Updated!']);
     }
+    public function CompanyDelete(Request $request)
+    {
+
+        $request->validate([
+            'ids' => 'required'
+        ], [
+            'ids.required' => 'Need To Select First.'
+        ]);
+
+        $jobs = User::whereIn('id', $request->ids)->delete();
+        toastr('Deleted Successfully');
+        return redirect()->back();
+    }
+    
 }

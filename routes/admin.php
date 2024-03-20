@@ -23,15 +23,19 @@ Route::post('/profile/update/password', [ProfileController::class, 'updatePasswo
 
 // Banner Routes
 Route::put('slider-change-status', [SliderController::class, 'changeStatus'])->name('slider.change-status');
+Route::post('delete-banner', [SliderController::class, 'BannerDelete'])->name('banner-delete');
 Route::resource('slider', SliderController::class);
 
 // Silder Routes
 Route::put('category-change-status', [CategoryController::class, 'changeStatus'])->name('category.change-status');
+Route::post('delete-category', [CategoryController::class, 'CategoryDelete'])->name('category-delete');
 Route::resource('category', CategoryController::class);
 
 // All Company
 Route::put('company-change-status', [AllCompanyController::class, 'changeStatus'])->name('company.change-status');
+Route::post('delete-company', [AllCompanyController::class, 'CompanyDelete'])->name('Company-Delete');
 Route::resource('company', AllCompanyController::class);
+
 
 // Job Request from company
 Route::put('job-request-change-status', [JobRequestController::class, 'changeStatus'])->name('job-request.change-status');
@@ -42,7 +46,12 @@ Route::delete('company-job-request-delete/{id}', [JobRequestController::class, '
 
 // Blog Routes
 Route::put('blog-change-status', [BlogController::class, 'changeStatus'])->name('blog.change-status');
+Route::post('delete-blog', [BlogController::class, 'BlogDelete'])->name('blog-delete');
 Route::resource('blog', BlogController::class);
+
+// Comapny blog
+Route::post('delete-company-blog', [BlogController::class, 'ComapnyBlogDelete'])->name('company-blog-delete');
+Route::get('company-blogs', [BlogController::class, 'CompanyBlog'])->name('company-blogs');
 
 // About Routes
 Route::get('about-us', [AboutController::class, 'index'])->name('about-us.index');
@@ -54,6 +63,8 @@ Route::delete('about-us-image-delete/{id}', [AboutController::class, 'imageDelet
 
 // candidate job apply list
 Route::get('job-apply', [JobApplyController::class, 'jobApply'])->name('job-apply');
+Route::post('delete-job-multi', [JobApplyController::class, 'JobApplyDeleteMulti'])->name('delete-job-multi');
+Route::delete('job-apply-delete/{id}', [JobApplyController::class, 'JobApplyDelete'])->name('job-apply-delete');
 
 // Plugin  Routes
 Route::put('plugin-change-status', [PluginController::class, 'changeStatus'])->name('plugin.change-status');
@@ -61,3 +72,6 @@ Route::resource('plugin', PluginController::class);
 
 // candidate job apply list
 Route::post('/contact/update', [ContactInformationController::class, 'updateContact'])->name('contact.update');
+
+Route::post('delete-job', [JobRequestController::class, 'JobDelete'])->name('job-delete');
+

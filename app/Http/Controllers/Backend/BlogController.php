@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\DataTables\BlogCommentDataTable;
-use App\DataTables\BlogDataTable;
-use App\Http\Controllers\Controller;
+use Str;
 use App\Models\Blog;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Traits\ImageUploadTrait;
-use Str;
+use App\DataTables\BlogDataTable;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\DataTables\BlogCommentDataTable;
+use App\DataTables\AdminCompanyBlogDataTable;
+
 class BlogController extends Controller
 {
     use ImageUploadTrait;
@@ -20,6 +22,12 @@ class BlogController extends Controller
     {
         return $datatable->render('admin.blog.index');
     }
+
+    public function CompanyBlog(AdminCompanyBlogDataTable $datatable)
+    {
+        return $datatable->render('admin.company-blog.index');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +44,7 @@ class BlogController extends Controller
     {
         $request->validate([
             'image' => ['required', 'image', 'max:3000'],
-            'title' => ['required', 'max:200', 'unique:blogs,title'],
+            'title' => ['required', 'max:200'],
             'description' => ['required'],
         ]);
 
@@ -78,7 +86,7 @@ class BlogController extends Controller
     {
         $request->validate([
             'image' => ['nullable', 'image', 'max:3000'],
-            'title' => ['required', 'max:200', 'unique:blogs,title,'.$id],
+            'title' => ['required', 'max:200'],
             'description' => ['required'],
         ]);
 
@@ -116,6 +124,33 @@ class BlogController extends Controller
         $blog->save();
 
         return response(['message' => 'Status has been Updated!']);
+    }
+
+    public function BlogDelete(Request $request)
+    {
+
+        $request->validate([
+            'ids' => 'required'
+        ], [
+            'ids.required' => 'Need To Select First'
+        ]);
+
+        $jobs = Blog::whereIn('id', $request->ids)->delete();
+        toastr('Deleted Successfully');
+        return redirect()->back();
+    }
+
+    public function ComapnyBlogDelete(Request $request)
+    {
+        $request->validate([
+            'ids' => 'required'
+        ], [
+            'ids.required' => 'Need To Select First'
+        ]);
+
+        $jobs = Blog::whereIn('id', $request->ids)->delete();
+        toastr('Deleted Successfully');
+        return redirect()->back();
     }
 
 }

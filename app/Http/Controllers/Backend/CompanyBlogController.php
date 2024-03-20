@@ -35,7 +35,7 @@ class CompanyBlogController extends Controller
     {
         $request->validate([
             'image' => ['required', 'image', 'max:3000'],
-            'title' => ['required', 'max:200', 'unique:blogs,title'],
+            'title' => ['required', 'max:200'],
             'description' => ['required'],
         ]);
 
@@ -77,7 +77,7 @@ class CompanyBlogController extends Controller
     {
         $request->validate([
             'image' => ['nullable', 'image', 'max:3000'],
-            'title' => ['required', 'max:200', 'unique:blogs,title,'.$id],
+            'title' => ['required', 'max:200'],
             'description' => ['required'],
         ]);
 
@@ -123,5 +123,18 @@ class CompanyBlogController extends Controller
 
     public function page(){
         return view('company.page.index');
+    }
+
+    public function BlogDelete(Request $request)
+    {
+
+        $request->validate([
+            'ids' => 'required'
+        ]);
+
+        $jobs = Blog::whereIn('id', $request->ids)->delete();
+        toastr('Deleted Successfully');
+        return redirect()->back();
+
     }
 }

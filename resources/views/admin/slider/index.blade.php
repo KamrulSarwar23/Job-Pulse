@@ -20,11 +20,16 @@
                     <a href="{{route('admin.slider.create')}}" class="btn btn-primary">Create New</a>
                 </div>
               </div>
-              <div class="card-body">
+              <form action="{{ route('admin.banner-delete') }}" method="POST" onclick="confrim('Are You Sure')">
+                @csrf
+                <button type="submit" class="ml-4 btn btn-danger">Delete Selected Item</button>
 
-                {{ $dataTable->table() }}  
+                <div class="card-body">
+
+                    {{ $dataTable->table() }}
 
                 </div>
+            </form>
               </div>
         
             </div>

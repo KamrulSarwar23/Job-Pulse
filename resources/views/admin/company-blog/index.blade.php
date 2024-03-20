@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Category</h1>
+            <h1>Blog</h1>
 
         </div>
 
@@ -13,12 +13,9 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>All Category</h4>
-                            <div class="card-header-action">
-                                <a href="{{ route('admin.category.create') }}" class="btn btn-primary">Create New</a>
-                            </div>
+                            <h4>Company Blog</h4>
                         </div>
-                        <form action="{{ route('admin.category-delete') }}" method="POST">
+                        <form action="{{ route('admin.company-blog-delete') }}" method="POST">
                             @csrf
                             <button type="submit" class="ml-4 btn btn-danger">Delete Selected Item</button>
 
@@ -47,7 +44,7 @@
                 let id = $(this).data('id');
 
                 $.ajax({
-                    url: "{{ route('admin.category.change-status') }}",
+                    url: "{{ route('admin.blog.change-status') }}",
                     method: 'PUT',
                     data: {
                         status: isChecked,

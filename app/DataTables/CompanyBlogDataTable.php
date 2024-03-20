@@ -46,6 +46,13 @@ class CompanyBlogDataTable extends DataTable
                 return $button;
             })
 
+            ->addColumn('select', function ($query) {
+                $checkbox = '<div class="form-check">
+                <input class="form-check-input" name="ids[' . $query->id . ']" type="checkbox" value="' . $query->id . '" id="flexCheckDefault">
+              </div>';
+                return $checkbox;
+   })
+
             ->addColumn('image', function ($query) {
                 return $img = "<img width='100px' height='80px' src='" . asset($query->image) . "'> <img/>";
             })
@@ -55,7 +62,7 @@ class CompanyBlogDataTable extends DataTable
             })
 
 
-            ->rawColumns(['image', 'action', 'status'])
+            ->rawColumns(['image', 'action', 'status', 'select'])
 
             ->setRowId('id');
     }
@@ -96,7 +103,7 @@ class CompanyBlogDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-
+            Column::make('select')->width(50),
             Column::make('id'),
             Column::make('image')->width(150),
             Column::make('title'),

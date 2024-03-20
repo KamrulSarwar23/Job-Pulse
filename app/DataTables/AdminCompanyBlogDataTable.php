@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\User;
+use App\Models\Blog;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class AllCompanyDataTable extends DataTable
+class AdminCompanyBlogDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -22,52 +22,57 @@ class AllCompanyDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-
             ->addColumn('action', function ($query) {
-                $deleteBtn = "<a href='" . route('admin.company.destroy', $query->id) . "' class= 'btn btn-danger ml-3 delete-item'><i class='fas fa-trash'></i> </a>";
 
-                return $deleteBtn;
+                $editBtn = "<a href='" . route('admin.blog.edit', $query->id) . "' class= 'btn btn-primary'> <i class='fas fa-edit'></i> </a>";
+                $deleteBtn = "<a href='" . route('admin.blog.destroy', $query->id) . "' class= 'btn btn-danger ml-3 delete-item'><i class='fas fa-trash'></i> </a>";
+
+                return $editBtn . $deleteBtn;
             })
 
+            ->addColumn('select', function ($query) {
+                $checkbox = '<div class="form-check">
+                <input class="form-check-input" name="ids[' . $query->id . ']" type="checkbox" value="' . $query->id . '" id="flexCheckDefault">
+              </div>';
+                return $checkbox;
+   })
+
             ->addColumn('status', function ($query) {
-                if ($query->status == 'active') {
+                if ($query->status == 1) {
                     $button = '<label class="custom-switch">
-                <input type="checkbox" checked name="custom-switch-checkbox" data-id = "' . $query->id . '"class="custom-switch-input change-status">
-                <span class="custom-switch-indicator"></span>
-              </label>';
+                    <input type="checkbox" checked name="custom-switch-checkbox" data-id = "' . $query->id . '"class="custom-switch-input change-status">
+                    <span class="custom-switch-indicator"></span>
+                  </label>';
                 } else {
                     $button = '<label class="custom-switch">
-                <input type="checkbox" name="custom-switch-checkbox" data-id = "' . $query->id . '"class="custom-switch-input change-status">
-                <span class="custom-switch-indicator"></span>
-              </label>';
+                    <input type="checkbox" name="custom-switch-checkbox" data-id = "' . $query->id . '"class="custom-switch-input change-status">
+                    <span class="custom-switch-indicator"></span>
+                  </label>';
                 }
 
                 return $button;
             })
 
-
-            ->addColumn('select', function ($query) {
-                $checkbox = '<div class="form-check">
-        <input class="form-check-input" name="ids[' . $query->id . ']" type="checkbox" value="' . $query->id . '" id="flexCheckDefault">
-      </div>';
-                return $checkbox;
+            ->addColumn('image', function ($query) {
+                return $img = "<img width='100px' height='80px' src='" . asset($query->image) . "'> <img/>";
             })
 
-            ->addColumn('banner', function ($query) {
-                return $img = "<img width='100px' height='100px' src='" . asset($query->image) . "'> <img/>";
+            ->addColumn('publish_date', function ($query) {
+                return date('d M Y', strtotime($query->created_at));
             })
 
 
-            ->rawColumns(['action', 'status', 'banner', 'select'])
+            ->rawColumns(['image', 'action', 'status', 'select'])
+
             ->setRowId('id');
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(User $model): QueryBuilder
+    public function query(Blog $model): QueryBuilder
     {
-        return $model->where('role', 'company')->newQuery();
+        return $model->where('user_id', '<>' ,auth()->user()->id)->newQuery();
     }
 
     /**
@@ -76,11 +81,11 @@ class AllCompanyDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('allcompany-table')
+            ->setTableId('blog-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
-            ->orderBy(1)
+            ->orderBy(0)
             ->selectStyleSingle()
             ->buttons([
                 Button::make('excel'),
@@ -100,13 +105,13 @@ class AllCompanyDataTable extends DataTable
         return [
             Column::make('select')->width(50),
             Column::make('id'),
-            Column::make('name')->width(200),
-            Column::make('banner'),
+            Column::make('image')->width(150),
+            Column::make('title'),
             Column::make('status'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(200)
+                ->width(150)
                 ->addClass('text-center'),
         ];
     }
@@ -116,6 +121,6 @@ class AllCompanyDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'AllCompany_' . date('YmdHis');
+        return 'Blog_' . date('YmdHis');
     }
 }

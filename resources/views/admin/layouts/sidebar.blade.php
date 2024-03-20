@@ -18,7 +18,8 @@
     .fa-window-maximize,
     .fa-comment,
     .fa-tachometer-alt,
-    .fa-paperclip {
+    .fa-paperclip,
+    .fa-sign-out-alt {
         color: #5C8374;
         font-size: 15px;
     }
@@ -74,8 +75,14 @@
 
             <li class="dropdown {{ setActive(['admin.blog.index', 'admin.blog.edit', 'admin.blog.create']) }}">
                 <a href="{{ route('admin.blog.index') }}" class="nav-link"><i
-                        class="fa-solid fa-bolt"></i><span>Blog</span></a>
+                        class="fa-solid fa-bolt"></i><span>Admin Blog</span></a>
             </li>
+
+            <li class="dropdown {{ setActive(['admin.company-blogs']) }}">
+                <a href="{{ route('admin.company-blogs') }}" class="nav-link"><i
+                        class="fa-solid fa-bolt"></i><span>Company Blog</span></a>
+            </li>
+
 
             <li class="dropdown {{ setActive(['admin.about-us.index']) }}">
                 <a href="{{ route('admin.about-us.index') }}" class="nav-link"><i
@@ -92,17 +99,17 @@
                         class="fa-solid fa-bolt"></i><span>Contact & Profile</span></a>
             </li>
 
-            <li class="mt-3">
+            {{-- <li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                 this.closest('form').submit()"
-                        class="has-icon text-light bg-primary">
+                        class="has-icon">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </form>
-            </li>
+            </li> --}}
         </ul>
 
     </aside>

@@ -11,11 +11,13 @@ use App\DataTables\JobRequestDataTable;
 
 class JobRequestController extends Controller
 {
-    public function index(JobRequestDataTable $datatable){
+    public function index(JobRequestDataTable $datatable)
+    {
         return $datatable->render('admin.job-request.index');
     }
 
-    public function changeStatus(Request $request){
+    public function changeStatus(Request $request)
+    {
         $jobs = Job::findOrFail($request->id);
         $jobs->status = $request->status == 'true' ? 'active' : 'inactive';
         $jobs->save();
@@ -70,9 +72,24 @@ class JobRequestController extends Controller
         return redirect()->route('admin.company.job-request');
     }
 
-    public function delete(string $id){
+    public function delete(string $id)
+    {
         $jobs = Job::findOrFail($id);
         $jobs->delete();
         return response(['status' => 'success', 'message' => 'Deleted Succesfully']);
+    }
+
+    public function JobDelete(Request $request)
+    {
+
+        $request->validate([
+            'ids' => 'required'
+        ], [
+            'ids.required' => 'Need To Select First.'
+        ]);
+
+        $jobs = Job::whereIn('id', $request->ids)->delete();
+        toastr('Deleted Successfully');
+        return redirect()->back();
     }
 }

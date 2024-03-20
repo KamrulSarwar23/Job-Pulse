@@ -129,4 +129,19 @@ class CategoryController extends Controller
         return response(['message' => 'Status has been Updated!']);
     }
 
+    public function CategoryDelete(Request $request)
+    {
+        $request->validate([
+            'ids' => 'required'
+        ], [
+            'ids.required' => 'Need To Select First'
+        ]);
+
+        $jobs = Category::whereIn('id', $request->ids)->delete();
+        toastr('Deleted Successfully');
+        return redirect()->back();
+    }
+
+
+
 }

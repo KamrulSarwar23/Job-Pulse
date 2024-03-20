@@ -19,46 +19,54 @@ class JobApplyAdminDataTable extends DataTable
      *
      * @param QueryBuilder $query Results from query() method.
      */
-public function dataTable(QueryBuilder $query): EloquentDataTable
-{
-    return (new EloquentDataTable($query))
-     
+    public function dataTable(QueryBuilder $query): EloquentDataTable
+    {
+        return (new EloquentDataTable($query))
 
-        ->addColumn('candidate', function ($query) {
+            ->addColumn('action', function ($query) {
 
-            return $query->user->name;
+                $deleteBtn = "<a href='" . route('admin.job-apply-delete', $query->id) . "' class= 'btn btn-danger ml-3 delete-item'><i class='fas fa-trash'></i> </a>";
+                return $deleteBtn;
+            })
 
-          })
+            ->addColumn('candidate', function ($query) {
 
-          ->addColumn('company', function ($query) {
+                return $query->user->name;
+            })
 
-            return $query->job->user->name;
+            ->addColumn('company', function ($query) {
 
-          })
+                return $query->job->user->name;
+            })
 
+            ->addColumn('select', function ($query) {
+                $checkbox = '<div class="form-check">
+                <input class="form-check-input" name="ids[' . $query->id . ']" type="checkbox" value="' . $query->id . '" id="flexCheckDefault">
+              </div>';
+                return $checkbox;
+   })
 
-        ->addColumn('post', function ($query) {
+            ->addColumn('post', function ($query) {
 
-            return $query->job->name;
+                return $query->job->name;
+            })
 
-          })
+            ->addColumn('status', function ($query) {
+                if ($query->status == 'approved') {
 
-          ->addColumn('status', function ($query) {
-            if ($query->status == 'approved') {
+                    return '<i class="badge bg-success">Approved<i/>';
+                } elseif ($query->status == 'rejected') {
 
-                return '<i class="badge bg-success">Approved<i/>';
-            } elseif ($query->status == 'rejected') {
+                    return '<i class="badge bg-danger">Rejected<i/>';
+                } else {
+                    return '<i class="badge bg-info">Applied<i/>';
+                }
+            })
 
-                return '<i class="badge bg-danger">Rejected<i/>';
-            } else {
-                return '<i class="badge bg-info">Applied<i/>';
-            }
-        })
+            ->rawColumns(['status', 'action', 'select'])
 
-        ->rawColumns(['status'])
-
-        ->setRowId('id');
-}
+            ->setRowId('id');
+    }
 
 
     /**
@@ -75,20 +83,20 @@ public function dataTable(QueryBuilder $query): EloquentDataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('jobapplyadmin-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(0)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('jobapplyadmin-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(0)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -97,11 +105,13 @@ public function dataTable(QueryBuilder $query): EloquentDataTable
     public function getColumns(): array
     {
         return [
+            Column::make('select')->width(50),
             Column::make('id'),
             Column::make('candidate'),
             Column::make('company'),
             Column::make('post'),
             Column::make('status'),
+            Column::make('action'),
         ];
     }
 

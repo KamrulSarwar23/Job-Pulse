@@ -18,10 +18,16 @@
                         <h3><i class="far fa-user"></i>All Application</h3>
 
                         <div class="wsus__dashboard_profile">
-                            <div class="wsus__dash_pro_area">
-                                {{ $dataTable->table() }}
-
-                            </div>
+                            <form action="{{ route('company.delete-job-apply') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="ml-4 btn btn-danger mb-2">Delete Selected Item</button>
+    
+                                <div class="wsus__dash_pro_area">
+    
+                                    {{ $dataTable->table() }}
+    
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

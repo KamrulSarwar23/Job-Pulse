@@ -18,6 +18,7 @@ Route::post('profile', [CompanyController::class, 'updatePassword'])->name('prof
 
 // Create job post
 Route::put('job-change-status', [JobsController::class, 'changeStatus'])->name('job.change-status');
+Route::post('delete-job', [JobsController::class, 'JobDelete'])->name('job-delete');
 Route::resource('jobs', JobsController::class);
 
 // Plugin
@@ -28,6 +29,7 @@ Route::get('plugin-deactivate/{id}', [CompanyPluginController::class, 'pluginDea
 
 // Candidate Job Apply
 Route::get('job-apply-company', [CompanyJobAppyController::class, 'jobApplyCompany'])->name('job-apply-company');
+Route::post('delete-job-apply', [CompanyJobAppyController::class, 'JobApplyDelete'])->name('delete-job-apply');
 Route::get('candidate-cv/{id}', [CompanyJobAppyController::class, 'viewCV'])->name('candidate.cv');
 
 // application approve
@@ -38,6 +40,7 @@ Route::post('job-apply-reject/{id}', [CompanyJobAppyController::class, 'jobApply
 
 // Blog Routes
 Route::put('blog-change-status', [CompanyBlogController::class, 'changeStatus'])->name('blog.change-status');
+Route::post('delete-blog', [CompanyBlogController::class, 'BlogDelete'])->name('blog-delete');
 Route::resource('blog', CompanyBlogController::class);
 
 Route::get('employee', [CompanyBlogController::class, 'employee'])->name('employee');

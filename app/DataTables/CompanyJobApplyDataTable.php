@@ -23,50 +23,55 @@ class CompanyJobApplyDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-        ->addColumn('action', function ($query) {
-            $viewBtn = "<a href='" . route('company.candidate.cv', $query->user_id) . "' class='btn btn-primary' target='_blank'>View</a>";
-        
-            $approveBtn = "<form id='approveForm{$query->id}' method='POST' action='" . route('company.job-apply-approve', $query->id) . "' style='display: inline;'>
+            ->addColumn('action', function ($query) {
+                $viewBtn = "<a href='" . route('company.candidate.cv', $query->user_id) . "' class='btn btn-primary' target='_blank'>View</a>";
+
+                $approveBtn = "<form id='approveForm{$query->id}' method='POST' action='" . route('company.job-apply-approve', $query->id) . "' style='display: inline;'>
                 " . csrf_field() . "
                 <button type='button'' class='approve btn btn-info ml-3'>Approve</button>
               </form>";
-        
-            $rejecBtn = "<form id='rejectForm{$query->id}' method='POST' action='" . route('company.job-apply-reject', $query->id) . "' style='display: inline;'>
+
+                $rejecBtn = "<form id='rejectForm{$query->id}' method='POST' action='" . route('company.job-apply-reject', $query->id) . "' style='display: inline;'>
               " . csrf_field() . "
               <button type='button'' class='reject btn btn-danger ml-3'>Reject</button>
             </form>";
-        
-            return $viewBtn . $approveBtn . $rejecBtn;
-        })
-        
-        
-        ->addColumn('status', function ($query) {
-            if ($query->status == 'approved') {
 
-                return '<i class="badge bg-success">Approved<i/>';
-            } elseif ($query->status == 'rejected') {
+                return $viewBtn . $approveBtn . $rejecBtn;
+            })
 
-                return '<i class="badge bg-danger">Rejected<i/>';
-            } else {
-                return '<i class="badge bg-info">Applied<i/>';
-            }
-        })
-        
-            
-        ->addColumn('candidate', function ($query) {
 
-            return $query->user->name;
+            ->addColumn('status', function ($query) {
+                if ($query->status == 'approved') {
 
-          })
+                    return '<i class="badge bg-success">Approved<i/>';
+                } elseif ($query->status == 'rejected') {
 
-        ->addColumn('post', function ($query) {
+                    return '<i class="badge bg-danger">Rejected<i/>';
+                } else {
+                    return '<i class="badge bg-info">Applied<i/>';
+                }
+            })
 
-            return $query->job->name;
 
-          })
+            ->addColumn('candidate', function ($query) {
 
-         ->rawColumns(['action', 'status'])
-         ->setRowId('id');
+                return $query->user->name;
+            })
+
+            ->addColumn('post', function ($query) {
+
+                return $query->job->name;
+            })
+
+            ->addColumn('select', function ($query) {
+                $checkbox = '<div class="form-check">
+                <input class="form-check-input" name="ids[' . $query->id . ']" type="checkbox" value="' . $query->id . '" id="flexCheckDefault">
+              </div>';
+                return $checkbox;
+   })
+
+            ->rawColumns(['action', 'status', 'select'])
+            ->setRowId('id');
     }
 
     /**
@@ -83,20 +88,20 @@ class CompanyJobApplyDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('companyjobapply-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(0)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('companyjobapply-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(0)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -105,15 +110,16 @@ class CompanyJobApplyDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('select')->width(50),
             Column::make('id'),
             Column::make('candidate'),
             Column::make('post'),
             Column::make('status'),
             Column::computed('action')
-            ->exportable(false)
-            ->printable(false)
-            ->width(300)
-            ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(300)
+                ->addClass('text-center'),
         ];
     }
 

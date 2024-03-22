@@ -18,17 +18,31 @@
                        
                         <div class="wsus__dashboard_profile">
                             <div class="wsus__dash_pro_area">
-                                <h4 class="text-info">Basic information</h4>
+                               
 
                                 <form action="{{ route('candidate.job.cv-store') }}" method="POST" enctype="multipart/form-data">
                                     <div class="col-xl-12 mb-3">
                                         <button class="common_btn" type="submit">Update</button>
                                     </div>
-
+                                    <h4 class="text-info">Basic information</h4>
                                     @csrf
                                     @method('put')
 
                                     <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <label for="">Photo</label>
+                                            <div class="wsus__dash_pro_single">
+                                               <img width="120px" height="150px" src="{{ asset(@$candidateBasicInformation->image) }}" alt="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <label for="">Image</label>
+                                            <div class="wsus__dash_pro_single">
+                                               <input type="file" name="image">
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-6">
                                             <label for="">Full Name</label>
                                             <div class="wsus__dash_pro_single">

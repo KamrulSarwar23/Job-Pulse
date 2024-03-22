@@ -143,7 +143,14 @@ class SliderController extends Controller
             'ids.required' => 'Need To Select First.'
         ]);
 
-        $jobs = Slider::whereIn('id', $request->ids)->delete();
+
+        $banners = Slider::whereIn('id', $request->ids)->get();
+
+        foreach ($banners as $banner) {
+           $this->deleteMultpleImages([$banner->banner]);
+           $banner->delete();
+        }
+
         toastr('Deleted Successfully');
         return redirect()->back();
     }

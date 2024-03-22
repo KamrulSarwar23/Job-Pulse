@@ -1,5 +1,9 @@
 @extends('admin.layouts.master')
 
+@section('title')
+    Job Application List
+@endsection
+
 @section('content')
     <section class="section">
         <div class="section-header">

@@ -510,6 +510,10 @@ h3 {
   transition-duration: 0.3s;
 }
 
+.image{
+  margin-left: 40px;
+}
+
 .resume .func .interests-items div span {
   display: block;
 }
@@ -522,6 +526,12 @@ h3 {
           <!--<img src="" /> -->
           <i class="fas fa-rocket"></i>
         </div>
+        <div class="col-md-6">
+          <div class="image">
+             <img width="150px" height="180px" src="{{ asset(@$candidateBasicInformation->image) }}" alt="">
+          </div>
+      </div>
+
         <div class="info">
             <h1 class="name">{{ @$candidateBasicInformation->name }}</h1>
         </div>
@@ -532,10 +542,10 @@ h3 {
       <div class="contact">
         <h3>Contact Me</h3>
         <div class="call"><a href="tel:123-456-7890"><i class="fas fa-phone"></i><span>{{ @$candidateBasicInformation->phone }}</span></a></div>
-        <div class="address"><a href="https://goo.gl/maps/fiTBGT6Vnhy"><i class="fas fa-map-marker"></i><span>{{ @$candidateBasicInformation->github_link }}</span></a>
+        <div class="address"><a href="{{ @$candidateBasicInformation->github_link }}" target="_blank"><i class="fas fa-map-marker"></i><span>{{ @$candidateBasicInformation->github_link }}</span></a>
         </div>
-        <div class="email"><a href="mailto:astronaomical@gmail.com"><i class="fas fa-envelope"></i><span>{{ @$candidateBasicInformation->email }}</span></a></div>
-        <div class="website"><a href="http://astronaomical.com/" target="_blank"> <i class="fas fa-home"></i><span>{{ @$candidateBasicInformation->portfolio_website }}</span></a></div>
+        <div class="email"><a href="#"><i class="fas fa-envelope"></i><span>{{ @$candidateBasicInformation->email }}</span></a></div>
+        <div class="website"><a href="{{ @$candidateBasicInformation->portfolio_website }}" target="_blank"> <i class="fas fa-home"></i><span>{{ @$candidateBasicInformation->portfolio_website }}</span></a></div>
       </div>
 
     </div>

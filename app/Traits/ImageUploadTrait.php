@@ -68,4 +68,14 @@ trait ImageUploadTrait
       File::delete(public_path($path));
     }
   }
+
+  public function deleteMultpleImages(array $paths)
+{
+    foreach ($paths as $path) {
+        if (File::exists(public_path($path))) {
+            File::delete(public_path($path));
+        }
+    }
+}
+
 }

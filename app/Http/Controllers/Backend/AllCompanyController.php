@@ -5,10 +5,15 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\AllCompanyDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
+use File;
 
 class AllCompanyController extends Controller
 {
+
+    use ImageUploadTrait;
+
     public function index(AllCompanyDataTable $dataTable)
     {
         return $dataTable->render('admin.companis.index');
@@ -30,10 +35,12 @@ class AllCompanyController extends Controller
         if (count($user->jobs) > 0) {
             return response(['status' => 'error', 'message' => 'This Company Have Job Post! First Delete Job Post Then Delete Company']);
         }
+        File::delete(public_path($user->image));
         $user->delete();
 
         return response(['status' => 'success', 'message' => 'Status has been Updated!']);
     }
+
     public function CompanyDelete(Request $request)
     {
 
@@ -43,7 +50,13 @@ class AllCompanyController extends Controller
             'ids.required' => 'Need To Select First.'
         ]);
 
-        $jobs = User::whereIn('id', $request->ids)->delete();
+        $blogs = User::whereIn('id', $request->ids)->get();
+    
+        foreach ($blogs as $blog) {
+            $this->deleteMultpleImages([$blog->image]);
+            $blog->delete();
+        }
+
         toastr('Deleted Successfully');
         return redirect()->back();
     }

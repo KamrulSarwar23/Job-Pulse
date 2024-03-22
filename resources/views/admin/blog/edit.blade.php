@@ -1,5 +1,9 @@
 @extends('admin.layouts.master')
 
+@section('title')
+    Blog Edit
+@endsection
+
 @section('content')
     <section class="section">
         <div class="section-header">

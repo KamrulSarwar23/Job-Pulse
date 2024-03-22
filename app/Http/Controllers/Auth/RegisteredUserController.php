@@ -43,11 +43,12 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        return redirect()->route('candidate.login');
+        // event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // return redirect(RouteServiceProvider::HOME);
     }
 
 
@@ -67,10 +68,12 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
 
-        Auth::login($user);
+        return redirect()->route('company.login');
+        // event(new Registered($user));
 
-        return redirect()->route('company.dashboard');
+        // Auth::login($user);
+
+        // return redirect()->route('company.dashboard');
     }
 }

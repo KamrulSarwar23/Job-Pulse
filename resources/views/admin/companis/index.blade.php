@@ -1,5 +1,9 @@
 @extends('admin.layouts.master')
 
+@section('title')
+    Companis
+@endsection
+
 @section('content')
     <section class="section">
         <div class="section-header">

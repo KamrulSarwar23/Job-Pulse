@@ -1,7 +1,7 @@
 @extends('company.layouts.master')
 
 @section('title')
-   || Job Posts
+    || Job Posts
 @endsection
 
 @section('content')
@@ -17,21 +17,22 @@
                     <div class="dashboard_content mt-2 mt-md-0">
                         <h3><i class="far fa-user"></i>All Job Post</h3>
                         <div class="create-button">
-                            <a href="{{ route('company.jobs.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Create Job Post</a>
+                            <a href="{{ route('company.jobs.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i>
+                                Create Job Post</a>
                         </div>
                         <div class="wsus__dashboard_profile">
                             <form action="{{ route('company.job-delete') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="ml-4 btn btn-danger mb-2">Delete Selected Item</button>
-    
+
                                 <div class="wsus__dash_pro_area">
-    
+
                                     {{ $dataTable->table() }}
-    
+
                                 </div>
                             </form>
 
-                      
+
                         </div>
                     </div>
                 </div>

@@ -21,6 +21,7 @@ class CandidateBasicInformation extends Model
         'skill',
         'current_salary',
         'expected_salary',
-        'user_id'
+        'user_id',
+        'image'
     ];
 }

@@ -10,6 +10,16 @@
     <!--============================LOGIN/REGISTER PAGE START==============================-->
 
     <section id="wsus__login_register">
+        @if (session('status'))
+        <div id="statusAlert" class="alert alert-danger alert-dismissible fade show rounded-0 text-center" role="alert"
+            style="background-color: #f8d7da; color: #721c24; border-color: #f5c6cb;">
+            <strong>{{ session('status') }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="dismissAlert()">
+                <span aria-hidden="true" style="font-size: 20px; font-weight: bold; color: #721c24;">&times;</span>
+            </button>
+        </div>
+        @endif
+
         <div class="container py-5">
             <div class="row">
                 <div class="col-xl-8 m-auto">
@@ -29,3 +39,10 @@
     
     <!--============================LOGIN/REGISTER PAGE END==============================-->
 @endsection
+
+<script>
+    function dismissAlert() {
+        var alert = document.getElementById('statusAlert');
+        alert.remove();
+    }
+</script>

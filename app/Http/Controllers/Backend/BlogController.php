@@ -95,7 +95,7 @@ class BlogController extends Controller
         $imagePath = $this->updateImage($request, 'image', 'uploads', $blog->image);
 
         $blog->user_id = Auth::user()->id;
-        $blog->image= !empty($imagePath) ? $imagePath : $blog->image;
+        $blog->image = !empty($imagePath) ? $imagePath : $blog->image;
         $blog->title = $request->title;
         $blog->description = $request->description;
         $blog->status = $request->status;
@@ -128,29 +128,46 @@ class BlogController extends Controller
 
     public function BlogDelete(Request $request)
     {
-
         $request->validate([
-            'ids' => 'required'
+            'ids' => 'required|array',
+            'ids.*' => 'exists:blogs,id'
         ], [
-            'ids.required' => 'Need To Select First'
+            'ids.required' => 'Need To Select First',
+            'ids.*.exists' => 'Invalid blog ID'
         ]);
 
-        $jobs = Blog::whereIn('id', $request->ids)->delete();
+        // Fetch blogs
+        $blogs = Blog::whereIn('id', $request->ids)->get();
+
+        foreach ($blogs as $blog) {
+            $this->deleteMultpleImages([$blog->image]);
+            $blog->delete();
+        }
+
         toastr('Deleted Successfully');
         return redirect()->back();
     }
+
 
     public function ComapnyBlogDelete(Request $request)
     {
         $request->validate([
-            'ids' => 'required'
+            'ids' => 'required|array',
+            'ids.*' => 'exists:blogs,id'
         ], [
-            'ids.required' => 'Need To Select First'
+            'ids.required' => 'Need To Select First',
+            'ids.*.exists' => 'Invalid blog ID'
         ]);
 
-        $jobs = Blog::whereIn('id', $request->ids)->delete();
+        // Fetch blogs
+        $blogs = Blog::whereIn('id', $request->ids)->get();
+
+        foreach ($blogs as $blog) {
+            $this->deleteMultpleImages([$blog->image]);
+            $blog->delete();
+        }
+
         toastr('Deleted Successfully');
         return redirect()->back();
     }
-
 }

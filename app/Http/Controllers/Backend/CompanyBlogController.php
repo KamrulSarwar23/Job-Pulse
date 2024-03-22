@@ -127,14 +127,18 @@ class CompanyBlogController extends Controller
 
     public function BlogDelete(Request $request)
     {
-
         $request->validate([
             'ids' => 'required'
         ]);
 
-        $jobs = Blog::whereIn('id', $request->ids)->delete();
+        $blogs = Blog::whereIn('id', $request->ids)->get();
+
+        foreach ($blogs as $blog) {
+            $this->deleteMultpleImages([$blog->image]);
+            $blog->delete();
+        }
+
         toastr('Deleted Successfully');
         return redirect()->back();
-
     }
 }

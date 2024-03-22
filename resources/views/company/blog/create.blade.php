@@ -19,22 +19,22 @@
                             <div class="wsus__dash_pro_area">
                                 <form action="{{ route('company.blog.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-    
+
                                     <div class="form-group mb-3">
                                         <label>Image</label>
                                         <input type="file" class="form-control" name="image">
                                     </div>
-    
+
                                     <div class="form-group mb-3">
                                         <label>Title</label>
                                         <input type="text" class="form-control"name="title" value="{{ old('title') }}">
                                     </div>
-    
+
                                     <div class="form-group mb-3">
                                         <label>Description</label>
                                         <textarea name="description" id="" class="form-control summernote"></textarea>
                                     </div>
-    
+
                                     <div class="form-group mb-3">
                                         <label for="inputState">State</label>
                                         <select id="inputState" class="form-control" name="status">
@@ -42,7 +42,7 @@
                                             <option value="0">Inactive</option>
                                         </select>
                                     </div>
-    
+
                                     <button class="btn btn-primary">Create</button>
                                 </form>
 

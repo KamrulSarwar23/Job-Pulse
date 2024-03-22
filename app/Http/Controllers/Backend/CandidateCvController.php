@@ -7,11 +7,14 @@ use App\Models\CandidateBasicInformation;
 use App\Models\CandidateDegreeInformation;
 use App\Models\CandidateJobExperience;
 use App\Models\CandidateTrainingInformation;
+use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CandidateCvController extends Controller
 {
+
+    use ImageUploadTrait;
     public function candidateCV()
     {
         $candidateBasicInformation = CandidateBasicInformation::where('user_id', Auth::user()->id)->first();
@@ -63,6 +66,7 @@ class CandidateCvController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'image' => 'nullable',
             'name' => 'nullable',
             'email' => 'nullable',
             'father_name' => 'nullable',
@@ -93,6 +97,8 @@ class CandidateCvController extends Controller
 
         ]);
 
+       
+
         $basicInformation = CandidateBasicInformation::updateOrCreate(
 
             [
@@ -100,6 +106,7 @@ class CandidateCvController extends Controller
             ],
 
             [
+
                 'name' => $request->name,
                 'email' => $request->email,
                 'father_name' => $request->father_name,
@@ -111,10 +118,28 @@ class CandidateCvController extends Controller
                 'skill' => $request->skill,
                 'current_salary' => $request->current_salary,
                 'expected_salary' => $request->expected_salary,
+
             ]
         );
 
-        $userId = auth()->id(); // Or however you retrieve the user ID
+        if ($request->hasFile('image')) {
+           
+            $imagePath = $this->uploadImage($request, 'image', 'uploads');
+          
+            if ($imagePath) {
+               
+                if ($basicInformation->image) {
+           
+                    $this->deleteImage($basicInformation->image);
+                }
+                $basicInformation->image = $imagePath;
+            }
+        }
+        
+        $basicInformation->save();
+
+
+        $userId = auth()->id(); 
 
         // Master's Degree
         CandidateDegreeInformation::updateOrCreate(

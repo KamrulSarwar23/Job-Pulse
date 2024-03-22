@@ -26,7 +26,6 @@ Route::get('plugin', [CompanyPluginController::class, 'plugin'])->name('plugin.i
 Route::post('plugin-activate', [CompanyPluginController::class, 'pluginActivate'])->name('plugin.active');
 Route::get('plugin-deactivate/{id}', [CompanyPluginController::class, 'pluginDeactivate'])->name('plugin.deactivate');
 
-
 // Candidate Job Apply
 Route::get('job-apply-company', [CompanyJobAppyController::class, 'jobApplyCompany'])->name('job-apply-company');
 Route::post('delete-job-apply', [CompanyJobAppyController::class, 'JobApplyDelete'])->name('delete-job-apply');

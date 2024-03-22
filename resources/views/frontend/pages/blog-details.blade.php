@@ -9,16 +9,8 @@
 
 @section('content')
      <!-- Header End -->
-     <div class="container-xxl py-5 bg-dark page-header mb-5">
-        <div class="container my-5 pt-5 pb-4">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">Our Blog</h1>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb text-uppercase">
-                    <li class="breadcrumb-item"><a href="{{ route('home.page') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:;">Blog</a></li>
-                </ol>
-            </nav>
-        </div>
+     <div class="mt-5 pt-5">
+ 
     </div>
     <!-- Header End -->
 
@@ -27,10 +19,10 @@
     <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">{{ $blog->title }}</h1>
     <p class="card-title text-primary">"Post By: {{ $blog->user->name }} || {{ $blog->created_at->format('d M Y')}}"</p>
     <div class="row">
-    
-        <div class="col-lg-12 col-md-6 mb-5">
-            <div class="card mb-3 h-100">
-                {{-- <img class="card-img-top" src="{{ asset($blog->image) }}" alt="Card image cap"> --}}
+        <img width="100%" height="300px" class="card-img-top mb-5" src="{{ asset($blog->image) }}" alt="Card image cap">
+        <div class="col-lg-12 col-md-6 mb-3">
+            <div class="mb-3 h-100">
+               
                 <div class="card-body">
         
                     <p class="card-text">{!! $blog->description !!}</p>

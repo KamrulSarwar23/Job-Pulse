@@ -23,7 +23,7 @@ class HomeController extends Controller
         $banner = Slider::get();
         $category = Category::where('status', 1)->get();
         $company = User::where('role', 'company')->where('status', 'active')->take(4)->get();
-        $jobs = Job::where('status', 'active')->orderBy('created_at', 'DESC')->take(5)->get();
+        $jobs = Job::where('status', 'active')->orderBy('created_at', 'DESC')->take(8)->get();
 
         return view('frontend.layouts.home', compact('banner', 'company', 'category', 'jobs'));
     }
@@ -31,20 +31,13 @@ class HomeController extends Controller
 
     public function searchJob(Request $request)
     {
-        $keyword = $request->input('keyword'); // Accessing the 'keyword' input from the form
+        $keyword = $request->input('keyword');
         $jobs = Job::where('status', 'active')
-        ->where('name', 'like', '%' . $keyword . '%')
-        ->orwhere('address', 'like', '%' . $keyword . '%')
-        ->orwhere('office_from', 'like', '%' . $keyword . '%')
-        ->orderBy('created_at', 'DESC')->get();
+            ->where('name', 'like', '%' . $keyword . '%')
+            ->orwhere('address', 'like', '%' . $keyword . '%')
+            ->orwhere('office_from', 'like', '%' . $keyword . '%')
+            ->orderBy('created_at', 'DESC')->paginate(10);
         return view('frontend.pages.job-via-search', compact('jobs'));
-    }
-
-
-    public function jobList()
-    {
-        $jobs = Job::where('status', 'active')->orderBy('created_at', 'DESC')->take(5)->get();
-        return view('frontend.pages.job-list', compact('jobs'));
     }
 
     public function jobDetails(string $id)
@@ -56,13 +49,13 @@ class HomeController extends Controller
 
     public function jobByCategory(string $id)
     {
-        $jobs = Job::where('status', 'active')->where('category_id', $id)->orderBy('created_at', 'DESC')->get();
+        $jobs = Job::where('status', 'active')->where('category_id', $id)->orderBy('created_at', 'DESC')->paginate(10);
         return view('frontend.pages.job-via-category', compact('jobs'));
     }
 
     public function jobByCompany(string $id)
     {
-        $jobs = Job::where('status', 'active')->where('user_id', $id)->orderBy('created_at', 'DESC')->get();
+        $jobs = Job::where('status', 'active')->where('user_id', $id)->orderBy('created_at', 'DESC')->paginate(10);
         return view('frontend.pages.job-via-company', compact('jobs'));
     }
 
@@ -77,7 +70,7 @@ class HomeController extends Controller
 
     public function jobPage()
     {
-        $jobs = Job::where('status', 'active')->orderBy('created_at', 'DESC')->paginate(5);
+        $jobs = Job::where('status', 'active')->orderBy('created_at', 'DESC')->paginate(10);
         return view('frontend.pages.job-list', compact('jobs'));
     }
 
@@ -99,7 +92,6 @@ class HomeController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
-
 
     public function googleCallback()
     {
@@ -175,6 +167,4 @@ class HomeController extends Controller
         $category = Category::where('status', 1)->get();
         return view('frontend.pages.category', compact('category'));
     }
-
-
 }

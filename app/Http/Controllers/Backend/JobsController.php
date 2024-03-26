@@ -14,6 +14,7 @@ class JobsController extends Controller
     /**
      * Display a listing of the resource.
      */
+    
     public function index(JobDataTable $datatable)
     {
         return $datatable->render('company.job.index');
@@ -30,7 +31,7 @@ class JobsController extends Controller
 
     /**
      * Store a newly created resource in storage.
-    */
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -75,7 +76,6 @@ class JobsController extends Controller
      */
     public function show(string $id)
     {
-     
     }
 
     /**
@@ -135,16 +135,17 @@ class JobsController extends Controller
      */
     public function destroy(string $id)
     {
-        $jobs = Job::findOrFail( $id);
+        $jobs = Job::findOrFail($id);
         $jobs->delete();
-        return response(['status' => 'success', 'message'=> 'Deleted Successfully']);
+        return response(['status' => 'success', 'message' => 'Deleted Successfully']);
     }
 
-    public function changeStatus(Request $request){
+    public function changeStatus(Request $request)
+    {
         $jobs = Job::findOrFail($request->id);
         $jobs->status = $request->status == 'true' ? 'active' : 'inactive';
         $jobs->save();
-        return response(['status' => 'success', 'message'=> 'Status Changed Successfully']);
+        return response(['status' => 'success', 'message' => 'Status Changed Successfully']);
     }
 
     public function JobDelete(Request $request)

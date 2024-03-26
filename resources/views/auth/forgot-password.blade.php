@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-  || Forgot Password
+    || Forgot Password
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
                     <div class="col-12">
                         <h4>forget password</h4>
                         <ul>
-                            <li><a href="{{route('login')}}">login</a></li>
+                            <li><a href="{{ route('login') }}">login</a></li>
                             <li><a href="javascript:;">forget password</a></li>
                         </ul>
                     </div>
@@ -42,7 +42,7 @@
                                 <button class="common_btn" type="submit">send</button>
                             </form>
                         </div>
-                        <a class="see_btn mt-4" href="{{ route('login') }}">go to login</a>
+                        <a class="see_btn mt-4" href="{{ route('select.user') }}">go to login</a>
                     </div>
                 </div>
             </div>

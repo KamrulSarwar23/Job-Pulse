@@ -10,7 +10,6 @@ use App\Http\Controllers\Frontend\JobApplyController;
 
 require __DIR__ . '/auth.php';
 
-
 // User Dashboard Routes Group
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'candidate', 'as' => 'candidate.'], function () {
 
@@ -30,7 +29,6 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'candidate', 'as
     Route::delete('job-apply-cancel/{id}', [JobApplyController::class, 'jobApplyCancel'])->name('job.apply-cancel');
 
     Route::get('show-job-apply', [JobApplyController::class, 'showJobApply'])->name('show-job.apply');
-
 });
 
 // Home Page Route
@@ -58,7 +56,6 @@ Route::post('/send-message', [ContactController::class, 'sendMessage'])->name('s
 Route::get('/login/google', [HomeController::class, 'googleRedirect'])->name('login.google');
 Route::get('/login/google/callback', [HomeController::class, 'googleCallback']);
 
-
 // job list by category
 Route::get('job-by-category/{id}', [HomeController::class, 'jobByCategory'])->name('job.category');
 
@@ -73,7 +70,3 @@ Route::get('all-category', [HomeController::class, 'allCategory'])->name('all.ca
 
 // job search by 
 Route::get('search-jobs', [HomeController::class, 'searchJob'])->name('search.job');
-
-
-
-

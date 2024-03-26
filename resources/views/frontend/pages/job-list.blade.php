@@ -104,8 +104,9 @@
                                         <hr>
                                     @endif
                                 @endforeach
-
+                                {{ $jobs->links() }}
                             </div>
+                           
                         </div>
 
                     </div>

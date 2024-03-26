@@ -56,7 +56,7 @@
                     <div id="tab-1" class="tab-pane fade show p-0 active">
                         @if (count($jobs) > 0)
                             <div class="job-item p-4 mb-4">
-
+                                {{ $jobs->links() }}
                                 @foreach ($jobs as $item)
                                     @if ($item->end_date > \Carbon\Carbon::now())
                                         <div class="row g-4 mb-3">
@@ -102,6 +102,7 @@
                                         <hr>
                                     @endif
                                 @endforeach
+                                {{ $jobs->links() }}
                             </div>
                         @else
                             <div class="card py-5">

@@ -3,6 +3,13 @@
 @section('title')
     || Login
 @endsection
+<style>
+    .toggle-password {
+        display: inline-block;
+        margin-left: -40px;
+        cursor: pointer;
+    }
+</style>
 
 @section('content')
     <!--============================LOGIN/REGISTER PAGE START==============================-->
@@ -10,13 +17,13 @@
         <div class="container">
 
             @if (session('status'))
-            <div id="statusAlert" class="alert alert-danger alert-dismissible fade show rounded-0 text-center" role="alert"
-                style="background-color: #f8d7da; color: #721c24; border-color: #f5c6cb;">
-                <strong>{{ session('status') }}</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="dismissAlert()">
-                    <span aria-hidden="true" style="font-size: 20px; font-weight: bold; color: #721c24;">&times;</span>
-                </button>
-            </div>
+                <div id="statusAlert" class="alert alert-danger alert-dismissible fade show rounded-0 text-center"
+                    role="alert" style="background-color: #f8d7da; color: #721c24; border-color: #f5c6cb;">
+                    <strong>{{ session('status') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="dismissAlert()">
+                        <span aria-hidden="true" style="font-size: 20px; font-weight: bold; color: #721c24;">&times;</span>
+                    </button>
+                </div>
             @endif
 
             <div class="row">
@@ -43,13 +50,17 @@
                                     <form action="{{ route('company.login') }}" method="POST">
                                         @csrf
                                         <div class="wsus__login_input">
-                                            <i class="fas fa-user-tie"></i>
+                                            {{-- <i class="fas fa-user-tie"></i> --}}
                                             <input id="email" type="email" name="email" value="{{ old('email') }}"
                                                 placeholder="Email">
                                         </div>
                                         <div class="wsus__login_input">
-                                            <i class="fas fa-key"></i>
-                                            <input id="password" type="password" name="password" placeholder="Password">
+                                            {{-- <i class="fas fa-key"></i> --}}
+                                            <input id="login_password" type="password" name="password"
+                                                placeholder="Password">
+                                            <span id="toggle-login-password" toggle="#login_password"
+                                                class="toggle-password fas fa-eye field-icon"
+                                                onclick="togglePasswordVisibility(this)"></span>
                                         </div>
 
                                         <div class="wsus__login_save">
@@ -76,23 +87,29 @@
                                     <form action="{{ route('company.register') }}" method="POST">
                                         @csrf
                                         <div class="wsus__login_input">
-                                            <i class="fas fa-user-tie"></i>
+                                            {{-- <i class="fas fa-user-tie"></i> --}}
                                             <input id="name" value="{{ old('name') }}" type="text"
                                                 name="name"placeholder="Company Name">
                                         </div>
                                         <div class="wsus__login_input">
-                                            <i class="far fa-envelope"></i>
+                                            {{-- <i class="far fa-envelope"></i> --}}
                                             <input id="email" name="email" value="{{ old('email') }}" type="text"
                                                 placeholder="Email">
                                         </div>
+
                                         <div class="wsus__login_input">
-                                            <i class="fas fa-key"></i>
-                                            <input id="password" type="password" name="password" placeholder="Password">
+                                            {{-- <i class="fas fa-key"></i> --}}
+                                            <input id="signup_password" type="password" name="password"
+                                                placeholder="Password">
+                                            <span id="toggle-signup-password" toggle="#signup_password"
+                                                class="toggle-password fas fa-eye field-icon"
+                                                onclick="togglePasswordVisibility(this)"></span>
                                         </div>
+
                                         <div class="wsus__login_input">
-                                            <i class="fas fa-key"></i>
-                                            <input id="password_confirmation" type="password" name="password_confirmation"
-                                                placeholder="Confirm Password">
+                                            {{-- <i class="fas fa-key"></i> --}}
+                                            <input id="password_confirmation" type="password"
+                                                name="password_confirmation" placeholder="Confirm Password">
                                         </div>
 
                                         <button class="common_btn mt-4" type="submit">signup</button>
@@ -112,5 +129,18 @@
     function dismissAlert() {
         var alert = document.getElementById('statusAlert');
         alert.remove();
+    }
+
+    function togglePasswordVisibility(icon) {
+        var input = document.querySelector(icon.getAttribute('toggle'));
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
     }
 </script>

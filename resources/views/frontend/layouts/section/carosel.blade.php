@@ -4,7 +4,7 @@
 
         @foreach ($banner as $item)
         <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="{{ asset($item->banner) }}" alt="">
+            <img class="img-fluid" src="{{ $item->banner ? asset($item->banner) : asset('frontend/images/carousel.jpg') }}" alt="">
             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(43, 57, 64, .5);">
                 <div class="container">
                     <div class="row justify-content-start">

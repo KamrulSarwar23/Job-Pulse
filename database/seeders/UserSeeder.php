@@ -24,7 +24,6 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('password')
             ],
 
-
             [
                 'name' => 'company',
                 'username' => 'companyuser',
@@ -33,7 +32,7 @@ class UserSeeder extends Seeder
                 'status' => 'active',
                 'password' => bcrypt('password')
             ],
-            
+
             [
                 'name' => 'candidate',
                 'username' => 'candidateuser',
@@ -42,7 +41,6 @@ class UserSeeder extends Seeder
                 'status' => 'active',
                 'password' => bcrypt('password')
             ]
-
         ]);
     }
 }

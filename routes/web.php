@@ -21,14 +21,12 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'candidate', 'as
 
     Route::get('/candidate_cv', [CandidateCvController::class, 'candidateCV'])->name('job.cv');
     Route::put('/candidate_cv/store', [CandidateCvController::class, 'store'])->name('job.cv-store');
-
     Route::get('cv-preview', [CandidateCvController::class, 'cvPreview'])->name('cv.preview');
 
     Route::post('job-apply', [JobApplyController::class, 'jobApply'])->name('job.apply');
-
     Route::delete('job-apply-cancel/{id}', [JobApplyController::class, 'jobApplyCancel'])->name('job.apply-cancel');
-
     Route::get('show-job-apply', [JobApplyController::class, 'showJobApply'])->name('show-job.apply');
+
 });
 
 // Home Page Route
@@ -68,5 +66,5 @@ Route::get('all-company', [HomeController::class, 'allCompany'])->name('all.comp
 // category list
 Route::get('all-category', [HomeController::class, 'allCategory'])->name('all.category');
 
-// job search by 
+// job search by
 Route::get('search-jobs', [HomeController::class, 'searchJob'])->name('search.job');

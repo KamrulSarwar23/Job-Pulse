@@ -8,6 +8,7 @@ use App\Traits\ImageUploadTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\DataTables\CompanyBlogDataTable;
+use App\Models\CompanyPlugin;
 
 class CompanyBlogController extends Controller
 {
@@ -17,7 +18,23 @@ class CompanyBlogController extends Controller
      */
     public function index(CompanyBlogDataTable $datatable)
     {
+
+        $companyId = auth()->user()->id; // Get the authenticated company user ID
+
+        $plugin = CompanyPlugin::where('company_id', $companyId)
+                    ->whereHas('plugin', function ($query) {
+                        $query->where('slug','blog'); // Check for the specific plugins
+                    })
+                    ->where('status', 1)
+                    ->get();
+        
+        if ($plugin->isEmpty()) {
+            toastr('You Are Not Allowed To Access This', 'error', 'error');
+            return redirect()->back();
+        }
+        
         return $datatable->render('company.blog.index');
+    
     }
 
     /**
@@ -25,6 +42,22 @@ class CompanyBlogController extends Controller
      */
     public function create()
     {
+
+        $companyId = auth()->user()->id; // Get the authenticated company user ID
+
+        $plugin = CompanyPlugin::where('company_id', $companyId)
+                    ->whereHas('plugin', function ($query) {
+                        $query->where('slug','blog'); // Check for the specific plugins
+                    })
+                    ->where('status', 1)
+                    ->get();
+        
+        if ($plugin->isEmpty()) {
+            toastr('You Are Not Allowed To Access This', 'error', 'error');
+            return redirect()->back();
+        }
+
+
         return view('company.blog.create');
     }
 
@@ -33,6 +66,7 @@ class CompanyBlogController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'image' => ['required', 'image', 'max:3000'],
             'title' => ['required', 'max:200'],
@@ -66,6 +100,20 @@ class CompanyBlogController extends Controller
      */
     public function edit(string $id)
     {
+        $companyId = auth()->user()->id; // Get the authenticated company user ID
+
+        $plugin = CompanyPlugin::where('company_id', $companyId)
+                    ->whereHas('plugin', function ($query) {
+                        $query->where('slug','blog'); // Check for the specific plugins
+                    })
+                    ->where('status', 1)
+                    ->get();
+        
+        if ($plugin->isEmpty()) {
+            toastr('You Are Not Allowed To Access This', 'error', 'error');
+            return redirect()->back();
+        }
+
         $blog = Blog::findOrFail($id);
         return view('company.blog.edit', compact('blog'));
     }
@@ -75,6 +123,7 @@ class CompanyBlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         $request->validate([
             'image' => ['nullable', 'image', 'max:3000'],
             'title' => ['required', 'max:200'],
@@ -101,6 +150,7 @@ class CompanyBlogController extends Controller
      */
     public function destroy(string $id)
     {
+
         $blog = Blog::findOrFail($id);
         $this->deleteImage($blog->image);
         $blog->delete();
@@ -110,6 +160,20 @@ class CompanyBlogController extends Controller
     public function changeStatus(Request $request)
     {
 
+        $companyId = auth()->user()->id; // Get the authenticated company user ID
+
+        $plugin = CompanyPlugin::where('company_id', $companyId)
+                    ->whereHas('plugin', function ($query) {
+                        $query->where('slug','blog'); // Check for the specific plugins
+                    })
+                    ->where('status', 1)
+                    ->get();
+        
+        if ($plugin->isEmpty()) {
+            toastr('You Are Not Allowed To Access This', 'error', 'error');
+            return redirect()->back();
+        }
+
         $blog = Blog::findOrFail($request->id);
         $blog->status = $request->status == 'true' ? 1 : 0;
         $blog->save();
@@ -118,15 +182,46 @@ class CompanyBlogController extends Controller
     }
 
     public function employee(){
+
+        $companyId = auth()->user()->id; // Get the authenticated company user ID
+
+        $plugin = CompanyPlugin::where('company_id', $companyId)
+                    ->whereHas('plugin', function ($query) {
+                        $query->where('slug','employee'); // Check for the specific plugins
+                    })
+                    ->where('status', 1)
+                    ->get();
+        
+        if ($plugin->isEmpty()) {
+            toastr('You Are Not Allowed To Access This', 'error', 'error');
+            return redirect()->back();
+        }
+
         return view('company.employee.index');
     }
 
     public function page(){
+
+        $companyId = auth()->user()->id; // Get the authenticated company user ID
+
+        $plugin = CompanyPlugin::where('company_id', $companyId)
+                    ->whereHas('plugin', function ($query) {
+                        $query->where('slug','page'); // Check for the specific plugins
+                    })
+                    ->where('status', 1)
+                    ->get();
+        
+        if ($plugin->isEmpty()) {
+            toastr('You Are Not Allowed To Access This', 'error', 'error');
+            return redirect()->back();
+        }
+
         return view('company.page.index');
     }
 
     public function BlogDelete(Request $request)
     {
+        
         $request->validate([
             'ids' => 'required'
         ]);
